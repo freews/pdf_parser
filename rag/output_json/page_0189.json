@@ -1,0 +1,54 @@
+{
+  "page_number": "165",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 129: IEEE OUI Identifier (IEEE)\n\n| Bytes | 73 | 74 | 75 |\n|-------|----|----|----|\n| Value | EFh | CDh | ABh |\n\n## 4.5.4 IEEE Extended Unique Identifier (EUI64)\n\nThe IEEE Extended Unique Identifier (EUI64, bytes 127:120) is defined in the Identify Namespace data structure. Tutorials are available at https://standards.ieee.org/develop/regauth/tut/index.html. IEEE defines three formats that may be used in this field: MA-L, MA-M, and MA-S. The examples in this section use the MA-L format.\n\nThe MA-L format is defined as a string of eight octets:\n\n### Figure 130: IEEE Extended Unique Identifier (EUI64), MA-L Format\n\n| EUI[0] | EUI[1] | EUI[2] | EUI[3] | EUI[4] | EUI[5] | EUI[6] | EUI[7] |\n|--------|--------|--------|--------|--------|--------|--------|--------|\n|        | OUI    |        |        |        | Extension Identifier |        |        |\n\nEUI64 is defined in big endian format. The OUI field differs from the OUI Identifier which is in little endian format as described in section 4.5.3.\n\n### Example:\n- OUI Identifier = ABCDEFh; and\n- Extension Identifier = 0123456789h.\n\n### Figure 131: IEEE Extended Unique Identifier (EUI64), OUI Identifier\n\n| Bytes | 120 | 121 | 122 | 123 | 124 | 125 |\n|-------|-----|-----|-----|-----|-----|-----|\n| Value | ABh | CDh | EFh | 01h | 23h | 45h |\n| Field |     | OUI |     |     | Extension Identifier |     |\n\n### Figure 132: IEEE Extended Unique Identifier (EUI64), Ext. ID (cont)\n\n| Bytes | 126 | 127 |\n|-------|-----|-----|\n| Value | 67h | 89h |\n| Field | Ext ID (cont) |\n\nThe MA-L format is similar to the World Wide Name (WWN) format defined as IEEE Registered designator (NAA = 5) as shown below.\n\n### Figure 133: MA-L similarity to WWN\n\n| Bytes | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n|-------|---|---|---|---|---|---|---|---|\n| EUI64 |   | OUI |   |   | Extension Identifier |   |   |   |\n| WWN (NAA = 5) | 5h |   | OUI |   |   | Vendor Specific Identifier |   |   |\n\n## 4.5.5 Namespace Globally Unique Identifier (NGUID)\n\nThe Namespace Globally Unique Identifier (NGUID, bytes 119:104) is defined in the Identify Namespace data structure. The NGUID is composed of an IEEE OUI, an extension identifier, and a vendor specific extension identifier. The extension identifier and vendor specific extension identifier are both assigned by the vendor and may be considered as a single field. NGUID is defined in big endian format. The OUI field differs from the OUI Identifier which is in little endian format as described in section 4.5.3.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 129: IEEE OUI Identifier (IEEE)",
+        "coordinates": [
+          312,
+          105,
+          687,
+          158
+        ]
+      },
+      {
+        "name": "Figure 130: IEEE Extended Unique Identifier (EUI64), MA-L Format",
+        "coordinates": [
+          144,
+          308,
+          855,
+          340
+        ]
+      },
+      {
+        "name": "Figure 131: IEEE Extended Unique Identifier (EUI64), OUI Identifier",
+        "coordinates": [
+          180,
+          482,
+          819,
+          525
+        ]
+      },
+      {
+        "name": "Figure 132: IEEE Extended Unique Identifier (EUI64), Ext. ID (cont)",
+        "coordinates": [
+          333,
+          572,
+          615,
+          615
+        ]
+      },
+      {
+        "name": "Figure 133: MA-L similarity to WWN",
+        "coordinates": [
+          100,
+          695,
+          898,
+          755
+        ]
+      }
+    ]
+  }
+}

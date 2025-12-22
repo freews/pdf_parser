@@ -1,0 +1,27 @@
+{
+  "page_number": "242",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 230: Persistent Event Log Page\n\n| Bytes | Description |\n|---|---|\n| 511:480 | **Supported Events Bitmap (SEB)**: This field contains a bitmap indicating support for the persistent event log events. Each bit in the bitmap corresponds to the value for the event type (refer to Figure 233) (e.g., bit 222 decimal, DEh, corresponds to event type value DEh, Vendor Specific Event). A bit set to '1' indicates that the corresponding event is supported. A bit cleared to '0' indicates that the corresponding event is not supported. |\n\n### Bits Description Reference\n\n| Bits | Description | Reference |\n|---|---|---|\n| 255:224 | Reserved | |\n| 223 | TCG Defined | TCG Storage Interface Interactions Specification |\n| 222 | Vendor Specific Event Supported (VSES) | 5.2.12.1.14.2.16 |\n| 221:16 | Reserved | |\n| 15 | Configurable Device Personality Change Event Support (CDPCES) | 5.2.12.1.14.2.15 |\n| 14 | Sanitize Media Verification Event Support (SMVES) | 5.2.12.1.14.2.14 |\n| 13 | Thermal Excursion Event Support (TEES) | 5.2.12.1.14.2.13 |\n| 12 | Telemetry Log Create Event Support (TLCES) | 5.2.12.1.14.2.12 |\n| 11 | Set Feature Event Support (SFES) | 5.2.12.1.14.2.11 |\n| 10 | Sanitize Completion Event Support (SCES) | 5.2.12.1.14.2.10 |\n| 09 | Sanitize Start Event Support (SSES) | 5.2.12.1.14.2.9 |\n| 08 | Format NVM Completion Event Support (FNCES) | 5.2.12.1.14.2.8 |\n| 07 | Format NVM Start Event Support (FNSES) | 5.2.12.1.14.2.7 |\n| 06 | Change Namespace Event Support (CNES) | 5.2.12.1.14.2.6 |\n| 05 | NVM Subsystem Hardware Error Event Support (NSHEES) | 5.2.12.1.14.2.5 |\n| 04 | Power-on or Reset Event Supported (PRES) | 5.2.12.1.14.2.4 |\n| 03 | Timestamp Change Event Supported (TCES) | 5.2.12.1.14.2.3 |\n| 02 | Firmware Commit Event Supported (FCES) | 5.2.12.1.14.2.2 |\n| 01 | SMART / Health Log Snapshot Event Supported (SHLSES) | 5.2.12.1.14.2.1 |\n| 00 | Reserved | |\n\n### Persistent Event Log Events\n\n| Bytes | Description |\n|---|---|\n| (M-1)+512:512 | **Persistent Event 0**: This field contains the first persistent event log entry (refer to Figure 231) where M is the length of this persistent event. |\n| ... | ... |\n| (TLL-1):(TLL-K) | **Persistent Event N**: This field contains the last persistent event log entry (refer to Figure 231) where K is the length of this persistent event, TLL is the size specified in the Total Log Length field, and N is the value of the TNEV field minus 1h. |\n\nThe format of the Persistent Events in the Persistent Event log is shown in Figure 231.\n\n## Figure 231: Persistent Event Format\n\n| Bytes | Description |\n|---|---|\n| 00 | **Event Type (ET)**: This field indicates the event type for this entry. Refer to section 5.2.12.1.14.1 for the definition of the event types. |\n| 01 | **Event Type Revision (ETR)**: This field contains a number indicating the revision of the event data structure for the event indicated by the Event Type field that this event data complies with. |\n| 02 | **Event Header Length (EHL)**: This field contains the length in bytes of the event header information that follows. The total length of the event header in bytes is the value in this field plus 3. The host should use the value in this field to calculate the offset to the start of the Vendor Specific Information field. |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 230: Persistent Event Log Page",
+        "coordinates": [
+          114,
+          127,
+          878,
+          680
+        ]
+      },
+      {
+        "name": "Figure 231: Persistent Event Format",
+        "coordinates": [
+          114,
+          744,
+          878,
+          897
+        ]
+      }
+    ]
+  }
+}

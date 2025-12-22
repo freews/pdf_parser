@@ -1,0 +1,18 @@
+{
+  "page_number": "27",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\n## Figure 12: Simple NVM Storage Hierarchy with One Reclaim Group\n\n![Figure 12: Simple NVM Storage Hierarchy with One Reclaim Group](Figure_12.png)\n\nFigure 13 shows the hierarchical relationships in a simple NVM subsystem, which has:\n- one domain;\n- one Endurance Group;\n- four Reclaim Groups; and\n- one namespace with user data written to each Reclaim Group.\n\nThe placement (i.e., which Reclaim Group) of user data for a namespace is directed by each host write command to that namespace (refer to section 8.1.11).",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 12: Simple NVM Storage Hierarchy with One Reclaim Group",
+        "coordinates": [
+          328,
+          115,
+          655,
+          435
+        ]
+      }
+    ]
+  }
+}

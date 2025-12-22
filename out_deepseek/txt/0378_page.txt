@@ -1,0 +1,36 @@
+Figure 329: Identify – Power State Descriptor Data Structure
+
+| Bits | Description |
+|------|-------------|
+| 234:232 | Max Bandwidth Scale (MBWS): This field indicates the scale for the Max Bandwidth Limit field. |
+
+| Value | Definition |
+|-------|------------|
+| 000b  | 1 MiB/second |
+| 001b  | 10 MiB/second |
+| 010b  | 100 MiB/second |
+| 011b  | 1 GiB/second |
+| 100b  | 10 GiB/second |
+| 101b  | 100 GiB/second |
+| 110b  | Reserved |
+| 111b  | Reserved |
+
+| 231:224 | Max Bandwidth (MBW): This field specifies the maximum bandwidth (i.e., the highest bandwidth attainable in this power state when submitting MDTS-length sequential read commands at a queue depth of Optimal Aggregated Queue Depth field (refer to Figure 328)). The bandwidth is equal to the value in this field multiplied by the scale indicated in the MBWS field. A value of 0h indicates no maximum bandwidth is reported. |
+
+| 223:220 | Reserved |
+| 219:216 | Emergency Power Fail Vault Time Scale (EPFVTS): This field indicates the scale for the Emergency Power Fail Vault Time field as defined in Figure 330. If the EPFVT field is cleared to 0h, then this field: |
+|       | • shall be cleared to 0h; and |
+|       | • is ignored by the host. |
+| 215:212 | Forced Quiescence Vault Time Scale (FQVTS): This field indicates the scale for the Forced Quiescence Vault Time field as defined in Figure 330. If the FQVT field is cleared to 0h, then this field: |
+|       | • shall be cleared to 0h; and |
+|       | • is ignored by the host. |
+| 211:208 | Emergency Power Fail Recovery Time Scale (EPFRTS): This field indicates the scale for the Emergency Power Fail Recovery Time field as defined in Figure 330. If the EPFRT field is cleared to 0h, then this field: |
+|       | • shall be cleared to 0h; and |
+|       | • is ignored by the host. |
+| 207:200 | Emergency Power Fail Vault Time (EPFVT): This field, with the EPFVTS field, indicates the worst-case time required for the controller to complete Emergency Power Fail Processing (refer to section 8.2.5.3) in the absence of failures. The time is equal to the value in this field multiplied by the scale indicated by the EPFVTS field. If Power Loss Signaling with Emergency Power Fail is not supported (i.e., the PLSEPF bit is cleared to ‘0’ in the Power Loss Signaling Information field of the Identify Controller data structure (refer to Figure 328)), then this field shall be cleared to 0h. |
+
+| Value | Definition |
+|-------|------------|
+| 0     | Not reported |
+| 1 to 99 | Time value |
+| 100 to 255 | Reserved |

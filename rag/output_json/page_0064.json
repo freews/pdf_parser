@@ -1,0 +1,18 @@
+{
+  "page_number": "40",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 24: NVM Subsystem with Three I/O Controllers\n\n![Figure 24: NVM Subsystem with Three I/O Controllers](Figure_24_NVM_Subsystem_with_Three_I_O_Controllers.png)\n\n### 3.1.3.2 Administrative Controller\n\nAn Administrative controller is a controller whose intended purpose is to provide NVM subsystem management capabilities. While an I/O controller may support these same management capabilities, an Administrative controller has fewer mandatory capabilities. Unlike an I/O controller, an Administrative controller does not support I/O commands. NVMe Transports may support a transport specific mechanism to allow an Administrative controller to load a dedicated NVMe management driver instead of a generic NVMe driver (refer to the applicable NVMe Transport binding specification for details).\n\nExamples of management capabilities that may be supported by an Administrative controller include the following.\n\n- Ability to efficiently poll NVM subsystem health status via NVMe-MI using the NVMe-MI Send command and the NVMe-MI Receive command (refer to the NVM Subsystem Health Status Poll section in the NVM Express Management Interface Specification);\n- Ability to manage an NVMe enclosure via NVMe-MI using the NVMe-MI Send command and the NVMe-MI Receive command;\n- Ability to manage NVM subsystem namespaces using the Namespace Attachment command and the Namespace Management command;\n- Ability to perform virtualization management using the Virtualization Management command;\n- Ability to reset an entire NVM subsystem using the NVM Subsystem Reset (NSSR) property if supported; and\n- Ability to shutdown an entire NVM subsystem using the NVM Subsystem Shutdown (NSSD) property, if supported.\n\nAn Administrative controller shall not support I/O Queues. Namespaces shall not be attached to an Administrative controller.\n\nAn Administrative controller is required to support the mandatory Admin commands listed in Figure 28. An Administrative controller may support one or more I/O Command Sets. If an Administrative controller supports an I/O Command Set, then the I/O Command Set specific Admin commands associated with that I/O Command Set may also be supported. I/O commands shall not be supported since an Administrative controller only has an Admin Queue and no I/O Queues.\n\nFigure 25 shows an NVM subsystem with one Administrative controller and two I/O controllers within an NVM subsystem that contains a non-volatile storage medium and namespaces. I/O controller one has two",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 24: NVM Subsystem with Three I/O Controllers",
+        "coordinates": [
+          209,
+          117,
+          789,
+          409
+        ]
+      }
+    ]
+  }
+}

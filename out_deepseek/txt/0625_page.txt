@@ -1,0 +1,68 @@
+Figure 682: Average Interval Power and Maximum Interval Power Example
+
+| Interval Power Measurement Number | Interval Power Measurement |
+|-----------------------------------|-----------------------------|
+| 1                                  | 12.10W                       |
+| 2                                  | 13.50W                       |
+| 3                                  | 13.10W                       |
+| 4                                  | 12.50W                       |
+| 5                                  | 12.10W                       |
+| 6                                  | 12.40W                       |
+| 7                                  | 13.60W                       |
+| 8                                  | 12.80W                       |
+| 9                                  | 14.50W                       |
+| 10                                 | 13.40W                       |
+
+| Metric | Value | Comments |
+|--------|-------|----------|
+| Average Interval Power | 13.00W | Average of the 10 Interval Power Measurements. |
+| Maximum Interval Power | 14.50W | Maximum of the 10 Interval Power Measurements. |
+
+Figure 683 shows an example set of 10 interval power measurements and how those measurements can be used to generate a power histogram.
+
+Figure 683: Power Histogram Example
+
+| Interval Power Measurement Number | Interval Power Measurement |
+|-----------------------------------|-----------------------------|
+| 1                                  | 12.10W                       |
+| 2                                  | 13.50W                       |
+| 3                                  | 13.10W                       |
+| 4                                  | 12.50W                       |
+| 5                                  | 12.10W                       |
+| 6                                  | 12.40W                       |
+| 7                                  | 13.60W                       |
+| 8                                  | 12.80W                       |
+| 9                                  | 14.50W                       |
+| 10                                 | 13.40W                       |
+
+| Power Histogram Bin Lower Threshold (PHBLT) | Power Histogram Bin Size (PHBS) | Power Histogram Bin Count (PHBC) |
+|---------------------------------------------|---------------------------------|---------------------------------|
+| 0W                                          | 0.25W                             | 0                                 |
+| ...                                          | ...                               | ...                               |
+| 12.00W                                       | 0.25W                             | 2                                 |
+| 12.25W                                       | 0.25W                             | 1                                 |
+| 12.50W                                       | 0.25W                             | 1                                 |
+| 12.75W                                       | 0.25W                             | 1                                 |
+| 13.00W                                       | 0.25W                             | 1                                 |
+| 13.25W                                       | 0.25W                             | 1                                 |
+| 13.50W                                       | 0.25W                             | 2                                 |
+| 14.00W                                       | 0.25W                             | 0                                 |
+| 14.25W                                       | 0.25W                             | 0                                 |
+| 14.50W                                       | 0.25W                             | 1                                 |
+
+Figure 684 shows the formula for percent error of power measurements.
+
+Figure 684: Percent Error Formula
+
+\[
+\text{Percent Error} = \left| \frac{(\text{Measured Power}) - (\text{Expected Power})}{(\text{Expected Power})} \right| \times 100
+\]
+
+8.1.20 Predictable Latency Mode
+
+Predictable Latency Mode is used to achieve predictable latency for read and write operations. When configured to operate in this mode using the Predictable Latency Mode Config Feature (refer to section 5.2.26.1.12), the namespaces in an NVM Set (refer to section 3.2.2) provide windows of operation for deterministic operation or non-deterministic operation.
+
+When Predictable Latency Mode is enabled:
+
+- NVM Sets and their associated namespaces have vendor specific quality of service attributes;
+- I/O commands that access NVM in the same NVM Set have the same quality of service attributes; and

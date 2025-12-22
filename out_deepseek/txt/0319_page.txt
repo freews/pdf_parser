@@ -1,0 +1,37 @@
+If the controller is unable to store a reservation notification in the Reservation Notification log page due to the size of the queue, that reservation notification is lost. If a reservation notification is lost, then the controller shall increment the Log Page Count field of the last reservation notification in the queue (i.e., the Log Page Count field in the last reservation notification in the queue shall contain the value associated with the most recent reservation notification that has been lost).
+
+The format of the log page is defined in Figure 301.
+
+**Figure 301: Reservation Notification Log Page**
+
+| Bytes | Description |
+|-------|-------------|
+| 07:00 | **Log Page Count (LPC):** This is a 64-bit incrementing Reservation Notification log page count, indicating a unique identifier (modulo 64 bit) for this notification. The count starts at 0h following a Controller Level Reset and is incremented for every event that causes a reservation notification regardless of whether that notification is added to the queue. If the value of this field is FFFFFFFF, FFFFFFFFh, then the field is set to 1h when incremented (i.e., rolls over to 1h) and a new log page is created.
+
+If there are no Reservation Notification log pages to return (i.e., the queue of Reservation Notification log pages is empty), then this field shall return the value 0h. Subsequent reservation notifications continue incrementing this unique identifier from the last non-zero value (i.e., the value that identified the previous Reservation Notification log page). A value of 0h indicates the log page is empty.
+
+**Reservation Notification Log Page Type (RNLPT):** This field indicates the Reservation Notification type described by this log page.
+
+| Value | Definition |
+|-------|-------------|
+| 0h    | **Empty Log Page:** Get Log Page command was processed when no unread Reservation Notification log pages were available. All the fields of an empty log page shall have a value of 0h. |
+| 1h    | **Registration Preempted** |
+| 2h    | **Reservation Released** |
+| 3h    | **Reservation Preempted** |
+| 4h to FFh | Reserved |
+
+**Number of Available Log Pages (NALP):** This field indicates the number of additional available Reservation Notification log pages (i.e., the number of unread log pages not counting this one). If there are more than 255 additional available log pages, then a value of 255 is returned. A value of 0h indicates that there are no additional available log pages.
+
+| 11:10 | Reserved |
+| 15:12 | **Namespace ID (NSID):** This field indicates the namespace ID of the namespace associated with the Reservation Notification described by this log page. |
+| 63:16 | Reserved |
+
+**5.2.12.1.36 Sanitize Status (Log Page Identifier 81h)**
+
+The Sanitize Status log page is used to report sanitize operation time estimates and information about the most recent sanitize operation (refer to section 8.1.26) for the specified sanitization target.
+
+The Get Log Page command returns a data buffer containing a log page formatted as defined in Figure 302. This log page shall be retained across power cycles and resets. If the controller is not able to report valid data (e.g., due to a division event that prevents reporting sanitize status information), then the Get Log Page command shall be aborted with a status code of Controller Pathing Error. If a Get Log Page command is aborted with a status code of Controller Pathing Error, then submitting a subsequent Get Log Page command to a controller with a different domain identifier and requesting the same Sanitize Status log page may be successful. If the controller is able to report valid data, then this log page shall contain valid data whenever CSTS.RDY is set to ‘1’.
+
+If the Sanitize Capabilities (SANICAP) field in the Identify Controller data structure is not cleared to 0h (i.e., the Sanitize command is supported), then this log page shall be supported. If the Sanitize Capabilities field in the Identify Controller data structure is cleared to 0h, then this log page is reserved.
+
+If the Sanitize Namespace command is supported, then this log page shall support setting the NSID field to the value of an allocated NSID.

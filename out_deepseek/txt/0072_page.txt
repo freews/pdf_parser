@@ -1,0 +1,28 @@
+Figure 31: Log Page Support Requirements
+
+| Log Page Name                  | Log Page Identifier | Controller Support Requirements ¹ | Administrative | Discovery | Reference |
+|--------------------------------|---------------------|-----------------------------------|----------------|----------|-----------|
+| Boot Partition                 | 15h                  | O                                  | P             | P        | 5.2.12.1.21 |
+| Rotational Media Information    | 16h                  | O                                  | P             | P        | 5.2.12.1.22 |
+| Dispersed Namespace            | 17h                  | O                                  | P             | P        | 5.2.12.1.23 |
+| Participating NVM Subsystems    | 18h                  | O                                  | O             | O        | 5.2.12.1.24 |
+| Management Address List         | 19h                  | O⁴                                 | O⁴           | P        | Note 11    |
+| Physical Interface Receiver Eye | 19h                  | O⁶                                 | P             | P        | 5.2.12.1.25 |
+| Opening Measurement            |                     |                                   |                |          |           |
+| Reachability Groups             | 1Ah                  | O⁶                                 | P             | P        | 5.2.12.1.26 |
+| Reachability Associations        | 1Bh                  | O⁶                                 | P             | P        | 5.2.12.1.27 |
+| Changed Allocated Namespace    | 1Ch                  | O                                  | O             | P        | 5.2.12.1.27 |
+| List                           |                     |                                   |                |          |           |
+| Device Personalities            | 1Dh                  | O                                  | O             | P        | 5.2.12.1.28 |
+| Cross-Controller Reset         | 1Eh                  | O¹²                              | O¹²          | O¹³     | 5.2.12.3.1  |
+| Lost Host Communication         | 1Fh                  | O¹²                              | O¹²          | O¹³     | 5.2.12.3.2  |
+| FDP Configurations             | 20h                  | O⁵                                 | P             | P        | 5.2.12.1.29 |
+| Reclaim Unit Handle Usage       | 21h                  | O⁵                                 | P             | P        | 5.2.12.1.30 |
+| FDP Statistics                 | 22h                  | O⁵                                 | P             | P        | 5.2.12.1.31 |
+| FDP Events                     | 23h                  | O⁵                                 | P             | P        | 5.2.12.1.32 |
+| Power Measurement               | 25h                  | O                                  | O             | P        | 5.2.12.1.33 |
+| Discovery                       | 70h                  | P                                  | P             | M        | 5.2.12.3.3  |
+| Host Discovery                  | 71h                  | P                                  | P             | O        | 5.2.12.3.4  |
+| AVE Discovery                   | 72h                  | P                                  | P             | O        | 5.2.12.3.5  |
+| Pull Model DDC Request         | 73h                  | P                                  | P             | M¹⁰     | 5.2.12.3.6  |
+| Sanitize Namespace Status List | 7Fh                  | O                                  | O             | P        | 5.2.12.1.34 |

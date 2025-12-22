@@ -1,0 +1,18 @@
+| Bytes | I/O¹ | Admin¹ | Disc¹ | Description |
+|-------|------|--------|-------|-------------|
+| 134   | O    | R      | R     | Controller Reachability Capabilities (CRCAP): This field specifies reachability capabilities of the controller and NVM subsystem. |
+
+| Bits | Description |
+|------|-------------|
+| 7:2  | Reserved     |
+| 1    | Reachability Group ID Changeable (RGIDC): If this bit is set to ‘1’, then the RGRPID field in the I/O Command Set Independent Identity Namespace data structure (refer to Figure 335) does not change while the namespace is attached to any controller. If this bit is cleared to ‘0’, then the RGRPID field may change while the namespace is attached to any controller. Refer to section 8.1.21. |
+| 0    | Reachability Reporting Supported (RRSUP): If this bit is set to ‘1’, then the NVM subsystem supports Reachability Reporting (refer to section 8.1.21). If this bit is cleared to ‘0’, then the NVM subsystem does not support Reachability Reporting. |
+
+| 135   | O    | O    | O     | Controller Instance Uniquifier (CIU): A non-zero value in this field differentiates among instances of this controller becoming ready. If a non-zero value is supported in this field, then the initial value of this field shall be a non-zero random number. The controller increments this field as part of becoming ready (i.e., CSTS.RDY transitions from ‘0’ to ‘1’). If the value of this field is FFh, then this field shall be set to 1h when incremented (i.e., rolls over to 1h). The value of this field persists across power cycles and resets. A value of 0h in this field does not differentiate among instances of this controller becoming ready. |
+
+| 143:136 | O    | O    | O     | Controller Instance Random Number (CIRN): A non-zero value in this field differentiates among instances of this controller becoming ready. The controller generates a value for this field as part of becoming ready (i.e., CSTS.RDY transitions from ‘0’ to ‘1’). If a non-zero value is supported in this field, then the value in this field: |
+| 143:136 | O    | O    | O     | • shall be non-zero; and |
+| 143:136 | O    | O    | O     | • should be chosen so that future values are not predictable. The value of this field persists across Controller Level Resets except for Controller Level Resets caused by application of main power. The value of this field is not required to persist across power cycles. For message-based controllers that support a non-zero value in this field, a value is also generated for this field as part of posting the successful completion for a Connect command (refer to section 6.3) with the Queue ID field cleared to 0h (i.e., for an Admin Queue). A value of 0h in this field does not differentiate among instances of this controller becoming ready. |
+
+| 239:144 | Reserved |
+| 252:240 | Reserved for the NVMe Management Interface. |

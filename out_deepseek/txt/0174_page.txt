@@ -1,0 +1,44 @@
+Figure 105: Status Code – Command Specific Status Values, Fabrics Commands
+
+| Value       | Definition                                                                 | Commands Affected |
+|-------------|---------------------------------------------------------------------------|-------------------|
+| B0h to BFh  | Transport Specific: The status values in this range are NVMe Transport specific. Refer to the appropriate NVMe Transport binding specification for the definition of these status values. |                   |
+| Notes:     |                                                                           |                   |
+
+1. All commands other than Connect, Authenticate Send, and Authenticate Receive.
+
+Some Fabrics command errors use Admin command error status codes (refer to Figure 103).
+
+4.2.3.3 Media and Data Integrity Errors Definition
+
+Completion queue entries with a Status Code Type (SCT) of Media and Data Integrity Errors indicate an error associated with the command that is due to an error associated with the NVM media or a data integrity type error.
+
+Figure 106: Status Code – Media and Data Integrity Error Values
+
+| Value       | Definition                                                                 | Command Set(s) |
+|-------------|---------------------------------------------------------------------------|-------------------|
+| 00h to 7Fh  | Reserved                                                                   |                   |
+| 80h         | Write Fault: The write data could not be committed to the media.             |                   |
+| 81h         | Unrecovered Read Error: The read data could not be recovered from the media. |                   |
+| 82h         | End-to-end Guard Check Error: The command was aborted due to an end-to-end guard check failure. |                   |
+| 83h         | End-to-end Application Tag Check Error: The command was aborted due to an end-to-end application tag check failure. |                   |
+| 84h         | End-to-end Reference Tag Check Error: The command was aborted due to an end-to-end reference tag check failure. |                   |
+| 85h         | Compare Failure: Refer to the NVM Express NVM Command Set Specification for the description. | NVM              |
+| 86h         | Access Denied: This status code indicates:                                      |                   |
+|             | - access to the namespace and/or user data is denied due to lack of access rights. Refer to the appropriate security specification (e.g., TCG Storage Interface Interactions Specification). |                   |
+|             | - the command specified a security protocol that is currently prohibited (refer to section 5.2.26.1.24.3); or |                   |
+|             | - the command is prohibited due to a pending change to the settings of the specified personality (refer to section 8.1.6.1). |                   |
+| 87h         | Deallocated or Unwritten Logical Block: Refer to the NVM Express NVM Command Set Specification for the description. | NVM              |
+| 88h         | End-to-End Storage Tag Check Error: The command was aborted due to an end-to-end storage tag check failure. |                   |
+| 89h to BFh  | Reserved                                                                   |                   |
+| C0h to FFh  | Vendor Specific                                                               |                   |
+
+Key:
+NVM – NVM Command Set
+
+Notes:
+1. This column is blank unless the value is I/O Command Set specific.
+
+4.2.3.4 Path Related Status Definition
+
+Completion queue entries with a Status Code Type (SCT) of Path Related Status (refer to Figure 107) indicate a status value associated with the command that is generic across many different types of commands and applies to a specific connection between the host and controller processing the command or between the controller and the namespace. The command for which this status is returned may be retried on a different controller in the same NVM subsystem if more than one controller is available to the host.

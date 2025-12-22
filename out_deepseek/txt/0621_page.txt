@@ -1,0 +1,61 @@
+• The controller power state does not change, but the value of the Power Management feature (i.e., Feature Identifier 02h) is increased by 1 to match the power state renumbering (e.g., the 15W PS2 state becomes PS3); and
+• The default value of the Power Management feature is restored to PS1 as that is the current position of the power state descriptor for original PS1 default power state.
+
+Figure 678: Third Example of Power Limit Effects
+
+Case 3 (following case 2): Remove Power Limit
+
+| Power State | Maximum Power (MP) | Default Value\(^2\) |
+|--------------|-------------------|---------------------|
+| 0            | 18W               | PS0                 |
+| 1            | 18W               |                     |
+| 2            | 15W               |                     |
+| 3            | 10W               |                     |
+| 4            | 8W                |                     |
+| 5            | 5W                |                     |
+| 6            | N/A               |                     |
+
+Host sets Power Limit Value:
+PLV = 0h
+(i.e., no limit)
+
+Power Limit Impact
+
+| Change | Result MP | Maximum Unlimited Power (MUP) | Default Value\(^2\) |
+|--------|----------|--------------------------------|---------------------|
+| 18W    | 25W      | 25W                            | PS1                 |
+| 18W    | 18W      | 18W                            |                     |
+| 15W    | 15W      | 15W                            |                     |
+| 10W    | 10W      | 10W                            |                     |
+| 8W     | 8W       | 8W                             |                     |
+| 5W     | 5W       | 5W                             |                     |
+
+Notes:
+1. The listed MP represent the values in the modified power state descriptor data structures after case 2 completed successfully.
+2. The default value of the Power Management feature (i.e., Feature Identifier 02h).
+
+8.1.19 Power Measurement and Reporting
+
+Power measurement and reporting is an optional set of independent capabilities which allows the host to utilize interval power measurements from one or more embedded power sensors in the NVM subsystem.
+
+An interval power measurement is the smallest time-based power measurement reportable and used by the NVM subsystem. Each interval power measurement of a power measurement type shall:
+
+• be the average, over a one second interval, of the power measurement samples that are taken with a sampling rate of less than or equal to the value reported in the Interval Power Measurement Sample Rate (IPMSR) field in the Identify Controller data structure (refer to Figure 328);
+• be taken over non-overlapping one second intervals; and
+• be based on measured power, unless otherwise specified.
+
+Figure 679 defines the power measurement types for power measurement and reporting capabilities and fields. The power measurement type specifies what power source to measure. A power measurement type of NVM subsystem total power is the aggregate power consumed by all components within the NVM subsystem.
+
+Figure 679: Power Measurement Types
+
+| Value | Definition |
+|-------|------------|
+| 0h    | NVM subsystem total power |
+| 1h to Bh | Reserved |
+| Ch to Fh | Vendor Specific |
+
+Interval power measurements are not required to be taken:
+
+• during a power cycle of the NVM subsystem;
+• if all controllers are in a non-operational power state;
+• during the processing of an NVM Subsystem Reset; and

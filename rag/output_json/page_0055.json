@@ -1,0 +1,18 @@
+{
+  "page_number": "31",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## 2.3.2 I/O Command Sets\n\nI/O commands perform operations on namespaces, and each namespace is associated with exactly one I/O command set. For example, commands in the NVM Command Set access data represented in a namespace as logical blocks, and commands in the Key Value Command Set access data represented in a namespace as key-value pairs.\n\nThe association of a namespace to an I/O command set is specified when the namespace is created and is fixed for the lifetime of that namespace.\n\nA controller may support one or more I/O command sets. Namespaces that are associated with the I/O command sets that are supported and enabled on a controller may be attached to that controller. A host issues commands to a namespace and those commands are interpreted based on the I/O command set associated with that namespace.\n\n## 2.3.3 NVM Subsystem Examples\n\nFigure 16 illustrates a simple NVM subsystem that has a single instance of each storage entity.\n\n### Figure 16: Single-Namespace NVM Subsystem\n\n![Figure 16: Single-Namespace NVM Subsystem](Figure_16_Single-Namespace_NVM_Subsystem.png)\n\n- The NVM subsystem consists of a single port and a single domain.\n- The domain contains a controller and storage media.\n- All of the storage media are contained in one Endurance Group.\n- All of the storage media in that Endurance Group are organized into one NVM Set.\n- That NVM Set contains a single namespace.\n\nFigure 17 shows an NVM subsystem with two namespaces.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 16: Single-Namespace NVM Subsystem",
+        "coordinates": [
+          345,
+          358,
+          655,
+          738
+        ]
+      }
+    ]
+  }
+}

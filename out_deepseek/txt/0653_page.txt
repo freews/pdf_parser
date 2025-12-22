@@ -1,0 +1,41 @@
+a) set the Rotational Media bit to ‘1’ in the NSF/EAT field of the I/O Command Set Independent Identify Namespace data structure (refer to the NVM Express NVM Command Set Specification) for any namespace that stores data on rotational media;
+
+b) support the Rotational Media Information log page (refer to section 5.2.12.1.22);
+
+c) support the Spinup Control feature (refer to section 5.2.26.1.18);
+
+d) support Endurance Groups (refer to section 3.2.3); and
+
+e) set the EG Rotational Media bit to ‘1’ in the EG/FEAT field in the Endurance Group Information log page for each Endurance Group that stores data on rotational media.
+
+If a namespace that stores data on rotational media is attached to a controller, and the spindle used by that namespace is not spinning, then that controller shall be in a non-operational power state (i.e., NOPS is set to ‘1’, refer to Figure 329).
+
+If:
+
+a) a domain contains an Endurance Group that stores data on rotational media;
+
+b) that domain processes an NVM Subsystem Reset; and
+
+c) the Spinup Control feature (refer to section 5.2.26.1.18) is:
+
+   a. disabled, then initial spinup for all such Endurance Groups in that domain shall be initiated; and
+
+   b. enabled, then initial spinup for all such Endurance Groups in that domain shall be inhibited during processing of the NVM Subsystem Reset until any controller within that domain processes a Set Features (Power Management) command that specifies an operational power state.
+
+If the PCIe transport is used for a controller, then the PCIe Slot Power Control feature may affect the power states supported (refer to the PCI Express Base Specification).
+
+8.1.26 Sanitize Operations
+
+A sanitize operation alters all user data in the sanitization target such that recovery of any previous user data is prohibitively difficult (i.e., infeasible for a given level of effort (refer to IEEE Std 2883)). The scope of a sanitize operation is different for an NVM subsystem sanitize operation (refer to section 1.5.70) and for a namespace sanitize operation (refer to section 1.5.65) as shown in Figure 704.
+
+Performing a namespace sanitize operation on every namespace that exists in the NVM subsystem does not have the same effect upon certain portions of data in the NVM subsystem as performing an NVM subsystem sanitize operation (e.g., namespace sanitize operations have no effect on the Controller Memory Buffer). If a namespace sanitize operation has been performed on every namespace that exists in the NVM subsystem and no user data has been written to any of those namespaces since each namespace sanitize operation completed successfully, then the Global Data Erased bit (refer to Figure 302) in the Sanitize Status log page for the sanitization target of the NVM subsystem shall not be set ‘1’ as a result of successfully completing those namespace sanitize operations.
+
+Figure 704: Sanitization Operation Scope Based on Sanitize Operation
+
+| NVM Subsystem Data | Sanitize Operation |
+|---------------------|-------------------|
+|                     | NVM Subsystem Sanitize Operation | Namespace Sanitize Operation |
+| Media allocated for user data | Purge (refer to IEEE Std 2883) all user data in the NVM subsystem from all media allocated for user data | Purge all data in the namespace from all media allocated for use by the sanitization target |
+| Media that is deallocated | Purge all data | Purge all data from all media that had been allocated for use by the sanitization target |
+| Volatile caches that contain user data | Purge all data | Purge all data in the volatile cache used by the sanitization target |
+| Non-Volatile caches that contain user data | Purge all data | Purge all data that had been written in the sanitization target |

@@ -1,0 +1,18 @@
+{
+  "page_number": "56",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 36: Offset 0h: CAP – Controller Capabilities\n\n| Bits | Type | Reset | Description |\n|------|------|-------|-------------|\n| 31:24 | RO | Impl Spec | **Timeout (TO):** This is the worst-case time that a host should wait for the CSTS.RDY bit to transition from:\n\na) ‘0’ to ‘1’ after the CC.EN bit transitions from ‘0’ to ‘1’; or\n\nb) ‘1’ to ‘0’ after the CC.EN bit transitions from ‘1’ to ‘0’.\n\nThis worst-case time may be experienced after events such as an abrupt shutdown, loss of main power without shutting down the controller, or activation of a new firmware image; typical times are expected to be much shorter.\n\nThis field is in 500 millisecond units. The maximum value of this field is FFh, which indicates a 127.5 second timeout.\n\nIf the Controller Ready Independent of Media Enable (CC.CRIME) bit is cleared to ‘0’ and the worst-case time for the CSTS.RDY bit to change state is due to enabling the controller after the CC.EN bit transitions from ‘0’ to ‘1’, then this field shall be set to:\n\na) the value in the Controller Ready With Media Timeout (CRTO.CRWMT) field; or\n\nb) FFh if the value in the CRTO.CRWMT field is greater than FFh.\n\nIf the Controller Ready Independent of Media Enable (CC.CRIME) bit is set to ‘1’ and the worst-case time for the CSTS.RDY bit to change state is due to enabling the controller after the CC.EN bit transitions from ‘0’ to ‘1’, then this field shall be set to:\n\na) the value in the Controller Ready Independent of Media Timeout (CRTO.CRIMT); or\n\nb) FFh if the value in the CRTO.CRIMT field is greater than FFh.\n\nControllers that support the CRTO property (refer to Figure 57) are able to indicate larger timeouts for enabling the controller. A host should use the value in the CRTO.CRWMT field or the CRTO.CRIMT field depending on the controller ready mode indicated by the CC.CRIME bit to determine the worst-case timeout for the CSTS.RDY bit to transition from ‘0’ to ‘1’ after the CC.EN bit transitions from ‘0’ to ‘1’. A host that is based on revisions earlier than NVM Express Base Specification, Revision 2.0 is not required to wait for more than 127.5 seconds for the CSTS.RDY bit to transition.\n\nRefer to sections 3.5.3 and 3.5.4 for more information. |\n| 23:19 | RO | 0h | Reserved |\n| 18:17 | RO | Impl Spec | **Arbitration Mechanism Supported (AMS):** This field is bit significant and indicates the optional arbitration mechanisms supported by the controller. If a bit is set to ‘1’, then the corresponding arbitration mechanism is supported by the controller. Refer to section 3.4.4 for arbitration details.\n\n| Bits | Description |\n|------|-------------|\n| 1 | **Vendor Specific (VS):** Vendor Specific arbitration mechanism. |\n| 0 | **Weighted Round Robin with Urgent Priority Class (WRRUPC):** Weighted Round Robin with Urgent Priority Class arbitration mechanism. |\n\nThe round robin arbitration mechanism is not listed since all controllers shall support this arbitration mechanism.\n\nFor Discovery controllers, this property shall be cleared to 0h. |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 36: Offset 0h: CAP – Controller Capabilities",
+        "coordinates": [
+          114,
+          128,
+          880,
+          815
+        ]
+      }
+    ]
+  }
+}

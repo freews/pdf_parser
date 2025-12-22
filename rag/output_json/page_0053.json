@@ -1,0 +1,18 @@
+{
+  "page_number": "29",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\n## Figure 14: Complex NVM Storage Hierarchy with NVM Sets\n\n![Figure 14: Complex NVM Storage Hierarchy with NVM Sets](Figure_14_Complex_NVM_Storage_Hierarchy_with_NVM_Sets.png)\n\n### Entity naming key (Abc):\n- A: Domain (capital letter)\n- b: Endurance Group (digit)\n- c: NVM Set (lower case letter)\n\nFigure 15 shows the relationships in a complex NVM subsystem, which has:\n- multiple domains;\n- multiple Endurance Groups per domain;\n- multiple Reclaim Groups per Endurance Group; and\n- multiple namespaces per Endurance Group.\n\nThe placement (i.e., which Reclaim Group) of user data for a namespace is directed by each host write command to that namespace (refer to section 8.1.11).",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 14: Complex NVM Storage Hierarchy with NVM Sets",
+        "coordinates": [
+          185,
+          120,
+          810,
+          468
+        ]
+      }
+    ]
+  }
+}

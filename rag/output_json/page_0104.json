@@ -1,0 +1,18 @@
+{
+  "page_number": "80",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 67: NVM Sets and Associated Namespaces\n\n[img]\n\nThere is a subset of Admin commands that are NVM Set aware as described in Figure 68.\n\nFigure 68: NVM Set Aware Admin Commands\n\n| Admin Command | Details |\n| --- | --- |\n| Identify | • The Identify Namespace data structure includes the associated NVM Set Identifier.\n• The NVM Set List data structure includes attributes for each NVM Set. |\n| Capacity Management | • The Create NVM Set action returns the NVM Set Identifier of the NVM Set that is created.\n• The Delete NVM Set action includes the NVM Set Identifier of the NVM Set that is to be deleted. |\n| Namespace Management | • The create action includes the NVM Set Identifier as a host specified field. |\n| Get Features and Set Features | • The Read Recovery Level Feature specifies the associated NVM Set Identifier.\n• The Predictable Latency Mode Config Feature specifies the associated NVM Set Identifier.\n• The Predictable Latency Mode Window Feature specifies the associated NVM Set Identifier. |\n| Connect | • The Connect command includes the associated NVM Set Identifier. |\n| Create I/O Submission Queue | • The Create I/O Submission Queue command includes the associated NVM Set Identifier. |\n| Get Log Page | • The Predictable Latency Per NVM Set log page specifies the associated NVM Set Identifier. |\n\nThe host determines the NVM Sets present and their attributes using the Identify command with CNS value of 04h to retrieve the NVM Set List (refer to Figure 333). For each NVM Set, the attributes include:\n• an identifier associated with the NVM Set;\n• the optimal size for writes to the NVM Set;",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 67: NVM Sets and Associated Namespaces",
+        "coordinates": [
+          238,
+          114,
+          762,
+          472
+        ]
+      }
+    ]
+  }
+}

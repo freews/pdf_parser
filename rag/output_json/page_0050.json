@@ -1,0 +1,18 @@
+{
+  "page_number": "26",
+  "page_type": "body",
+  "content": "Each Endurance Group is composed of storage media, which are termed Media Units (refer to section 8.1.4.2) or Reclaim Units (refer to section 3.2.4). Reclaim Unit Handles reference a Reclaim Unit in each Reclaim group for writing user data. For clarity, Media Units, Reclaim Unit Handles, and Reclaim Units are not shown in the examples in this section that follow.\n\nFigure 11 shows the hierarchical relationships of these entities within a simple NVM subsystem, which has:\n\n- one domain;\n- one Endurance Group;\n- one NVM Set; and\n- one namespace.\n\n\n**Figure 11: Simple NVM Storage Hierarchy with NVM Sets**\n\n\n\nFigure 12 shows the hierarchical relationships in a simple NVM subsystem, which has:\n\n- one domain;\n- one Endurance Group;\n- one Reclaim Group; and\n- one namespace with user data written to the single Reclaim Group.\n\nThe placement (i.e., which Reclaim Group) of user data for a namespace is directed by each host write command to that namespace (refer to section 8.1.11).",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 11: Simple NVM Storage Hierarchy with NVM Sets",
+        "coordinates": [
+          345,
+          280,
+          655,
+          585
+        ]
+      }
+    ]
+  }
+}

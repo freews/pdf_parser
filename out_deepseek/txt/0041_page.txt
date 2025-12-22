@@ -1,0 +1,13 @@
+NVM Express® Base Specification, Revision 2.3
+
+TCG Storage Opal SSC Feature Set: PSID Specification, Version 1.00 Revision 1.00. Available from https://www.trustedcomputinggroup.org.
+
+TCG Storage Security Subsystem Class: Opal Specification, Version 2.02 Revision 1.0. Available from https://www.trustedcomputinggroup.org.
+
+NIST Special Publication 800-57 Part 1 Revision 5. Available from https://csrc.nist.gov.
+
+NIST FIPS Publication 180-4. Available from https://csrc.nist.gov.
+
+1.9 References Under Development
+
+None.

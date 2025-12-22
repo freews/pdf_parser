@@ -1,0 +1,8 @@
+{
+  "page_number": "xxiii",
+  "page_type": "toc",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 806: DH-HMAC-CHAP Host Behavior ……………………………………………………………… 733\nFigure 807: DH-HMAC-CHAP NVM Subsystem Behavior …………………………………………… 734\nFigure 808: DH-HMAC-CHAP with TLS Concatenation Configurations ………………………… 734\nFigure 809: NVM Subsystem AUTHREQ Settings for DH-HMAC-CHAP with TLS Concatenation … 735\nFigure 810: DH-HMAC-CHAP with TLS Concatenation Host Behavior …………………………… 735\nFigure 811: DH-HMAC-CHAP with TLS Concatenation NVM Subsystem Behavior ……………… 736\nFigure 812: Example of DH-HMAC-CHAP authentication transaction with AVE ……………… 738\nFigure 813: DH-HMAC-CHAP_Access-Request PDU format ……………………………………… 739\nFigure 814: DH-HMAC-CHAP_Access-Result PDU format ………………………………………… 741\nFigure 815: PRP List Describing I/O Submission Queue ………………………………………… 752\nFigure 816: PRP List Describing Data to Compare ……………………………………………… 753\nFigure 817: Write after Write ………………………………………………………………………… 756\nFigure 818: Non-Idempotent Command …………………………………………………………… 756\nFigure 819: Retried Command Does Not Succeed ……………………………………………… 757\nFigure 820: Retried Command Affects Another Host …………………………………………… 758",
+  "metadata": {
+    "embedded_images": []
+  }
+}

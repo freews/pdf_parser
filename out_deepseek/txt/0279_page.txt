@@ -1,0 +1,34 @@
+### Figure 249: Feature Persistent Event Logging Requirements
+
+| Feature Name                          | Feature Identifier | Controller PE Logging Requirements | Discovery |
+|---------------------------------------|---------------------|-----------------------------------|-----------|
+| Non-Operational Power State Config    | 11h                 | O                                 | P         |
+| Read Recovery Level Config            | 12h                 | O                                 | P         |
+| Predictable Latency Mode Config       | 13h                 | O                                 | P         |
+| Predictable Latency Mode Window         | 14h                 | P                                 | P         |
+| Host Behavior Support                  | 15h                 | Refer to the applicable NVM Express I/O Command Set specification | P         |
+| Sanitize Config                        | 16h                 | O                                 | P         |
+| Endurance Group Event Configuration    | 17h                 | O                                 | P         |
+| I/O Command Set Profile                | 18h                 | O                                 | P         |
+| Spinup Control                        | 19h                 | O                                 | P         |
+| Power Loss Signaling Config            | 1Ah                 | O                                 | P         |
+| Flexible Data Placement                | 1Dh                 | O                                 | P         |
+| Flexible Data Placement Events          | 1Eh                 | O                                 | P         |
+| Namespace Admin Label                  | 1Fh                 | O                                 | P         |
+| Configurable Device Personality        | 20h                 | Refer to the applicable NVM Express I/O Command Set specification | P         |
+| Embedded Management Controller Address | 78h                 | O                                 | O         |
+| Host Management Agent Address           | 79h                 | O                                 | O         |
+| Enhanced Controller Metadata            | 7Dh                 | O                                 | O         |
+| Controller Metadata                    | 7Eh                 | O                                 | O         |
+| Namespace Metadata                     | 7Fh                 | O                                 | O         |
+| Software Progress Marker                | 80h                 | NR                                 | P         |
+| Host Identifier                        | 81h                 | O                                 | P         |
+| Reservation Notification Mask           | 82h                 | O                                 | P         |
+| Reservation Persistence                 | 83h                 | O                                 | P         |
+| Namespace Write Protection Config      | 84h                 | O                                 | P         |
+| Boot Partition Write Protection Config | 85h                 | O                                 | P         |
+
+Notes:
+1. O/M/P/NR definition: O = Optional, M = Mandatory, P = Prohibited, NR = Not Recommended
+
+The Command Dwords and data buffer logged in the Set Feature Event data use the same formats as the formats defined by the Set Features and Get Features commands.

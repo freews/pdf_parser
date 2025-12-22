@@ -1,0 +1,42 @@
+5.2.26.3.1 Asynchronous Event Configuration (Feature Identifier 0Bh) for Fabrics
+
+The Asynchronous Event Configuration feature is not Fabrics specific. Configuration of notifications for Fabrics specific events is described in section 5.2.26.1.5.
+
+5.2.26.4 Command Completion
+
+Upon completion of the Set Features command, the controller posts a completion queue entry to the Admin Completion Queue. If a status code of Successful Completion is returned, the completion queue entry shall not be posted until the controller has completed setting attributes associated with the Feature. Set Features command specific status values are defined in Figure 485.
+
+Figure 485: Set Features – Command Specific Status Values
+
+| Value | Definition |
+|-------|------------|
+| 0Dh   | Feature Identifier Not Saveable: The Feature Identifier specified does not support a saveable value. |
+| 0Eh   | Feature Not Changeable: The Feature Identifier specified does not support a changeable value or the value is not changeable at this time. |
+| 0Fh   | Feature Not Namespace Specific: The Feature Identifier does not have namespace scope. The scope is defined in Figure 403. The Feature Identifier settings apply across all namespaces. |
+| 14h   | Overlapping Range: Command Set specific definition. Refer to each I/O Command Set specification for applicability and details. |
+| 15h   | I/O Command Set Combination Rejected: This error indicates that the controller did not accept the request to select the requested I/O Command Set Combination. |
+| 37h   | Invalid Controller Data Queue: This error indicates that the specified Controller Data Queue Identifier is invalid for the controller processing the command. |
+| 3Eh   | Invalid Power Limit: The power limit specified for the Power Limit feature is invalid because that power limit prohibits all operational power states. |
+
+5.2.27 Track Receive command
+
+The Track Receive command is used to obtain the information being tracked by the controller that was enabled by a Track Send command (refer to section 5.2.28).
+
+The Track Receive command uses the Data Pointer field, Command Dword 10 field, and Command Dword 12 field. The use of the Command Dword 11 field is specific to the management operation specified by the Select field. All other command specific fields are reserved.
+
+The Select field defined in Figure 486 specifies the management operation to be performed. Refer to section 5.2.27.1 for a description of each management operation.
+
+Figure 486: Track Receive – Command Dword 10
+
+| Bits | Description |
+|------|-------------|
+| 31:08 | Reserved |
+
+Select (SEL): This field specifies the type of management operation to perform.
+
+| Value | M/O\(^1\) | Management Operation | Reference Section |
+|-------|----------|----------------------|---------------------|
+| 0h    | O        | Tracked Memory Changes | 5.2.27.1.1 |
+| 1h to FFh | Reserved | |
+| Notes: | | |
+| 1. O/M definition: O = Optional, M = Mandatory | | |

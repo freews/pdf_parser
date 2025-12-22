@@ -1,0 +1,41 @@
+Figure 302: Sanitize Status Log Page
+
+| Bytes | Description |
+|-------|-------------|
+| 47:44 | Sanitization Target NSID (STNSID): If the sanitization target specified by this Get Log Page command is a namespace, then this field shall contain the NSID specified in that Get Log Page command. |
+|       | This field shall be cleared to 0h if the sanitization target specified by this Get Log Page command is the NVM subsystem. |
+| 511:48 | Reserved |
+
+5.2.12.2 Memory-Based Log Specific Information (PCle)
+
+There are no log pages that are specific to the Memory-based transport model.
+
+5.2.12.3 Message-Based Log Specific Information (Fabrics)
+
+This section describes log pages that are specific to the Message-based transport model.
+
+5.2.12.3.1 Cross-Controller Reset (Log Identifier 1Eh)
+
+The Cross-Controller Reset log page indicates the status of Cross-Controller Reset operations this controller caused to be initiated by the NVM subsystem.
+
+This log page contains entries for in-progress and completed Cross-Controller Reset operations (refer to section 8.3.3) as described in this section. The Source Controller (i.e., the controller processing a Cross-Controller Reset command) adds an entry for the Impacted Controller (i.e., the controller specified in the Impacted Controller ID (ICID) field of that command) to this log page under the conditions described in section 5.4.3. If Cross-Controller Reset Completed Notices are enabled and the result of a Cross-Controller Reset operation is recorded in the associated entry in this log page (as described in section 8.3.3), then the Source Controller reports a Cross-Controller Reset Completed Notice asynchronous event (refer to Figure 154).
+
+For each entry in this log page, that entry shall remain in the log page while the associated operation is in progress (i.e., the Cross-Controller Reset Status (CCRS) field in that entry is set to In Progress). The controller shall remove the entry for a completed operation as a result of:
+
+- the Source Controller processing a Get Log Page command for this log page with the Remove Completed bit set to ‘1’, as defined in Figure 303;
+- the Source Controller processing a subsequent Cross-Controller Reset command for the Impacted Controller indicated by the ICID field of that entry; or
+- a Controller Level Reset (refer to section 3.7.2) occurring on the Source Controller.
+
+As a result of an NVM Subsystem Reset (refer to section 3.7.1) on a domain:
+
+- the NVM subsystem shall terminate all in-progress Cross-Controller Reset operations a Source Controller in the domain caused to be initiated; and
+- each Source Controller in the domain shall remove all entries from this log page.
+
+Upon reading this log page, if an entry indicates the Cross-Controller Reset operation is completed and:
+
+- the value of the ICID field of that entry identifies a controller that the host is recovering from a loss of communication; and
+- the value of the Controller Instance Uniquifier (CIU) field of that entry is the same as the value of the CIU field of the Identify Controller data structure (refer to Figure 328) for that controller,
+
+then the host processes that entry as described in section 9.6.2.2. The host should ignore other entries in this log page.
+
+If the host connected to a Discovery subsystem using the well-known Discovery Service NQN, then the controller shall not report that this log page is supported in the Supported Log Pages log page (refer to section 5.2.12.1.1).

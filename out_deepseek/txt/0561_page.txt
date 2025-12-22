@@ -1,0 +1,33 @@
+• there is no pending change to the settings of a personality in the NVM subsystem, then the value of the PERID field in completion queue entry Dword 0 shall be set to FFh and all other fields in completion queue entry Dword 0 shall be cleared to 0h.
+
+It is not an error to attempt to change:
+
+• the settings of a personality to the same settings as the pending change of that personality; or
+• the settings of a frozen or unfrozen personality to the same settings as that personality’s current settings.
+
+If a Set Features command is processed for the CDP feature that attempts to change the settings of a personality that is currently frozen to a different value, then the controller shall abort the command with a status code of Feature Not Changeable.
+
+If a Set Features command is successfully processed that specifies to freeze all personalities (i.e., the Personality Identifier (PERID) field is set to the All Personalities value of FFh (refer to Figure 447) and the Personality Freeze State (PERFS) bit set to ‘1’ (refer to Figure 448)), then the controller shall freeze all personalities and none of the settings of any personalities are changed.
+
+8.1.6.1.1 Configurable Device Personality Authentication
+
+Security Send and Security Receive commands specifying the NVMe Security Protocol and using CDP Authentication (refer to section 5.2.24.3) are used to submit a CDP request to the controller and to retrieve the result of that request.
+
+If a Security Receive command is processed by the controller prior to the controller having successfully completed a Security Send command for the corresponding Request Message Type since the last Controller Level Reset on that controller, then the Security Receive command shall be aborted with a status code of Command Sequence Error.
+
+Only the result from the most recent successfully processed Security Send command is able to be retrieved.
+
+The message types defined in Figure 629 are used to exchange CDP requests and responses between a host and a controller. Request Message Types are sent from the host to the controller. Response Message Types are sent to the host from the controller.
+
+| Value | Request/Response Message Types | Definition |
+|-------|--------------------------------|------------|
+| 00h   | Reserved                        |            |
+| 01h   | Personality Unfreeze Request       | The host is attempting to unfreeze the personality specified by the Personality Identifier field. |
+| 02h   | Personality Unfreeze Response       | Returned as a result of the host submitting a Security Receive command after requesting to unfreeze the personality specified by the Personality Identifier field. |
+| 03h   | Derived HMAC Key Programming Request | The host is attempting to program a DHK. |
+| 04h   | Derived HMAC Key Programming Response | Returned as a result of the host submitting a Security Receive command after having programmed the DHK. |
+| 05h   | Random Nonce Request              | The host is attempting to read the random nonce from the controller. |
+| 06h   | Random Nonce Response             | Returned as a result of the host submitting a Security Receive command after requesting to read the random nonce from the controller. |
+| 07h to FFh | Reserved                        |            |
+
+The result of the CDP request (refer to the Result Code field in Figure 631) indicates whether a host CDP request to the controller was successful or not.

@@ -1,0 +1,18 @@
+{
+  "page_number": "146",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 102: Status Code – Generic Command Status Values\n\n| Value | Definition | I/O Command Set(s)¹ |\n|---|---|---|\n| 2Ah | **Invalid Placement Handle List**: The Placement Handle List is invalid due to: \n  • a Reclaim Unit Handle Identifier that is: \n    ◦ valid but restricted to be used by the command; or \n    ◦ invalid; \n  or \n  • the Placement Handle List number of entries exceeded the maximum number allowed. | |\n| 2Bh | **Sanitize Namespace Failed**: The most recent namespace sanitize operation failed and no recovery action has been successfully completed. | |\n| 2Ch | **Sanitize Namespace In Progress**: The requested function (e.g., command) is prohibited while a namespace sanitize operation is in progress. Refer to section 8.1.26.5. | |\n| 2Dh to 7Fh | Reserved | |\n| 80h | **LBA Out of Range**: Refer to the applicable NVM Express I/O Command Set specification for the description. | NVM, ZNS |\n| 81h | **Capacity Exceeded**: The command attempted an operation that exceeds the capacity of the namespace. | |\n| 82h | **Namespace Not Ready**: The namespace is not ready to be accessed as a result of a condition other than a condition that is reported as an Asymmetric Namespace Access condition. The Do Not Retry bit indicates whether re-issuing the command at a later time may succeed. | |\n| 83h | **Reservation Conflict**: The command was aborted due to a conflict with a reservation held on the accessed namespace. Refer to section 8.1.24. | |\n| 84h | **Format In Progress**: A Format NVM command is in progress on the namespace. The Do Not Retry bit shall be cleared to ‘0’ to indicate that the command may succeed if resubmitted. | NVM, ZNS |\n| 85h | **Invalid Value Size**: Refer to the applicable NVM Express I/O Command Set specification for the description. | KV |\n| 86h | **Invalid Key Size**: Refer to the applicable NVM Express I/O Command Set specification for the description. | KV |\n| 87h | **KV Key Does Not Exist**: Refer to the applicable NVM Express I/O Command Set specification for the description. | KV |\n| 88h | **Unrecovered Error**: Refer to the applicable NVM Express I/O Command Set specification for the description. | KV |\n| 89h | **Key Exists**: Refer to the applicable NVM Express I/O Command Set specification for the description. | KV |\n| 90h to BFh | Reserved | |\n| C0h to FFh | Vendor Specific | |\n\n**Key**: \n- NVM – NVM Command Set \n- ZNS – Zoned Namespace Command Set \n- KV – Key Value Command Set \n\n**Notes**: \n1. This column is blank unless the value is I/O Command Set specific\n\n## 4.2.3.2 Command Specific Status Definition\n\nCompletion queue entries with a Status Code Type (SCT) of Command Specific Errors indicate an error that is specific to a particular command opcode. Status codes of 00h to 7Fh are for Admin command errors (refer to Figure 103). Status codes of 80h to BFh are specific to the selected I/O command sets (refer to Figure 104).",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 102: Status Code – Generic Command Status Values",
+        "coordinates": [
+          112,
+          125,
+          888,
+          788
+        ]
+      }
+    ]
+  }
+}

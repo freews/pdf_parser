@@ -1,0 +1,27 @@
+{
+  "page_number": "218",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 210: SMART / Health Information Log Page\n\n| Bytes | Description |\n|-------|-------------|\n| 243:240 | **Interval Power Measurement (IPM)**: This field contains the interval power measurement (i.e., average of power measurement samples over one second, refer to section 8.1.19) of the indicated power measurement type (i.e., the PMT field) over the most recent one second interval at the time of processing the Get Log Page command to read this log page. The power in Watts is equal to the value in the Interval Power Measurement Value field multiplied by the scale indicated in the Interval Power Measurement Scale field. A value of 0h in this field indicates that the interval power measurement is not reported. |\n| 511:244 | Reserved |\n\n### Bits Description\n\n| Bits | Description |\n|------|-------------|\n| 31:24 | Reserved |\n| 23:20 | **Power Measurement Type (PMT)**: This field contains the power measurement type for the Interval Power Measurement Value field as defined in Figure 679. |\n| 19:18 | Reserved |\n| 17:16 | **Interval Power Measurement Scale (IPMS)**: This field contains the scale for the Interval Power Measurement Value field. |\n| 15:00 | **Interval Power Measurement Value (IPMV)**: This field contains the value of the interval power measurement.\n\nIf the Interval Power Measurement Scale field is cleared to 00b, then this field shall be cleared to 0h. |\n\n#### Value Definition\n\n| Value | Definition |\n|-------|------------|\n| 00b   | Not reported |\n| 01b   | 0.0001 W     |\n| 10b   | 0.01 W       |\n| 11b   | Reserved     |\n\n## Figure 211: Temperature Sensor Data Structure\n\n| Bits | Description |\n|------|-------------|\n| 15:00 | **Temperature Sensor Temperature (TST)**: Contains the current temperature in Kelvins reported by the temperature sensor.\n\nThe physical point in the NVM subsystem whose temperature is reported by the temperature sensor and the temperature accuracy is implementation specific. An implementation that does not implement the temperature sensor reports a value of 0h. The temperature reported by a temperature sensor may be used to trigger an asynchronous event (refer to section 5.2.26.1.3). |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 210: SMART / Health Information Log Page",
+        "coordinates": [
+          114,
+          128,
+          880,
+          490
+        ]
+      },
+      {
+        "name": "Figure 211: Temperature Sensor Data Structure",
+        "coordinates": [
+          114,
+          534,
+          880,
+          638
+        ]
+      }
+    ]
+  }
+}

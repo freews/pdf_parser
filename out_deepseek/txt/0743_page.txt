@@ -1,0 +1,7 @@
+Secure channel concatenation is prohibited over any secure channel that has been established in compliance with the requirements of an NVM Express Transport specification (e.g., the NVMe over TCP Transport Specification). The controller response to a host that requests secure channel concatenation in this situation is specified in section 8.3.5.4.1. In contrast, replacing a PSK for such a secure channel is permitted (refer to section 8.3.5.4.1).
+
+8.3.5.4 Common Authentication Messages
+
+8.3.5.4.1 AUTH_Negotiate Message
+
+The AUTH_Negotiate message is sent from the host to the controller and is used to indicate the authentication protocols the host is able to use in this authentication transaction and which secure channel protocol, if any, to concatenate to this authentication transaction. The AUTH_Negotiate message format is shown in Figure 789.

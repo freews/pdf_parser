@@ -1,0 +1,18 @@
+{
+  "page_number": "5",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\n### 1.4.3 Byte, Word, and Dword Relationships\n\nFigure 3 illustrates the relationship between bytes, words and dwords. A qword (quadruple word) is a unit of data that is four times the size of a word; it is not illustrated due to space constraints. Unless otherwise specified, this specification specifies data in a little endian format.\n\n#### Figure 3: Byte, Word, and Dword Relationships\n\n[Image: Figure 3 showing byte, word, and dword relationships with bit positions labeled from 7 to 0 for byte, 15 to 0 for word, and 31 to 0 for dword. The word is shown as two bytes (byte 1, byte 0). The dword is shown as two words (word 1, word 0) or four bytes (byte 3, byte 2, byte 1, byte 0).]\n\n### 1.5 Definitions\n\n#### 1.5.1 admin label\n\nAn admin label is an administratively configured ASCII or UTF-8 string (refer to section 1.4.2) that may be used to help identify specific NVMe entities (i.e., Hosts, NVM subsystems and namespaces). An admin label is capable of describing the entity’s physical location, DNS name or other information.\n\n#### 1.5.2 admin label ASCII\n\nAn ASCII string. Refer to section 1.4.2 for ASCII string requirements. Refer to section 1.5.1 for admin label usage.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 3: Byte, Word, and Dword Relationships",
+        "coordinates": [
+          112,
+          195,
+          840,
+          740
+        ]
+      }
+    ]
+  }
+}

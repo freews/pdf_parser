@@ -1,0 +1,50 @@
+Figure 534: Extended Discovery Information Entry – Applicable Fields
+
+| Field Name | Extended Discovery Information Entry Type: |
+|------------|--------------------------------------------|
+|            | Host | NVM Subsystem |
+| NVMe Qualified Name (NQN) | Used | Used |
+| Transport Address (TRADDR) | Used | Used |
+| Transport Specific Address Subtype (TSAS) | Used | Used |
+| Total Entry Length (TEL) | Used | Used |
+| Number of Extended Attributes (NUMEXAT) | Used | Used |
+| Extended Attribute 0 (EXAT0)…Extended Attribute N (EXATN) | Used | Used |
+
+Notes:
+1. This field shall be cleared to 0h.
+
+5.4.4.1 Command Completion
+
+Upon completion of the Discovery Information Management command, the controller posts a completion queue entry to the Admin Completion Queue indicating the status of the command. Discovery Information Management command specific status values are defined in Figure 535.
+
+Figure 535: Discovery Information Management – Command Specific Status Values
+
+| Value | Definition |
+|-------|------------|
+| 2Fh   | Invalid Discovery Information: The discovery information provided in one or more extended discovery information entries is not applicable for the type of entity selected in the Entity Type (ETYPE) field of the Discovery Information Management command data portion’s header. Refer to Figure 534 for restrictions, if any, that apply to each field in the extended discovery information entry based upon the type of extended discovery information entry being registered, de-registered, or updated. |
+| 32h   | Insufficient Discovery Resources: The number of discovery information entries provided in the data portion of the Discovery Information Management command for a registration task (i.e., TAS field cleared to 0h) exceeds the available capacity for new discovery information entries on the CDC or DDC. This may be a transient condition. |
+
+5.4.5 Fabric Zoning Lookup command
+
+The Fabric Zoning Lookup (FZL) command is used to lookup a key associated with a Zoning data structure in the CDC. The FZL command uses the Data Pointer field, as shown in Figure 536.
+
+Figure 536: Fabric Zoning Lookup (FZL) – Data Pointer
+
+| Bits | Description |
+|------|-------------|
+| 127:00 | Data Pointer (DPTR): This field specifies the start of the data buffer. Refer to Figure 92 for the definition of this field. |
+
+5.4.5.1 Command Completion
+
+Upon completion of the Fabric Zoning Lookup (FZL) command, the controller posts a completion queue entry to the Admin Completion Queue indicating the status of the command. Command specific status values for the FZL command are defined in Figure 537.
+
+Figure 537: Fabric Zoning Lookup (FZL) – Command Specific Status Values
+
+| Value | Definition |
+|-------|-------------|
+| 30h   | Zoning Data Structure Locked: The requested Zoning data structure is locked on the CDC. |
+| 31h   | Zoning Data Structure Not Found: The requested Zoning data structure does not exist on the CDC. |
+| 33h   | Requested Function Disabled: Fabric Zoning is not enabled on the CDC. |
+| 34h   | ZoneGroup Originator Invalid: The DDC is not allowed to access the specified ZoneGroup. |
+
+The key associated with the Zoning data structure that matches the specified FZL data (refer to section 8.3.2.3.8) is returned in the completion queue entry Dword 0, as shown in Figure 538.

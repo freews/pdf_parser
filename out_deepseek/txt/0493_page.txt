@@ -1,0 +1,35 @@
+If a de-register task is being performed and the data portion of the Discovery Information Management command does not contain one or more discovery information entries, then the controller shall abort the command with a status code of Invalid Field in Command.
+
+If an update task is being performed and the data portion of the Discovery Information Management command does not contain two discovery information entries, then the controller shall abort the command with a status code of Invalid Field in Command. The first discovery information entry identifies the registration record contained in the CDC or DDC that is to be updated. The fields in the first discovery information entry that are not used as part of the Entry Key are ignored. The second discovery information entry replaces the existing registration record identified by the Entry Key from the first discovery information entry. The update task shall be atomic.
+
+The format for the data portion of the Discovery Information Management command is defined in Figure 531.
+
+Based upon the value set in the Entity Type (ETYPE) field of the header, the data portion of a Discovery Information Management command shall:
+
+- only contain host extended discovery information entries if the ETYPE field is set to 1h (i.e., a host is performing the register, de-register, or update task);
+- only contain host extended discovery information entries if the ETYPE field is set to 3h (i.e., a CDC is performing the register, de-register, or update task); and
+- only contain NVM subsystem basic discovery information entries or NVM subsystem extended discovery information entries if the ETYPE field is set to 2h (i.e., a DDC is performing the register, de-register, or update task). The DDC may set the Port Local (PORTLCL) field to 1h if the NVM subsystem discovery information entries being registered, de-registered, or updated are only for NVM subsystem ports that are presented through the same NVM subsystem port on the DDC that is performing the register, de-register, or update task.
+
+Host extended discovery information entries and NVM subsystem extended discovery information entries each contain the same set of fields, but not all of the fields are used for both extended discovery information entry types. Refer to Figure 534 for the usage of the extended discovery information entry fields for each extended discovery information entry type. If the entity performing a register, de-register, or update task uses any field in an extended discovery information entry that conflicts with the value set in the ETYPE field of the Discovery Information Management command data portion’s header (e.g., a host uses a field intended for only NVM subsystem extended discovery information entries), then the controller shall abort the command with a status code of Invalid Discovery Information.
+
+Host extended discovery information entries shall contain at least one extended attribute containing a Host Identifier. NVM subsystem extended discovery information entries may contain zero or more extended attributes. The format for an extended attribute is defined in Figure 533.
+
+**Figure 529: Discovery Information Management – Data Pointer**
+
+| Bits | Description |
+|------|-------------|
+| 127:00 | Data Pointer (DPTR): This field specifies the start of the data buffer. Refer to Figure 92 for the definition of this field. |
+
+**Figure 530: Discovery Information Management – Command Dword 10**
+
+| Bits | Description |
+|------|-------------|
+| 31:04 | Reserved |
+| 03:00 | Task (TAS): This field selects the type of management task to perform. |
+
+| Value | Definition |
+|-------|-------------|
+| 0h    | Register     |
+| 1h    | De-Register  |
+| 2h    | Update      |
+| 3h to Fh | Reserved   |

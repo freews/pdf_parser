@@ -1,0 +1,42 @@
+### Figure 640: Derived HMAC Key Programming Flow
+
+| Command | Bytes in Command | Field Name | Value | Objective |
+|---------|------------------|------------|-------|-----------|
+| **Security Send 1** |                  | **Data populated by the host and sent to the controller** | **Header** | **Derived HMAC Key Programming Request** |
+|         |                  | 00 | Request Data Frame Version | 0h |
+|         |                  | 01 | Data Frame Header Length | 4h |
+|         |                  | 03:02 | Request Data Frame Size | 6h |
+|         |                  | **Common Payload** | **3h (Derived HMAC Key Programming Request)** | |
+|         |                  | 04 | CDP Request Message Type | |
+|         |                  | 05 | Request Data Size | |
+|         |                  | **CDP Request Data** | **The size of the CDP Request Data** | |
+|         |                  | 06 | CDP Authentication Algorithm | |
+|         |                  | 07 | Host Programmed Key Size | |
+|         |                  | Variable | Host Programmed Key | |
+|         |                  | **Data populated by the controller and returned to the host** | **Header** | **Retrieve Derived HMAC Key Programming Request Result** |
+|         |                  | 00 | Response Data Frame Version | 0h |
+|         |                  | 01 | Data Frame Header Length | 4h |
+|         |                  | 03:02 | Response Data Frame Size | 7h |
+|         |                  | **Response Common Payload** | **4h (Derived HMAC Key Programming Response)** | |
+|         |                  | 04 | CDP Response Message Type | |
+|         |                  | 05 | Result Code | |
+|         |                  | 06 | Response Data Size | 0h |
+
+#### 8.1.6.3.1.1 Key Derivation
+
+The Derived HMAC Key (DHK) shall be derived by applying a secure keyed-hash function (refer to the CDPALG field in Figure 328) to:
+
+- the CDP Subsystem Unique String as defined in Figure 654; and
+- the host-specified value of the key (i.e., the key specified in the Host Programmed Key field in the Security Send command payload),
+
+as the inputs to the secure keyed-hash function. If an authentication method is supported (refer to the AUS field in Figure 285), then the FGUID field as defined in Figure 328 shall be supported.
+
+The CDP Subsystem Unique String is shown in Figure 654. That string is used by the controller for deriving the DHK that is unique to the NVM subsystem.
+
+### Figure 641: CDP Subsystem Unique String Definition
+
+| Bytes | Description |
+|-------|-------------|
+| 219:000 | NQN Substring (NQNID): This field contains the NQN substring. This field shall contain bytes 223:4 of the NVM Subsystem NVMe Qualified Name (SUBNQN) field (refer to Figure 328) (i.e., the SUBNQN field, excluding the “nqn.” string). |
+| 235:220 | FGUID (FGUID): This field contains the FGUID. This field shall be set to the value of the FRU Globally Unique Identifier (FGUID) field in the Identify Controller data structure. |
+| 255:236 | Serial Number (SN): The field contains the serial number. This field shall be set to the value of the Serial Number (SN) field in the Identify Controller data structure. |

@@ -1,0 +1,41 @@
+The Log Specific Parameter field in Command Dword 10 (refer to Figure 201) for this log page is defined in Figure 303.
+
+**Figure 303: Cross-Controller Reset Log Specific Parameter Field**
+
+| Bits | Description |
+|------|-------------|
+| 14:09 | Reserved |
+| 08   | Remove Completed (RMC): If this bit is set to ‘1’, then, upon successful completion of this command, the controller removes all entries for completed Cross-Controller Reset operations from the log page. Removed entries shall be reported in the returned log page. |
+
+This log page is defined in Figure 304.
+
+**Figure 304: Cross-Controller Reset Log Page**
+
+| Bytes | Description |
+|-------|-------------|
+| 01:00 | Number of Entries (NE): This field indicates the number of valid entries in the Cross-Controller Reset Entry list. Contents of entries that are not valid shall be cleared to zero. The maximum value of this field is 511. |
+| 07:02 | Reserved |
+| 15:08 | Cross-Controller Reset Entry 0 (CCRE0): This field contains the first Cross-Controller Reset Entry (refer to Figure 305), if any. |
+| 23:16 | Cross-Controller Reset Entry 1 (CCRE1): This field contains the second Cross-Controller Reset Entry, if any. |
+| ... | ... |
+| 4095:4088 | Cross-Controller Reset Entry 510 (CCRE510): This field contains the 511th Cross-Controller Reset Entry, if any. |
+
+The format of the Cross-Controller Reset Entry is defined in Figure 305.
+
+**Figure 305: Cross-Controller Reset Entry Data Structure**
+
+| Bytes | Description |
+|-------|-------------|
+| 01:00 | Impacted Controller ID (ICID): This field indicates the value of the ICID field in the Cross-Controller Reset command that caused the NVM subsystem to initiate the associated operation for this entry. |
+| 02   | Controller Instance Uniquifier (CIU): This field indicates the value of the CIU field in the Cross-Controller Reset command that caused the NVM subsystem to initiate the associated operation for this entry. |
+| 03   | Reserved |
+| 05:04 | Alternate Controller ID (ACID): This field is used to indicate the controller ID of a controller that the host should use to retry the Cross-Controller Reset command for the same Impacted Controller. A value of FFFFFh in this field indicates that there is not a specific controller for the host to use. |
+|       | If the value of the CCRS field is not Failed, then the contents of this field are undefined. |
+| 06   | Cross-Controller Reset Status (CCRS): This field indicates the status of the associated operation for this entry. The values of this field are defined as: |
+
+| Value | Definition |
+|-------|-------------|
+| 00h   | In Progress |
+| 01h   | Success: The Cross-Controller Reset operation completed successfully. The instance of the Impacted Controller is no longer processing commands, as described in section 8.3.3 (e.g., the Impacted Controller has completed processing a Controller Level Reset.) |
+| 02h   | Failed: The Cross-Controller Reset operation completed unsuccessfully. The Cross-Controller Reset operation was not able to determine whether the instance of the Impacted Controller is processing commands (refer to section 8.3.3). |
+| 03h to FFh | Reserved |

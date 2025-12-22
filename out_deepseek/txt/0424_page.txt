@@ -1,0 +1,35 @@
+Figure 403: Set Features – Feature Identifiers
+
+| Feature Identifier | Current Setting Persists Across Power Cycle and Reset 2 | Uses Data Buffer for Attributes | Feature Name | Scope 6 |
+|---------------------|----------------------------------------------------------|----------------------------------|---------------|--------|
+| 15h                 | Refer to the NVM Express NVM Command Set Specification |                                      |               |        |
+| 16h                 | No                                                      | Yes                             | Host Behavior Support | Controller |
+| 17h                 | Yes                                                      | No                              | Sanitize Config | NVM subsystem |
+| 18h                 | No                                                      | No                              | Endurance Group Event Configuration | Endurance Group |
+| 19h                 | Yes                                                      | No                              | I/O Command Set Profile | Controller |
+| 1Ah                 | Yes                                                      | No                              | Spinup Control | NVM subsystem |
+| 1Bh                 | Yes                                                      | No                              | Power Loss Signaling Config | Domain |
+| 1Ch                 | Refer to the NVM Express NVM Command Set Specification |                                      |               |        |
+| 1Dh                 | Yes                                                      | No                              | Flexible Data Placement | Endurance Group |
+| 1Eh                 | Yes                                                      | Yes                             | Flexible Data Placement Events | Reclaim Unit Handle |
+| 1Fh                 | Yes                                                      | Yes                             | Namespace Admin Label | Namespace |
+| 20h                 | Refer to the NVM Express Key Value Command Set Specification |                                      |               |        |
+| 21h                 | No                                                      | No 4                               | Controller Data Queue | Controller Data |
+| 22h                 | Yes                                                      | Yes                             | Configurable Device Personality | NVM subsystem |
+| 23h                 | No                                                      | No                              | Power Limit | Controller 7 |
+| 24h                 | No                                                      | No                              | Power Threshold | Controller |
+| 25h                 | Yes                                                      | No                              | Power Measurement | NVM subsystem |
+| 26h to 77h           | Reserved                                                  |                                      |               |        |
+| 78h                 | Yes                                                      | Yes                             | Embedded Management Controller Address | NVM subsystem |
+| 79h                 | Yes                                                      | Yes                             | Host Management Agent Address | NVM subsystem |
+| 7Ah to 7Ch           | Reserved                                                  |                                      |               |        |
+| 7Dh                 | No                                                      | Yes                             | Enhanced Controller Metadata | Controller |
+| 7Eh                 | No                                                      | Yes                             | Controller Metadata | Controller |
+| 7Fh                 | No                                                      | Yes                             | Namespace Metadata | Namespace per controller |
+| 80h                 | Yes                                                      | No                              | Software Progress Marker | Controller |
+| 81h                 | No                                                      | Yes                             | Host Identifier | Controller |
+| 82h                 | No                                                      | No                              | Reservation Notification Mask | Namespace |
+| 83h                 | Yes                                                      | No                              | Reservation Persistence | Namespace |
+| 84h                 | No                                                      | No                              | Namespace Write Protection Config | Namespace |
+| 85h                 | No                                                      | No                              | Boot Partition Write Protection Config | Controller |
+| 87h to BFh           | Reserved                                                  |                                      |               |        |

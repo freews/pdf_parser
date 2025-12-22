@@ -1,0 +1,18 @@
+{
+  "page_number": "48",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 31: Log Page Support Requirements\n\n| Log Page Name | Log Page Identifier | Controller Support Requirements¹ | Reference |\n| --- | --- | --- | --- |\n| | | I/O | Administrative | Discovery | |\n| Boot Partition | 15h | O | O | P | 5.2.12.1.21 |\n| Rotational Media Information | 16h | O | P | P | 5.2.12.1.22 |\n| Dispersed Namespace Participating NVM Subsystems | 17h | O | O | P | 5.2.12.1.23 |\n| Management Address List | 18h | O | O | O | 5.2.12.1.24 |\n| Physical Interface Receiver Eye Opening Measurement | 19h | O⁴ | O⁴ | P | Note 11 |\n| Reachability Groups | 1Ah | O⁶ | P | P | 5.2.12.1.25 |\n| Reachability Associations | 1Bh | O⁶ | P | P | 5.2.12.1.26 |\n| Changed Allocated Namespace List | 1Ch | O | O | P | 5.2.12.1.27 |\n| Device Personalities | 1Dh | O | O | P | 5.2.12.1.28 |\n| Cross-Controller Reset | 1Eh | O¹² | O¹² | O¹³ | 5.2.12.3.1 |\n| Lost Host Communication | 1Fh | O¹² | O¹² | O¹³ | 5.2.12.3.2 |\n| FDP Configurations | 20h | O⁵ | P | P | 5.2.12.1.29 |\n| Reclaim Unit Handle Usage | 21h | O⁵ | P | P | 5.2.12.1.30 |\n| FDP Statistics | 22h | O⁵ | P | P | 5.2.12.1.31 |\n| FDP Events | 23h | O⁵ | P | P | 5.2.12.1.32 |\n| Power Measurement | 25h | O | O | P | 5.2.12.1.33 |\n| Discovery | 70h | P | P | M | 5.2.12.3.3 |\n| Host Discovery | 71h | P | P | O | 5.2.12.3.4 |\n| AVE Discovery | 72h | P | P | O | 5.2.12.3.5 |\n| Pull Model DDC Request | 73h | P | P | M¹⁰ | 5.2.12.3.6 |\n| Sanitize Namespace Status List | 7Fh | O | O | P | 5.2.12.1.34 |",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 31: Log Page Support Requirements",
+        "coordinates": [
+          114,
+          127,
+          880,
+          558
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+### Figure 615: Reservation Status Data Structure
+
+| Bytes | Description |
+|-------|-------------|
+| 24*n+47: | Registrant Data Structure n |
+| 24*(n+1) | |
+
+### Figure 616: Reservation Status Extended Data Structure
+
+| Bytes | Description |
+|-------|-------------|
+| 23:00 | Reservation Status Header (RSHDR): Refer to the Reservation Status Header in Figure 615 for definition. |
+| 63:24 | Reserved |
+| 127:64 | |
+| 64*(n+1)+63:64*(n+1) | |
+
+### Figure 617: Registered Controller Data Structure
+
+| Bytes | Description |
+|-------|-------------|
+| 01:00 | Controller ID (CNTLID): If a registrant of the namespace is associated with a controller in the NVM subsystem, then this field contains the controller ID (i.e., the value of the CNTLID field in the Identify Controller data structure) of the controller that is associated with the registrant whose host identifier is indicated in the Host identifier field of this Registrant data structure. |
+|       | If a registrant of the namespace is not associated with any controller in the NVM subsystem, then the controller processing the command shall set this field to FFFFh. |
+|       | If the namespace is a dispersed namespace and the controller is not contained in the same participating NVM subsystem as the controller processing the command, then the Controller ID field is set to FFFDh, as described in section 8.1.10.6. |
+| 02 | Reservation Status (RCSTS): This field indicates the reservation status of the registrant associated with this data structure (i.e., the registrant whose host identifier is indicated in the Host Identifier field of this Registrant data structure). |
+
+| Bits | Description |
+|------|-------------|
+| 7:1   | Reserved |
+| 0    | Association with Host Holding Reservation (AHHR): If this bit is set to ‘1’, then the registrant associated with this data structure holds a reservation on the namespace. If this bit is cleared to ‘0’, then the controller is not associated with a host that holds a reservation on the namespace. |
+| 07:03 | Reserved |
+| 15:08 | Host Identifier (HOSTID): This field contains the 64-bit Host Identifier of the registrant of the namespace described by this data structure. |
+| 23:16 | Reservation Key (RKEY): This field contains the reservation key of the registrant described by this data structure. |
+
+### Figure 618: Registered Controller Extended Data Structure
+
+| Bytes | Description |
+|-------|-------------|
+| 01:00 | Controller ID (CNTLID): Refer to Figure 617 for definition. |
+| 02 | Reservation Status (RCSTS): Refer to Figure 617 for definition. |
+| 07:03 | Reserved |
+| 15:08 | Reservation Key (RKEY): Refer to Figure 617 for definition. |

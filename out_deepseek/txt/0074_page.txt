@@ -1,0 +1,41 @@
+Figure 32: Feature Support Requirements
+
+| Feature Name                          | Feature Identifier | Controller Support Requirements 1 | Reference |
+|---------------------------------------|---------------------|----------------------------------|-----------|
+| Write Atomicity Normal                 | 0Ah                 | Refer to the NVM Express NVM Command Set Specification |           |
+| Asynchronous Event Configuration       | 0Bh                 | M 8                             | 5.2.26.1.5 |
+| Autonomous Power State Transition     | 0Ch                 | O                               | P         |
+| Host Memory Buffer                    | 0Dh                 | O                               | P         |
+| Timestamp                           | 0Eh                 | O                               | P         |
+| Keep Alive Timer                     | 0Fh                 | M 7                             | 5.2.26.1.8 |
+| Host Controlled Thermal Management   | 10h                | O                               | P         |
+| Non-Operational Power State Config    | 11h                | O                               | P         |
+| Read Recovery Level Config            | 12h                | O                               | P         |
+| Predictable Latency Mode Config       | 13h                | O 9                             | 5.2.26.1.12|
+| Predictable Latency Mode Window        | 14h                | O 9                             | P         |
+| LBA Status Information Report Interval | 15h                | Refer to the NVM Express NVM Command Set Specification |           |
+| Host Behavior Support                 | 16h                | O                               | P         |
+| Sanitize Config                       | 17h                | O 9                             | P         |
+| Endurance Group Event Configuration   | 18h                | O                               | P         |
+| I/O Command Set Profile               | 19h                | O                               | P         |
+| Spinup Control                       | 1Ah                | O                               | P         |
+| Power Loss Signaling Config           | 1Bh                | O                               | P         |
+| Performance Characteristics            | 1Ch                | Refer to the NVM Express NVM Command Set Specification |           |
+| Flexible Data Placement               | 1Dh                | O 6                             | P         |
+| Flexible Data Placement Events         | 1Eh                | O 6                             | P         |
+| Namespace Admin Label                | 1Fh                | O                               | P         |
+| Key Value Configuration               | 20h                | Refer to the NVM Express Key Value Command Set Specification |           |
+| Controller Data Queue                 | 21h                | O                               | P         |
+| Configurable Device Personality       | 22h                | O                               | P         |
+| Power Limit                         | 23h                | O                               | P         |
+| Power Threshold                     | 24h                | O                               | P         |
+| Power Measurement                    | 25h                | O                               | P         |
+| Embedded Management Controller Address | 78h                | O                               | O         |
+| Host Management Agent Address         | 79h                | O                               | O         |
+| Enhanced Controller Metadata          | 7Dh                | O 5                             | O         |
+| Controller Metadata                  | 7Eh                | O 5                             | O         |
+| Namespace Metadata                   | 7Fh                | O 5                             | O         |
+| Software Progress Marker             | 80h                | O                               | P         |
+| Host Identifier                      | 81h                | O 3                             | P         |
+| Reservation Notification Mask          | 82h                | O 4                             | P         |
+| Reservation Persistence               | 83h                | O 4                             | P         |

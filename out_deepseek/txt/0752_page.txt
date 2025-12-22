@@ -1,0 +1,27 @@
+Figure 801: DH-HMAC-CHAP_Reply message format
+
+| Bytes | Description |
+|-------|-------------|
+| 9     | Reserved    |
+| 11:10 | DH Value Length (DHVLEN): Length in bytes of DH value. If no DH value is included in the message, then this field is cleared to 0h. |
+| 15:12 | Sequence Number (SEQNUM): Sequence number $S_2$. |
+| 15+HL:16 | Response Value (RVAL): Response $R_1$. |
+| 15+2*HL:16+HL | Challenge Value (CVAL): Challenge $C_2$, if valid (i.e., if the CVALID field is set to 01h), cleared to 0h otherwise. |
+| 15+2*HL+DHLVLEN:6+2*HL | DH Value (DHV): DH exponential $g'$ mod p. This field is not present (i.e., the CVAL field is the last field in the message) if DHVLEN is cleared to 0h. |
+
+Hash Length (HL): Shall be set to the length in bytes of the selected hash function, as specified in Figure 798.
+
+Challenge Valid: If the host does not require bidirectional authentication or no establishment of a secure channel after unidirectional authentication is sought (refer to section 8.3.5.5.9), this field shall be cleared to 0h. Otherwise, this field shall be set to 01h.
+
+DH Value Length (DHVLEN): Diffie-Hellman exponential length. This length shall be a multiple of 4. If the DH group identifier is cleared to 0h (i.e., NULL DH exchange), this field shall be cleared to 0h. Otherwise, it shall be set to the length in bytes of the DH Value.
+
+Sequence Number (SEQNUM): 32-bit sequence number $S_2$. A random non-zero value shall be used as the initial value. The sequence number is incremented modulo $2^{32}$ after each use, except that the value 0h is skipped (i.e., incrementing the value FFFFFFFFh results in the value 00000001h). The value 0h is used to indicate that bidirectional authentication is not performed, but a challenge value $C_2$ is carried in order to generate a pre-shared key (PSK) for subsequent establishment of a secure channel (refer to section 8.3.5.9).
+
+Response Value (RVAL): DH-HMAC-CHAP response value $R_1$. The value of $R_1$ is computed using the hash function $H()$ selected by the HashID parameter in the DH-HMAC-CHAP_Challenge message, and the augmented challenge $C_{a1}$. If the NULL DH group has been selected, the augmented challenge $C_{a1}$ is equal to the challenge $C_1$ received from the controller (i.e., $C_{a1} = C_1$). If a non-NULL DH group has been selected, the augmented challenge is computed applying the HMAC function using the hash function $H()$ selected by the HashID parameter in the DH-HMAC-CHAP_Challenge message with the hash of the ephemeral DH key resulting from the combination of the random value $y$ selected by the host with the DH exponential (i.e., $g^x$ mod $p$) received from the controller as HMAC key (refer to RFC 2104) to the challenge $C_1$ (i.e., $C_{a1} = \text{HMAC}(H((g^x \mod p)^y \mod p), C_1) = \text{HMAC}(H(g^x \mod p), C_1)$). The value of $R_1$ shall be computed applying the HMAC function using the hash function $H()$ selected by the HashID parameter in the DH-HMAC-CHAP_Challenge message with key $K_1$ as HMAC key to the concatenation of the augmented challenge $C_{a1}$, the sequence number $S_1$, the transaction identifier $T_ID$, the secure channel concatenation indication $SC_C$ sent in the AUTH_ Negotiate message, the eight ASCII characters "HostHost" to indicate the host is computing the reply, the host NQN not including the null terminator, a 00h byte, and the NVM subsystem NQN not including the null terminator (i.e., $R_1 = \text{HMAC}(K_h, C_{a1} \parallel S_1 \parallel T_ID \parallel SC_C \parallel \text{NQN}_h \parallel 00h \parallel \text{NQN}_c)$). Using C language notation:
+
+\[
+C_{a1} = (\text{DHgID} = 00h) \quad ? \quad C_1 : \text{HMAC}(H((g^x \mod p)^y \mod p), C_1) \\
+R_1 = \text{HMAC}(K_h, C_{a1} \parallel S_1 \parallel T_ID \parallel SC_C \parallel \text{HostHost} \parallel \text{NQN}_h \parallel 00h \parallel \text{NQN}_c)
+\]
+
+Challenge Value (CVAL): Shall be set to a random challenge value $C_2$ (refer to section 8.3.5.5.7). Each challenge value should be unique and unpredictable, since repetition of a challenge value in conjunction with the same key may reveal information about the key or the correct response to this challenge. The algorithm for generating the challenge value is outside the scope of this specification. Randomness of the challenge value is crucial to the security of the protocol (refer to section 8.3.5.5.7). The CVAL length is the same as the length of the selected hash function (i.e., HL).

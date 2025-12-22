@@ -1,0 +1,22 @@
+| Bytes | Description |
+|-------|-------------|
+| 001b   | If the NSID specifies a namespace and a sanitize operation that includes the specified namespace has never been started in that namespace since that namespace was created, then this value shall be reported. |
+| 010b   | **Sanitized:** If:  
+a) the most recent sanitize operation that included the specified sanitization target completed successfully; and  
+b) the Sanitize Operation State Machine is in the Idle state, then this value shall be reported. |
+| 011b   | **Sanitizing:** If a sanitize operation that includes the sanitization target specified by this Get Log Page command is currently in progress (i.e., in the Restricted Processing state, the Unrestricted Processing state, the Media Verification state, or the Post-Verification Deallocation state), then this value shall be reported. |
+| 011b   | **Sanitize Failed:** If the most recent sanitize operation that included the sanitization target specified by this Get Log Page command failed, then this value shall be reported. |
+| 100b   | This value shall be reported when the Sanitize Operation State Machine is in the Restricted Failure state or the Unrestricted Failure state. |
+| 100b   | This value is able to be reported when the Sanitize Operation State Machine is in the Idle state. |
+| 101b to 111b | **Sanitized Unexpected Deallocate:** If:  
+a) the most recent sanitize operation for which No-Deallocate After Sanitize (refer to section 5.2.22) was requested has completed successfully with deallocation of all media in the NVM subsystem that is allocated for user data (refer to section 5.2.26.1.15); and  
+b) the Sanitize Operation State Machine is in the Idle state, then this value shall be reported. |
+| 101b to 111b | Reserved |
+
+**Sanitize Command Dword 10 Information (SCDW10):** This field shall indicate the value of the Command Dword 10 field of the Sanitize command that started the sanitize operation whose status is reported in the SSTAT field. Refer to Figure 388.
+
+**Estimated Time For Overwrite (ETO):** This field indicates the estimated time for an overwrite. This field shall be set to the estimated number of seconds required to complete sanitize processing (i.e., the time difference between entering and exiting the Restricted Processing state or the Unrestricted Processing state) of an Overwrite sanitize operation with 16 passes in the background (refer to section 5.2.22) when the No-Deallocate Modifies Media After Sanitize field (refer to Figure 328) is set to a value other than 10b.
+
+A value of 0h indicates that the sanitize processing is expected to be completed in the background when the Sanitize command that started that operation is completed. A value of FFFFFFFFFh indicates that no time period is reported.
+
+This field shall be set to FFFFFFFFFh if the sanitization target specified by this Get Log Page command is a namespace.

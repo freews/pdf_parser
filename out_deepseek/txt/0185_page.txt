@@ -1,0 +1,9 @@
+Figure 124: SGL Read Example
+
+4.3.3 Metadata Region (MR)
+
+The definition for the Metadata Region is command set specific. Refer to each NVM Express I/O Command Set specification for applicability and additional details, if any.
+
+4.4 Feature Values
+
+The Get Features command (refer to section 5.2.11) and Set Features command (refer to section 5.2.26) may be used to read and modify operating parameters of the controller. The operating parameters are grouped and identified by Feature Identifiers. Each Feature Identifier contains one or more attributes that may affect the behavior of the Feature.

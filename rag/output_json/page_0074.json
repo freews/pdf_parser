@@ -1,0 +1,18 @@
+{
+  "page_number": "50",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 32: Feature Support Requirements\n\n| Feature Name | Feature Identifier | Controller Support Requirements¹ | Reference |\n| --- | --- | --- | --- |\n| | | I/O | Administrative | Discovery | |\n| Write Atomicity Normal | 0Ah | Refer to the NVM Express NVM Command Set Specification | | | |\n| Asynchronous Event Configuration | 0Bh | M | O⁸ | M¹⁰ | 5.2.26.1.5 |\n| Autonomous Power State Transition | 0Ch | O | O | P | 5.2.26.1.6 |\n| Host Memory Buffer | 0Dh | O | O | P | 5.2.26.2.4 |\n| Timestamp | 0Eh | O | O | P | 5.2.26.1.7 |\n| Keep Alive Timer | 0Fh | M⁷ | M⁷ | M¹⁰ | 5.2.26.1.8 |\n| Host Controlled Thermal Management | 10h | O | O | P | 5.2.26.1.9 |\n| Non-Operational Power State Config | 11h | O | O | P | 5.2.26.1.10 |\n| Read Recovery Level Config | 12h | O | O | P | 5.2.26.1.11 |\n| Predictable Latency Mode Config | 13h | O | O⁹ | P | 5.2.26.1.12 |\n| Predictable Latency Mode Window | 14h | O | O⁹ | P | 5.2.26.1.13 |\n| LBA Status Information Report Interval | 15h | Refer to the NVM Express NVM Command Set Specification | | | |\n| Host Behavior Support | 16h | O | O | P | 5.2.26.1.14 |\n| Sanitize Config | 17h | O | O⁹ | P | 5.2.26.1.15 |\n| Endurance Group Event Configuration | 18h | O | O⁹ | P | 5.2.26.1.16 |\n| I/O Command Set Profile | 19h | O | P | P | 5.2.26.1.17 |\n| Spinup Control | 1Ah | O | P | P | 5.2.26.1.18 |\n| Power Loss Signaling Config | 1Bh | O | O | P | 5.2.26.1.19 |\n| Performance Characteristics | 1Ch | Refer to the NVM Express NVM Command Set Specification | | | |\n| Flexible Data Placement | 1Dh | O⁶ | P | P | 5.2.26.1.20 |\n| Flexible Data Placement Events | 1Eh | O⁶ | P | P | 5.2.26.1.21 |\n| Namespace Admin Label | 1Fh | O | O | P | 5.2.26.1.22 |\n| Key Value Configuration | 20h | Refer to the NVM Express Key Value Command Set Specification | | | |\n| Controller Data Queue | 21h | O | O | P | 5.2.26.1.23 |\n| Configurable Device Personality | 22h | O | O | P | 5.2.26.1.24 |\n| Power Limit | 23h | O | O | P | 5.2.26.1.25 |\n| Power Threshold | 24h | O | O | P | 5.2.26.1.26 |\n| Power Measurement | 25h | O | O | P | 5.2.26.1.27 |\n| Embedded Management Controller Address | 78h | O | O | O | 5.2.26.1.28 |\n| Host Management Agent Address | 79h | O | O | O | 5.2.26.1.29 |\n| Enhanced Controller Metadata | 7Dh | O⁵ | O⁵ | O | 5.2.26.1.30.1 |\n| Controller Metadata | 7Eh | O⁵ | O⁵ | O | 5.2.26.1.30.2 |\n| Namespace Metadata | 7Fh | O⁵ | O⁵ | O | 5.2.26.1.30.3 |\n| Software Progress Marker | 80h | O | O | P | 5.2.26.1.31 |\n| Host Identifier | 81h | O³ | O | P | 5.2.26.1.32 |\n| Reservation Notification Mask | 82h | O⁴ | P | P | 5.2.26.1.33 |\n| Reservation Persistence | 83h | O⁴ | P | P | 5.2.26.1.34 |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 32: Feature Support Requirements",
+        "coordinates": [
+          114,
+          127,
+          878,
+          844
+        ]
+      }
+    ]
+  }
+}

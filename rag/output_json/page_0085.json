@@ -1,0 +1,18 @@
+{
+  "page_number": "61",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 41: Offset 14h: CC – Controller Configuration\n\n| Bits | Type | Reset | Description |\n|------|------|-------|-------------|\n| 06:04 | RW | 000b | **I/O Command Set Selected (CSS)**: This field specifies the I/O Command Set or Sets that are selected. This field shall only be changed when the controller is disabled (i.e., CC.EN is cleared to '0'). The I/O Command Set or Sets that are selected shall be used for all I/O Submission Queues.\n\n### Value Definitions\n\n| Value | Definition |\n|-------|------------|\n| 000b | **CAP.CSS.NCSS**\n\n| Bit | Definition |\n|-----|------------|\n| 1b | NVM Command Set |\n| 0b | Reserved |\n\n| 001b to 101b | Reserved |\n\n| 110b | **CAP.CSS.IOCSS**\n\n| Bit | Definition |\n|-----|------------|\n| 1b | All Supported I/O Command Sets\nThe I/O Command Sets that are supported are reported in the identity I/O Command Set data structure (refer to section 5.2.13.2.19). |\n| 0b | Reserved |\n\n| 111b | **CAP.CSS.NOIOCSS**\n\n| Bit | Definition |\n|-----|------------|\n| 1b | Admin Command Set only\nI/O Command Set and I/O Command Set specific Admin commands are not supported. Any I/O Command Set specific Admin command submitted on the Admin Submission Queue is aborted with a status code of Invalid Command Opcode. |\n| 0b | Reserved |\n\nFor Discovery controllers, this property shall be cleared to 000b. |\n| 03:01 | RO | 000b | Reserved |\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 41: Offset 14h: CC – Controller Configuration",
+        "coordinates": [
+          114,
+          128,
+          878,
+          630
+        ]
+      }
+    ]
+  }
+}

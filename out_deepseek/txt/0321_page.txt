@@ -1,0 +1,31 @@
+Sanitize Status (STAT): This field indicates the status associated with the most recent sanitize operation.
+
+| Bits | Description |
+|------|-------------|
+| 15:11 | Reserved |
+| 10   | **Namespace Data Erased (NDE):** If the Sanitize Namespace command is supported, the sanitization target specified by this Get Log Page command is a namespace, and no user data has been written to the specified namespace: |
+|      | a) since the namespace was created; or |
+|      | b) since the most recent successful sanitize operation with a sanitization target that included the namespace specified by this Get Log Page command (i.e., an NVM subsystem sanitize operation or a namespace sanitize operation with a sanitization target of the specified namespace), |
+|      | then this bit shall be set to ‘1’. Otherwise, this bit shall be cleared to ‘0’. |
+| 09   | **Media Verification Canceled (MVCNCLD):** This bit indicates whether the Media Verification state is canceled. |
+|      | If the most recent sanitize operation was started by a command with the EMVS bit set to ‘1’ and during the Restricted Processing state, the Unrestricted Processing state, or the Media Verification state: |
+|      | a) a change in the composition of the NVM subsystem prevents media verification; or |
+|      | b) a Controller Level Reset of: |
+|      | a. any controller in the NVM subsystem occurs if the sanitization target specified by this Get Log Page command is the NVM subsystem; or |
+|      | b. any controller in the NVM subsystem that is attached to the namespace if the sanitization target specified by this Get Log Page command is a namespace, |
+|      | that is caused by: |
+|      | • a transport-specific reset type (refer to the applicable NVM Express Transport specification applicable NVM Express Transport specification); or |
+|      | • an NVM Subsystem Reset, |
+|      | then this bit is set to ‘1’. Otherwise, this bit is cleared to ‘0’. |
+|      | Refer to the Sanitize Operation State Machine defined in section 8.1.26.4 for conditions that affect the setting of this bit. |
+| 08   | **Global Data Erased (GDE):** If no user data has been written to the NVM subsystem and no Persistent Memory Region in the NVM subsystem has been enabled: |
+|      | a) since being manufactured and the NVM subsystem has never been sanitized; or |
+|      | b) since the most recent successful NVM subsystem sanitize operation, |
+|      | then this bit shall be set to ‘1’. Otherwise, this bit shall be cleared to ‘0’. |
+| 07:03 | **Overwrite Passes Completed (OPC):** This field shall indicate the number of completed passes if the most recent sanitize operation was an Overwrite. This field shall be cleared to 0h if the most recent sanitize operation was not an Overwrite. |
+|      | If the sanitization target specified by this Get Log Page command is a namespace, then this field shall be cleared to 0h. |
+| 02:00 | **Sanitize Operation Status (SOS):** This field indicates the status of the most recent sanitize operation for the sanitization target specified by this Get Log Page command as shown below. Sanitize states are described in section 8.1.26.4. |
+
+| Value | State |
+|-------|-------|
+| 000b  | Sanitize Never Started: If the NSID specifies the NVM subsystem and an NVM subsystem sanitize operation has never been started, then this value shall be reported. |

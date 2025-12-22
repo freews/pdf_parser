@@ -1,0 +1,62 @@
+Figure 434: Flexible Data Placement – Command Dword 11 ................................................................. 418
+Figure 435: Flexible Data Placement – Command Dword 12 ................................................................. 418
+Figure 436: FDP Events – Completion Queue Entry Dword 0 ................................................................. 419
+Figure 437: FDP Events – Command Dword 11 ................................................................. 419
+Figure 438: Flexible Data Placement – Command Dword 12 ................................................................. 419
+Figure 439: FDP Events – Set Feature Data Structure ................................................................. 420
+Figure 440: FDP Events – Get Feature Data Structure ................................................................. 420
+Figure 441: Supported FDP Event Descriptor ................................................................. 420
+Figure 442: Namespace Admin Label – Data Structure ................................................................. 421
+Figure 443: Controller Data Queue – Command Dword 11 ................................................................. 421
+Figure 444: Controller Data Queue – Command Dword 12 ................................................................. 422
+Figure 445: Controller Data Queue – Command Dword 13 ................................................................. 422
+Figure 446: Controller Data Queue – Data Structure ................................................................. 422
+Figure 447: Personality Identifier List ................................................................. 422
+Figure 448: Configurable Device Personality - Command Dword 13 ......................................................... 423
+Figure 449: Configurable Device Personality – Completion Queue Entry Dword 0 ......................................... 424
+Figure 450: Security Personality Data Structure ................................................................. 427
+Figure 451: Security Personality Attributes Data Structure ................................................................. 428
+Figure 452: Power Limit - Command Dword 13 ................................................................. 429
+Figure 453: Power Threshold – Command Dword 11 ................................................................. 430
+Figure 454: Power Measurement – Command Dword 11 ................................................................. 431
+Figure 455: Power Measurement – Command Dword 12 ................................................................. 432
+Figure 456: Power Measurement – Completion Queue Entry Dword 0 ......................................................... 432
+Figure 457: Set Features – Command Specific Status Values ................................................................. 433
+Figure 458: Host Management Agent Address ................................................................. 433
+Figure 459: Get Features – Command Dword 11 ................................................................. 434
+Figure 460: Set Features – Command Dword 11 ................................................................. 434
+Figure 461: Host Metadata Data Structure ................................................................. 436
+Figure 462: Metadata Element Descriptor ................................................................. 436
+Figure 463: Controller Metadata Element Types ................................................................. 436
+Figure 464: Namespace Metadata Element Types ................................................................. 438
+Figure 465: Software Progress Marker – Command Dword 11 ................................................................. 438
+Figure 466: Host Identifier – Command Dword 11 ................................................................. 439
+Figure 467: Host Identifier – Data Structure Entry ................................................................. 439
+Figure 468: Reservation Notification Configuration – Command Dword 11 ................................................. 440
+Figure 469: Reservation Persistence Configuration – Command Dword 11 ................................................. 441
+Figure 470: Write Protection – Command Dword 11 ................................................................. 441
+Figure 471: Boot Partition Write Protection Config - Command Dword 11 ................................................. 442
+Figure 472: Number of Queues – Command Dword 11 ................................................................. 443
+Figure 473: Number of Queues – Completion Queue Entry Dword 0 ......................................................... 444
+Figure 474: Interrupt Coalescing – Command Dword 11 ................................................................. 444
+Figure 475: Interrupt Vector Configuration – Command Dword 11 ......................................................... 445
+Figure 476: Host Memory Buffer – Command Dword 11 ................................................................. 446
+Figure 477: Host Memory Buffer – Command Dword 12 ................................................................. 447
+Figure 478: Host Memory Buffer – Command Dword 13 ................................................................. 447
+Figure 479: Host Memory Buffer – Command Dword 14 ................................................................. 447
+Figure 480: Host Memory Buffer – Command Dword 15 ................................................................. 447
+Figure 481: Host Memory Buffer – Host Memory Descriptor List ......................................................... 447
+Figure 482: Host Memory Buffer – Host Memory Buffer Descriptor Entry ................................................. 448
+Figure 483: Host Memory Buffer – Completion Queue Entry Dword 0 ......................................................... 448
+Figure 484: Host Memory Buffer – Attributes Data Structure ................................................................. 448
+Figure 485: Set Features – Command Specific Status Values ................................................................. 449
+Figure 486: Track Receive – Command Dword 10 ................................................................. 449
+Figure 487: Track Receive – Command Dword 12 ................................................................. 450
+Figure 488: Tracked Memory Changes – Command Dword 11 ................................................................. 450
+Figure 489: Tracked Memory Change Data Structure ................................................................. 450
+Figure 490: Tracked Memory Changed Descriptor ................................................................. 451
+Figure 491: Track Receive – Command Specific Status Values ................................................................. 452
+Figure 492: Track Send – Command Dword 10 ................................................................. 452
+Figure 493: Log User Data Changes – Management Operation Specific Field ................................................. 453
+Figure 494: Log User Data Changes – Command Dword 11 ................................................................. 453
+Figure 495: Track Memory Changes – Management Operation Specific Field ................................................. 454

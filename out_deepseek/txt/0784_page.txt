@@ -1,0 +1,8 @@
+o Total Time For Thermal Management Temperature [1-2];
+and
+
+• Persistent Event Log fields (refer to section 5.2.12.1.14):
+  o Power On Hours (POH) (refer to Figure 230);
+  o Power Cycle Count (refer to Figure 230);
+  o Controller Power Cycle (refer to Figure 238); and
+  o Power on milliseconds (refer to Figure 238).

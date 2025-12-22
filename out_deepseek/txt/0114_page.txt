@@ -1,0 +1,13 @@
+3.3.1.5 Full Queue
+
+The queue is Full when the Head equals one more than the Tail. The number of entries in a queue when full is one less than the queue size. Figure 74 defines the Full Queue condition.
+
+Note: Queue wrap conditions shall be taken into account when determining whether a queue is Full.
+
+3.3.2 Message-based Transport Queue Model (Fabrics)
+
+For NVMe over Fabrics, a queue is a unidirectional communication channel that is used to send capsules between a host and a controller. A host uses Submission Queues to send command capsules (refer to section 3.3.2.1.1) to a controller. A controller uses Completion Queues to send response capsules (refer to section 3.3.2.1.2) to a host. Submission and Completion Queues are created in pairs using the Connect command (refer to section 3.3.2.2).
+
+The NVMe Transport is responsible for delivering command capsules to the controller and notifying the controller of capsule arrival in a transport-specific fashion.
+
+Altering a command capsule between host submission to the Submission Queue and transport delivery of that capsule to the controller results in undefined behavior.

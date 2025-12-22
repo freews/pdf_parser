@@ -1,0 +1,36 @@
+If the Log Specific Identifier field is cleared to 0h, then the specified domain is the domain containing the controller that is processing the command.
+
+If the NVM subsystem supports multiple domains, then Capacity Configuration Identifier values are unique within the specified domain. If the NVM subsystem does not support multiple domains, then Capacity Configuration Identifier values are unique within the NVM subsystem.
+
+In the Supported Capacity Configuration List (refer to Figure 261), Capacity Configuration Descriptors shall be listed in ascending order by Capacity Configuration Identifier, and each Capacity Configuration Identifier shall appear only once.
+
+### Figure 261: Supported Capacity Configuration List Log Page
+
+| Bytes | Description |
+|-------|-------------|
+| 0     | Number of Supported Capacity Configurations (SCCN): This field indicates the number of Capacity Configuration Descriptors in the list. If this field is cleared to 0h, then no Capacity Configuration Descriptors are reported. |
+| 15:1  | Reserved |
+| NOTE 1 | Capacity Configuration Descriptor List |
+| NOTE 1 | Capacity Configuration 0 Descriptor: This field indicates the first Capacity Configuration Descriptor (refer to Figure 262) in the list, if any. |
+| NOTE 1 | Capacity Configuration 1 Descriptor: This field indicates the second Capacity Configuration Descriptor in the list, if any. |
+| ...  | Capacity Configuration SCCN-1 Descriptor: This field indicates the last Capacity Configuration Descriptor in the list, if any. |
+
+Notes:
+1. Capacity Configuration Descriptors may be different lengths.
+
+The Capacity Configuration Descriptor (refer to Figure 262) indicates the details of a particular configuration of Endurance Groups and contains one Endurance Group Configuration Descriptor for each Endurance Group accessible by the controller processing the command.
+
+In the Capacity Configuration Descriptor (refer to Figure 262), Endurance Group Configuration Descriptors shall be listed in ascending order by Endurance Group Identifier, and each Endurance Group Identifier shall appear only once.
+
+### Figure 262: Capacity Configuration Descriptor
+
+| Bytes | Description |
+|-------|-------------|
+| 1:0   | Capacity Configuration Identifier (CCID): This field indicates the identifier for this Capacity Configuration. |
+| 3:2   | Domain Identifier (DID): This field indicates the identifier of the domain (refer to section 3.2.5.4) containing the Endurance Group configurations described by this Capacity Configuration Descriptor. A value of 0h indicates that a Domain Identifier is not reported. If multiple domains are not supported, then this field shall be cleared to 0h. |
+| 5:4   | Number of Endurance Group Configuration Descriptors (EGCN): This field indicates the number of Endurance Group Configuration Descriptors in the list. If this field is cleared to 0h, then no Endurance Group Configuration Descriptors are reported. |
+| 31:6  | Reserved |
+| NOTE 1 | Endurance Group Configuration Descriptor List |
+| NOTE 1 | Endurance Group Configuration 0 Descriptor: This field indicates the first Endurance Group Configuration Descriptor (refer to Figure 263) in the list, if any. |
+| NOTE 1 | Endurance Group Configuration 1 Descriptor: This field indicates the second Endurance Group Configuration Descriptor in the list, if any. |
+| ...  | Endurance Group Configuration EGCN-1 Descriptor: This field indicates the last Endurance Group Configuration Descriptor in the list, if any. |

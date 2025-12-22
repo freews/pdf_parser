@@ -1,0 +1,32 @@
+Figure 710: Unrestricted Processing State Transition Conditions
+
+| State Transition | Transition Condition |
+|-----------------|----------------------|
+| Starting         | Ending | Label 1 |
+| Unrestricted    | Idle    | C2 |
+| Processing       | Unrestricted Failure | D2 |
+| Media Verification | F2 |
+| Notes:         | Refer to Figure 706. |
+
+Transition Unrestricted Processing: Idle:
+
+The controller shall:
+
+a) if the sanitization target is the NVM subsystem:
+   - if the Sanitize Namespace command is not supported:
+      i. set the Global Data Erased (GDE) bit to ‘1’ in the Sanitize Status log page for the NVM subsystem; and
+      ii. set the Sanitize State (SANS) field to 0h (i.e., Idle state) in the Sanitize Status log page for the NVM subsystem;
+   - if the Sanitize Namespace command is supported:
+      i. set the Global Data Erased (GDE) bit to ‘1’ in every Sanitize Status log page for the NVM subsystem; and
+      ii. set the SANS field to 0h (i.e., Idle state) in the Sanitize Status log page for the NVM subsystem and each namespace that exists in the NVM subsystem;
+   - if the sanitization target is a namespace:
+      i. set the Namespace Data Erased (NDE) bit to ‘1’ in the Sanitize Status log page for that namespace; and
+      ii. set the SANS field to 0h (i.e., Idle state) in the Sanitize Status log page for that namespace; and
+   - if the Sanitize Operation Completed asynchronous event or the Sanitize Operation Completed With Unexpected Deallocation asynchronous event as described in section 8.1.26.1.
+
+Transition Unrestricted Processing: Unrestricted Failure:
+
+The controller shall:
+
+a) set the FAILS field to 3h in the Sanitize Status log page for the sanitization target (i.e., Unrestricted Processing state); and
+b) report the Sanitize Operation Completed asynchronous event or the Sanitize Operation Completed With Unexpected Deallocation asynchronous event as described in section 8.1.26.1.

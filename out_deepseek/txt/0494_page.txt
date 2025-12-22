@@ -1,0 +1,30 @@
+Figure 531: Discovery Information Management – Data
+
+| Bytes | O/M\(^1\) | Description |
+|-------|----------|-------------|
+| **Header** |
+| 03:00 | M | Total Data Length (TDL): This field specifies the length in bytes of the entire data portion of the command. |
+| 07:04 | | Reserved |
+| 15:08 | M | Number of Entries (NUMENT): This field specifies the number of discovery information entries being registered, de-registered, or updated. For a register or de-register task, this field shall be non-zero. For an update task, this field shall be set to 2h. |
+| 17:16 | M | Entry Format (ENTFMT): This field specifies the format of the discovery information entries being registered, de-registered, or updated. |
+
+| Value | Definition |
+|-------|-----------|
+| 0h    | Reserved   |
+| 1h    | Basic discovery information entry |
+| 2h    | Extended discovery information entry |
+| 3h to FFFFH | Reserved |
+
+| 19:18 | M | Entity Type (ETYPE): This field specifies the type of entity performing the register, de-register, or update task. |
+
+| Value | Definition |
+|-------|-----------|
+| 0h    | Reserved   |
+| 1h    | Host       |
+| 2h    | Direct Discovery controller |
+| 3h    | Centralized Discovery controller |
+| 4h to FFFFH | Reserved |
+
+| 20 | O\(^2\) | Port Local (PORTLCL): This field specifies if the NVM subsystem discovery information entries being registered, de-registered, or updated are only for NVM subsystem ports that are presented through the same NVM subsystem port on the DDC that is performing the register, de-register, or update task. If the Entity Type (ETYPE) field is set to any value other than 2h (i.e., an entity other than a DDC is performing the register, de-register, or update task) and this field is not cleared to 0h, then the controller shall abort the command with a status code of Invalid Field in Command. If this field is set to 1h, then the NVM subsystem discovery information entries being registered, de-registered, or updated are only for NVM subsystem ports that are presented through the same NVM subsystem port on the DDC that is performing the register, de-register, or update task. If this field is cleared to 0h, then the NVM subsystem discovery information entries being registered, de-registered, or updated may be for NVM subsystem ports that are presented through any NVM subsystem port on that DDC. |
+
+| 21 | | Reserved |

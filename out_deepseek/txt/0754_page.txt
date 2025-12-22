@@ -1,0 +1,34 @@
+Hash Length (HL): Shall be set to the length in bytes of the selected hash function, as specified in Figure 798.
+
+Response Valid: If the host did not request authentication of the controller (i.e., bidirectional authentication) this field shall be cleared to 0h to indicate that no response is conveyed (i.e., the Response Value field is not valid). If the host did request authentication of the controller, this field shall be set to 01h.
+
+Response Value (RVAL): DH-HMAC-CHAP response value \( R_2 \). The value of \( R_2 \) is computed using the hash function \( H() \) selected by the HashID parameter of the DH-HMAC-CHAP_Challenge message, and the augmented challenge \( C_{a2} \). If the NULL DH group has been selected, the augmented challenge \( C_{a2} \) is equal to the challenge \( C_2 \) received from the host (i.e., \( C_{a2} = C_2 \)). If a non-NULL DH group has been selected, the augmented challenge is computed applying the HMAC function using the hash function \( H() \) selected by the HashID parameter in the DH-HMAC-CHAP_Challenge message with the hash of the ephemeral DH key resulting from the combination of the random value \( x \) selected by the controller with the DH exponential (i.e., \( g^y \mod p \)) received from the host as HMAC key (refer to RFC 2104) to the challenge \( C_2 \) (i.e., \( C_{a2} = \text{HMAC}(H((g^y \mod p)^x \mod p), C_2) = \text{HMAC}(H(g^x \mod p), C_2) \)). The value of \( R_2 \) shall be computed applying the HMAC function using the hash function \( H() \) selected by the HashID parameter in the DH-HMAC-CHAP_Challenge message with key \( K_c \) as HMAC key to the concatenation of the augmented challenge \( C_{a2} \), the sequence number \( S_2 \), the transaction identifier \( T\_ID \), the secure channel concatenation indication \( SC\_C \) received in the AUTH_Negotiate message, the ten ASCII characters “Controller” to indicate the controller is computing the reply, the NVM Subsystem NQN not including the null terminator, a 00h byte, and the host NQN not including the null terminator (i.e., \( R_2 = \text{HMAC}(K_c, C_{a2} \parallel S_2 \parallel T\_ID \parallel SC\_C \parallel "Controller" \parallel NQN_c \parallel 00h \parallel NQN_h) \)). Using C language notation:
+
+\[
+C_{a2} = (DHgID == 00h) ? C_2 : \text{HMAC}(H((g^y \mod p)^x \mod p), C_2) \\
+R_2 = \text{HMAC}(K_c, C_{a2} \parallel S_2 \parallel T\_ID \parallel SC\_C \parallel "Controller" \parallel NQN_c \parallel 00h \parallel NQN_h)
+\]
+
+Upon receiving a DH-HMAC-CHAP_Success1 message:
+
+- if the Hash Length (HL) does not match the value specified in Figure 798 for the selected hash function, the host shall:
+  - reply with an AUTH_Failure2 message having reason code ‘Authentication failure’ and reason code explanation ‘Incorrect payload’; and
+  - disconnect the NVMe over Fabrics connection;
+- and
+- if the Response Valid field is set to 01h, the host shall verify the response value \( R_2 \) using the negotiated hash function and DH group. If verification of the response value \( R_2 \) does not succeed, the host shall:
+  - reply with an AUTH_Failure2 message having reason code ‘Authentication failure’ and reason code explanation ‘Authentication failed’; and
+  - disconnect the NVMe over Fabrics connection.
+
+If verification of the response value \( R_2 \) succeeds, the controller has been authenticated and the host shall continue with a DH-HMAC-CHAP_Success2 message.
+
+8.3.5.5.6 DH-HMAC-CHAP_Success2 Message
+
+The DH-HMAC-CHAP_Success2 message is sent from the host to the controller and indicates that the host has successfully authenticated the controller. The format of the DH-HMAC-CHAP_Success2 message is shown in Figure 803.
+
+| Bytes | Description |
+|-------|-------------|
+| 0     | Authentication Type (AUTH_TYPE): 01h (i.e., DH-HMAC-CHAP) |
+| 1     | Authentication Identifier (AUTH_ID): 04h (i.e., DH-HMAC-CHAP_Success2) |
+| 3:2   | Reserved |
+
+Figure 803: DH-HMAC-CHAP_Success2 message format

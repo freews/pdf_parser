@@ -1,0 +1,47 @@
+Figure 533: Extended Attribute
+
+| Bytes | Description |
+|-------|-------------|
+| 01:00 | Extended Attribute Type (EXATTYPE): This field specifies the type of extended attribute for the extended attribute contained in the extended discovery information entry. |
+
+| Value | O/M\(^1\) | Definition |
+|-------|-----------|-----------|
+| 0h    |           | Reserved   |
+| 1h    | HM        | Host Identifier |
+| 2h    | O         | Admin label ASCII |
+| 3h    | O         | Admin label UTF-8 |
+| 4h to FFFh | Reserved | Reserved |
+| FF00h to FFFfh | O | Vendor Specific |
+
+| 03:02 | Extended Attribute Length (EXATLEN): This field specifies the length of the Extended Attribute Value (EXATVAL) field for the extended attribute contained in the extended discovery information entry. The length specified in this field shall be a non-zero value that is a multiple of four, and is either a fixed length or within a variable range based upon the value set in the Extended Attribute Type (EXATTYPE) field. If the length specified in this field is not a multiple of four, then the controller shall abort the command with a status code of Invalid Field in Command. |
+
+| Extended Attribute Type | Length |
+|-------------------------|--------|
+| Host Identifier           | 16 bytes |
+| Admin label ASCII         | 4 to 256 bytes |
+| Admin label UTF-8        |        |
+
+| (EXATLEN - 1) + 4:04 | Extended Attribute Value (EXATVAL): This field specifies the value for the extended attribute contained in the extended discovery information entry. The value specified in this field is based upon the value set in the Extended Attribute Type (EXATTYPE) field. Unused bytes, if any, shall be cleared to 0h. |
+
+| Extended Attribute Type | Definition |
+|-------------------------|-----------|
+| Host Identifier           | This value specifies the Host Identifier of the host, as defined in section 5.2.26.1.32. |
+| Admin label ASCII         | This value specifies the admin label of the host or NVM subsystem encoded in ASCII. The admin label is used to identify a host or an NVM subsystem. |
+| Admin label UTF-8        | This value specifies the admin label of the host or NVM subsystem encoded in UTF-8. The admin label is used to identify a host or an NVM subsystem. |
+
+Notes:
+1. O/M definition: O = Optional, M = Mandatory, HM = Mandatory for hosts and prohibited for NVM subsystems.
+
+Figure 534: Extended Discovery Information Entry – Applicable Fields
+
+| Field Name | Extended Discovery Information Entry Type: |
+|-----------|-------------------------------------------|
+|           | Host | NVM Subsystem |
+| Transport Type (TRTYPE) | Used | Used |
+| Address Family (ADRFAM) | Used | Used |
+| Subsystem Type (SUBTYPE) | Ignored\(^1\) | Used |
+| Transport Requirements (TREQ) | Ignored\(^1\) | Used |
+| Port ID (PORTID) | Ignored\(^1\) | Used |
+| Controller ID (CNTLID) | Ignored\(^1\) | Used |
+| Admin Max SQ Size (ASQSZ) | Ignored\(^1\) | Used |
+| Transport Service Identifier (TRSVCID) | Ignored\(^1\) | Used |

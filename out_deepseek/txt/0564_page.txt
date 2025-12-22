@@ -1,0 +1,77 @@
+### Figure 631: CDP Response Data Frame
+
+| Bytes | Description |
+|-------|-------------|
+| 00    | Response Data Frame Version (RESPDFV): This field indicates the version of this data frame that includes the header and the payload. This field shall be cleared to 0h. |
+| 01    | Data Frame Header Length (DFHL): This field indicates the length in bytes of this header. This field shall be set to 4h. |
+| 03:02 | Response Data Frame Size (RESPDFS): This field indicates the size of this data frame structure in bytes including the header and common payload. This field shall be set to 07h. |
+
+### Request Common Payload
+
+| Bits | Description |
+|------|-------------|
+| 04   | CDP Response Message Type (CDPRMT): This field indicates the CDP response message type. This field shall be set to the Response Message Type value corresponding to this operation (refer to Figure 629). |
+| 05   | Result Code (RC): This field indicates the result code. This field shall be set to the Result Code value of the most recent Security Send command that returned a successful completion since the last Controller Level Reset of the controller that processed the corresponding request. |
+
+### Result Code
+
+| Value | Definition |
+|-------|-------------|
+| 00h   | Operation Successful |
+| 01h   | General Failure |
+| 02h   | Authentication Failure (e.g., credential comparison not matching) |
+| 03h   | DHK Not Programmed |
+| 04h   | Authentication Method Not Supported |
+| 05h to FFh | Reserved |
+
+### Result Data Size (RESPDS)
+
+| Value | Definition |
+|-------|-------------|
+| 00h   | Operation Successful |
+| 01h   | General Failure |
+| 02h   | Authentication Failure (e.g., credential comparison not matching) |
+| 03h   | DHK Not Programmed |
+| 04h   | Authentication Method Not Supported |
+| 05h to FFh | Reserved |
+
+### Response Data Size (RESPDS)
+
+| Value | Definition |
+|-------|-------------|
+| 00h   | Operation Successful |
+| 01h   | General Failure |
+| 02h   | Authentication Failure (e.g., credential comparison not matching) |
+| 03h   | DHK Not Programmed |
+| 04h   | Authentication Method Not Supported |
+| 05h to FFh | Reserved |
+
+### CDP Request Data
+
+| Value | Definition |
+|-------|-------------|
+| 00h   | Operation Successful |
+| 01h   | General Failure |
+| 02h   | Authentication Failure (e.g., credential comparison not matching) |
+| 03h   | DHK Not Programmed |
+| 04h   | Authentication Method Not Supported |
+| 05h to FFh | Reserved |
+
+### 8.1.6.2.1 CDP Request and Response Data
+
+This section specifies the contents of the Request Data field for CDP Request Message Types.
+
+### 8.1.6.2.1.1 CDP Programmable Key Authentication Unfreeze Data
+
+#### 8.1.6.2.1.1.1 CDP Programmable Key Authentication Unfreeze Request Data
+
+Figure 632 specifies the Request Data for a Personality Unfreeze Request operation using Programmable Key Authentication (refer to the AUS field in Figure 285).
+
+### Figure 632: CDP Programmable Key Authentication Unfreeze Request Data
+
+| Bytes | Description |
+|-------|-------------|
+| 05:00 | CDP Request Data Frame Common Fields (CDPREQDFCF): This field contains the CDP Request Data Frame common fields (refer to Figure 630) with the CDP Request Message Type field set to a value of 1h (i.e., Personality Unfreeze Request). |
+| 06   | Personality Identifier (PERID): This field specifies the Personality Identifier this operation is targeting (refer to Figure 447). |
+| 07   | CDP Authentication Method Identifier (CDPAMI): This field specifies the CDP Authentication Method Identifier value of 02h (refer to the AUS field in Figure 285). |
+| 08   | CDP Authentication Algorithm (CDPAA): This field specifies the keyed-hash algorithm being used (refer to the CDPALG field in Figure 328). This field contains the value that represents the position of the corresponding bit in the CDPALG bitmask (e.g., a value of ‘0h’ corresponds to the HMAC-SHA-384 algorithm). |

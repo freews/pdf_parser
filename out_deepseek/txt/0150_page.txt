@@ -1,0 +1,39 @@
+information for each Endurance Group, the host uses the Get Log Page command to access the Endurance Group Information log page (refer to section 5.2.12.1.10).
+
+For an NVM subsystem that supports NVM Sets (refer to section 3.2.2), the host may use the Identify command to access the NVM Set List data structure (refer to section 5.2.13.2.4) to determine the NVM Sets that are accessible by the controller and the capacity information for each of those NVM Sets.
+
+For the management of Endurance Groups, NVM Sets, and namespaces that contain formatted storage, Figure 89 describes the effects of the support of NVM Sets, Endurance Groups, and domains on which capacity information is used for each management operation.
+
+**Figure 89: Capacity Information Field Usage**
+
+| Entity being created / deleted | NVM Sets supported | Endurance Groups supported | Domains supported | Capacity information used |
+|--------------------------------|----------------------|-----------------------------|-------------------|--------------------------|
+| Endurance Group \(^7\)        | n/a                  | Yes                         | No                | NVM subsystem \(^3\)    |
+|                                |                          |                             | Yes              | Domain \(^4\)            |
+| NVM Set \(^7\)                | Yes                 | Yes \(^2\)                  | n/a              | Endurance Group \(^5\)  |
+| Namespace that contains formatted storage \(^8\) | No                  | No                         | Yes              | NVM subsystem \(^3\)    |
+|                                |                          |                             | Yes              | Domain \(^4\)            |
+|                                |                          |                             | Yes              | Endurance Group \(^5\)  |
+|                                |                          |                             | Yes              | NVM Set \(^6\)           |
+
+Notes:
+1. This information described in this column is used by the host for creating the entity (e.g., to determine if there is sufficient available capacity) and this information is altered by the controller as a result of the creation or deletion of the entity (e.g., unallocated capacity decreased as a result of entity creation, or unallocated capacity increased as a result of entity deletion).
+2. NVM Set support requires support for Endurance Groups as described in section 3.2.2.
+3. Capacity information in the Identify Controller data structure (i.e., TNVMCAP field, UNVMCAP field, and MEGCAP field (refer to Figure 328)).
+4. Capacity information in the Domain Attributes Entry (i.e., Total Domain Capacity field, Unallocated Domain Capacity field, and Max Endurance Group Domain Capacity field (refer to Figure 340)).
+5. Capacity information in the Endurance Group Information log page (i.e., TEGCAP field, UEGCAP field (refer to Figure 222)).
+6. Capacity information in the NVM Set Attributes Entry (i.e., Total NVM Set Capacity field, and Unallocated NVM Set Capacity field (refer to Figure 334)).
+7. Endurance Groups and NVM Sets are created and deleted using the Capacity Management command (refer to section 5.2.3).
+8. Namespaces are created and deleted using the Namespace Management command (refer to section 8.1.16). Namespaces are deleted using the Capacity Management command.
+
+### 3.9 Keep Alive
+
+The Keep Alive capability uses the Keep Alive Timer on a controller as a watchdog timer to detect communication failures (e.g., transport failure, host failure, or controller failure) between a host and a controller. If the Keep Alive Timer feature is supported (i.e., the KAS field is set to a non-zero value (refer to Figure 328)), the controller shall support the Keep Alive command.
+
+The term Keep Alive Timeout Time (KATT) refers to the time indicated by the value of the Keep Alive Timeout field on a controller (refer to Figure 416).
+
+The NVMe Transport binding specification for the associated NVMe Transport defines:
+
+- the minimum Keep Alive Timeout value, if any;
+- the maximum Keep Alive Timeout value, if any; and
+- if the Keep Alive Timer feature is required to be supported and enabled.

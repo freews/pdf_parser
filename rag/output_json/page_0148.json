@@ -1,0 +1,18 @@
+{
+  "page_number": "124",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 87: Vertically-Organized NVM Subsystem\n\n[img]\n\nThe Capacity Configuration Descriptor for this example contains four Endurance Group Configuration Descriptors. Each Endurance Group Configuration Descriptor contains one NVM Set Identifier and one Channel Configuration Descriptor. Each Channel Configuration Descriptor contains four Media Unit Configuration Descriptors.\n\n### 3.8.2.3 Horizontally-Organized Dual NAND NVM Subsystem\n\nFigure 88 shows an example of a single domain NVM subsystem where the Media Units are NAND which is capable of being operated as QLC or at a lower density. The performance goal is for maximum bandwidth to a small NVM Set operating as SLC and to a larger NVM Set operating as QLC.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 87: Vertically-Organized NVM Subsystem",
+        "coordinates": [
+          195,
+          113,
+          800,
+          435
+        ]
+      }
+    ]
+  }
+}

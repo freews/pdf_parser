@@ -1,0 +1,42 @@
+The controller shall:
+a) report the Sanitize Operation Completed asynchronous event as described in section 8.1.26.1; and
+b) set the FAILS field in the Sanitize Status log page for the sanitization target to 6h (i.e., Post-Verification Deallocation state).
+
+Transition Post-Verification Deallocation: Unrestricted Failure:
+
+The controller shall:
+a) report the Sanitize Operation Completed asynchronous event as described in section 8.1.26.1; and
+b) set the FAILS field in the Sanitize Status log page for the sanitization target to 6h (i.e., Post-Verification Deallocation state).
+
+8.1.26.5 Sanitize Operation Restrictions
+
+In the following states:
+- Restricted Processing;
+- Restricted Failure;
+- Unrestricted Processing;
+- Unrestricted Failure;
+- Media Verification; and
+- Post-Verification Deallocation,
+
+all enabled controllers in the NVM subsystem have restrictions in the set of actions that they are allowed to perform.
+
+When a sanitize operation starts on any controller (i.e., a transition into the Restricted Processing state occurs or a transition into the Unrestricted Processing state occurs), all controllers in the NVM subsystem shall:
+- update the Sanitize Status log page for the sanitization target (refer to section 5.2.12.1.36);
+- suspend autonomous power state management activities as described in section 8.1.18.2;
+- for NVM subsystem sanitize operations:
+  - clear all of the following outstanding asynchronous events:
+    - Sanitize Operation Completed asynchronous event, if any;
+    - Sanitize Operation Completed With Unexpected Deallocation asynchronous event, if any; and
+    - Sanitize Operation Entered Media Verification State asynchronous event, if any;
+  - abort any command (submitted or in progress) not allowed during an NVM subsystem sanitize operation (refer to Figure 143) with a status code of Sanitize In Progress, unless otherwise specified (e.g., a media verification Read command);
+  - abort any in progress device self-test operations; and
+  - release stream identifiers for any open streams;
+- and
+- for namespace sanitize operations:
+  - abort any I/O command (submitted or in progress) specifying the NSID of the namespace, unless otherwise specified (e.g., a media verification Read command);
+  - process any Admin command as specified in section 5.1.2;
+  - abort any in progress device self-test operations specifying the NSID of the namespace or specifying the NSID set to FFFFFFFFFh; and
+  - release stream identifiers allocated for exclusive use by the namespace for any open streams.
+
+If a sanitize operation is in any of the following states (i.e., is in progress):
+- Restricted Processing;

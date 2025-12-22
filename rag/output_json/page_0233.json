@@ -1,0 +1,18 @@
+{
+  "page_number": "209",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 206: Get Log Page – Log Page Identifiers\n\n| Log Page Identifier | CSI8 | Scope | Log Page Name | Reference Section |\n|---|---|---|---|---|\n| 00h | Y | Controller | Supported Log Pages | 5.2.12.1.1 |\n| 01h | N | Controller | Error Information | 5.2.12.1.2 |\n| 02h | N | Controller¹ / Namespace² | SMART / Health Information | 5.2.12.1.3 |\n| 03h | N | Domain / NVM subsystem⁶ | Firmware Slot Information | 5.2.12.1.4 |\n| 04h | N | Controller | Changed Attached Namespace List | 5.2.12.1.5 |\n| 05h | Y | Controller | Commands Supported and Effects | 5.2.12.1.6 |\n| 06h | N | Controller / Domain / NVM subsystem³, 4, 6 | Device Self-test⁵ | 5.2.12.1.7 |\n| 07h | N | Controller / NVM subsystem⁷ | Telemetry Host-Initiated⁵ | 5.2.12.1.8 |\n| 08h | N | Controller / NVM subsystem⁷ | Telemetry Controller-Initiated⁵ | 5.2.12.1.9 |\n| 09h | N | Domain / NVM subsystem⁶ | Endurance Group Information | 5.2.12.1.10 |\n| 0Ah | N | Domain / NVM subsystem⁶ | Predictable Latency Per NVM Set | 5.2.12.1.11 |\n| 0Bh | N | Domain / NVM subsystem⁶ | Predictable Latency Event Aggregate | 5.2.12.1.12 |\n| 0Ch | N | Controller | Asymmetric Namespace Access | 5.2.12.1.13 |\n| 0Dh | N | NVM subsystem | Persistent Event Log⁵ | 5.2.12.1.14 |\n| 0Eh | | Refer to the NVM Express NVM Command Set Specification | | |\n| 0Fh | N | Domain / NVM subsystem⁶ | Endurance Group Event Aggregate | 5.2.12.1.15 |\n| 10h | N | Domain / NVM subsystem⁵, 6 | Media Unit Status | 5.2.12.1.16 |\n| 11h | N | Domain / NVM subsystem⁶ | Supported Capacity Configuration List | 5.2.12.1.17 |\n| 12h | Y | Controller | Feature Identifiers Supported and Effects | 5.2.12.1.18 |\n| 13h | N | Controller | NVMe-MI Commands Supported and Effects | 5.2.12.1.19 |\n| 14h | Y | NVM subsystem | Command and Feature Lockdown⁵ | 5.2.12.1.20 |\n| 15h | N | Controller | Boot Partition | 5.2.12.1.21 |\n| 16h | N | Endurance Group | Rotational Media Information | 5.2.12.1.22 |\n| 17h | N | Namespace | Dispersed Namespace Participating NVM Subsystems | 5.2.12.1.23 |\n| 18h | N | NVM subsystem | Management Address List | 5.2.12.1.24 |\n| 19h | | Refer to the applicable NVM Express Transport specification | | |\n| 1Ah | N | Controller | Reachability Groups | 5.2.12.1.25 |\n| 1Bh | N | Controller | Reachability Associations | 5.2.12.1.26 |\n| 1Ch | N | Controller | Changed Allocated Namespace List | 5.2.12.1.27 |\n| 1Dh | N | NVM subsystem | Device Personalities | 5.2.12.1.28 |\n| 1Eh | N | Controller | Cross-Controller Reset | 5.2.12.3.1 |\n| 1Fh | N | Controller | Lost Host Communication | 5.2.12.3.2 |\n| 20h | N | Endurance Group | FDP Configurations | 5.2.12.1.29 |\n| 21h | N | Endurance Group | Reclaim Unit Handle Usage | 5.2.12.1.30 |\n| 22h | N | Endurance Group | FDP Statistics | 5.2.12.1.31 |\n| 23h | N | Endurance Group | FDP Events | 5.2.12.1.32 |\n| 24h | Reserved | | | |\n| 25h | N | NVM subsystem | Power Measurement | 5.2.12.1.33 |\n| 26h to 6Fh | Reserved | | | |\n| 70h | N | Controller | Discovery | 5.2.12.3.3 |\n| 71h | N | Controller | Host Discovery | 5.2.12.3.4 |\n| 72h | N | Controller | AVE Discovery | 5.2.12.3.5 |\n| 73h | N | Controller | Pull Model DDC Request | 5.2.12.3.6 |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 206: Get Log Page – Log Page Identifiers",
+        "coordinates": [
+          109,
+          105,
+          885,
+          905
+        ]
+      }
+    ]
+  }
+}

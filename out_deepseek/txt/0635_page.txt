@@ -1,0 +1,36 @@
+### Figure 690: RPMB Device Configuration Block Data Structure
+
+| Bytes | Type | Description |
+|-------|------|-------------|
+| 01    | RW   | **Boot Partition Protection State (BPLS):** This field specifies the current Boot Partition protection state when RPMB Boot Partition Write Protection is enabled. This field shall be cleared to 0h unless RPMB Boot Partition Write Protection is enabled. Refer to section 8.1.3.3. |
+|       |      | **Bits** | **Description** |
+|       |      | 7:2 | Reserved |
+|       |      | 1 | **Boot Partition 1 Write Locked (BPP1L):** If this bit is set to ‘1’, then Boot Partition 1 (i.e., the BPID bit in Figure 185 is set to ‘1’) is write locked. If this bit is cleared to ‘0’, then the Boot Partition 1 is write unlocked. |
+|       |      | 0 | **Boot Partition 0 Write Locked (BPP0L):** If this bit is set to ‘1’, then Boot Partition 0 (i.e., the BPID bit in Figure 185 is cleared to ‘0’) is write locked. If this bit is cleared to ‘0’, then the Boot Partition 0 is write unlocked. |
+
+### Figure 691: RPMB Request and Response Message Types
+
+| Request Message Types | Description | Requires Data | RPMB Frame Length (bytes) |
+|------------------------|-------------|---------------|--------------------------|
+| 0001h                 | Authentication key programming request | The host is attempting to program the Authentication Key for the selected RPMB target to the controller. | No | 256 |
+| 0002h                 | Reading of the Write Counter value request | The host is requesting to read the current Write Counter value from the selected RPMB target. | No | 256 |
+| 0003h                 | Authenticated data write request | The host is attempting to write data to the selected RPMB target. | Yes | M + 256 |
+| 0004h                 | Authenticated data read request | The host is attempting to read data from the selected RPMB target. | No | 256 |
+| 0005h                 | Result read request | The host is attempting to read the result code for any of the other Message Types. | No | 256 |
+
+### Table 1: Bits and Descriptions of RPMB Device Control (WPC)
+
+| Bits | Description |
+|------|-------------|
+| 7:2  | Reserved |
+| 1    | **Permanent Write Protect Control (PWPC):** This bit cleared to ‘0’ specifies that the controller aborts a Set Features command which attempts to set the namespace write protection state to Permanent Write Protect, as defined in section 8.1.17. This bit set to ‘1’ specifies that the controller processes a Set Features command which attempts to set the namespace write protection state to Permanent Write Protect. |
+|      | If the controller supports Namespace Write Protection, then this bit shall be cleared to ‘0’ after a power cycle or a Controller Level Reset. |
+| 1    | **Write Protect Until Power Cycle Control (WPU PCC):** This bit cleared to ‘0’ specifies that the controller aborts a Set Features command which attempts to set the namespace write protection state to Write Protect Until Power Cycle, as defined in section 8.1.17. This bit set to ‘1’ specifies that the controller processes a Set Features command which sets the namespace write protection state to Write Protect Until Power Cycle. |
+|      | If the controller supports Namespace Write Protection, then this bit shall be cleared to ‘0’ after a power cycle or a Controller Level Reset. |
+
+### Table 2: Reserved
+
+| Reserved |
+|----------|
+
+### Table 3: Response Message Types

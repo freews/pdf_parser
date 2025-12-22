@@ -1,0 +1,27 @@
+{
+  "page_number": "174",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 143: NVM Subsystem Sanitize Operations and Format NVM Command – Admin Commands Allowed\n\n| Admin Command | Additional Restrictions for a Format NVM Command | Additional Restrictions for a Sanitize Operation |\n|---------------|--------------------------------------------------|--------------------------------------------------|\n| Opcode 7Fh | The Fabrics commands allowed are listed below. Refer to section 6.\n\n| Fabrics command | Additional Restrictions for a Format NVM Command and a Sanitize Operation |\n|------------------|--------------------------------------------------|\n| Property Set | |\n| Connect | |\n| Disconnect | |\n| Property Get | |\n| Authentication Send | |\n| Authentication Receive | |\n| Vendor Specific | Commands are allowed that do not affect or retrieve user data. |\n| Vendor Specific | Commands are allowed that do not affect or retrieve user data. |\n\n## 5.1.2 Namespace Sanitize Operation Admin Command Processing Restrictions\n\nFigure 144 lists Admin commands that have processing restrictions while a namespace sanitize operation is in progress.\n\nIf an Admin command is being processed that either:\n\n- affects (e.g., changes or deletes) a namespace that is the sanitization target of an in progress namespace sanitize operation (e.g., a command that affects all namespaces or a command with an NSID set to the NSID of a namespace which is being sanitized); or\n- causes the user data to be accessed (e.g., read) for a namespace that is the sanitization target of an in progress namespace sanitize operation,\n\nthen that command shall be aborted with a status code of Sanitize Namespace In Progress.\n\nSome Admin commands only affect attached namespaces while other Admin commands are capable of affecting namespaces that are not attached. Figure 144 describes Admin command processing restrictions for all controllers while any namespace is a sanitization target of an in progress namespace sanitize operation. Figure 145 describes Admin command processing restrictions for controllers with an attached namespace that is a sanitization target of an in progress namespace sanitize operation. Admin commands not shown in Figure 144 or Figure 145 (e.g., Vendor Specific commands) are aborted with a status code of Sanitize Namespace In Progress if the implementation of that Admin command affects a namespace which is a sanitization target of an in progress namespace sanitize operation.\n\n## Figure 144: Namespace Sanitize Operations – Admin Command Restrictions, All Controllers\n\n| Combined Opcode | Command | Additional Admin Command Restrictions While a Namespace is a Sanitization Target |\n|------------------|---------|--------------------------------------------------|\n| 09h | Set Features | Abort the command with a status code of Sanitize Namespace In Progress if the command specifies the Feature Identifier of 22h (i.e., Configurable Device Personality). |\n| 0Dh | Namespace Management | Abort the command with a status code of Sanitize Namespace In Progress if the SEL field is set to 2h (i.e., Delete) and:\n\n- the NSID specified in the command is the NSID of a namespace with a namespace sanitize operation in progress on that namespace; or\n- the NSID field is set to FFFFFFFFh. |\n| 10h | Firmware Commit | Abort the command with a status code of Sanitize Namespace In Progress. |\n| 11h | Firmware Image Download | Abort the command with a status code of Sanitize Namespace In Progress. |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 143: NVM Subsystem Sanitize Operations and Format NVM Command – Admin Commands Allowed",
+        "coordinates": [
+          114,
+          144,
+          880,
+          345
+        ]
+      },
+      {
+        "name": "Figure 144: Namespace Sanitize Operations – Admin Command Restrictions, All Controllers",
+        "coordinates": [
+          114,
+          695,
+          880,
+          880
+        ]
+      }
+    ]
+  }
+}

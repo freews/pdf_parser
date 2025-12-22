@@ -1,0 +1,39 @@
+If the Save and Select Feature Support (SSFS) bit is set to ‘1’ in the Optional NVM Command Support (ONCS) field of the Identify Controller data structure in Figure 328, then for each Feature, there are three settings: default, saved, and current. If the SSFS bit is cleared to ‘0’, then the controller only supports a current and default value for each Feature. In this case, the current value may be persistent across power cycles and resets based on the information specified in Figure 403.
+
+If the SSFS bit is set to ‘1’, then each Feature has supported capabilities (refer to Figure 199), which are discovered using the Supported Capabilities value in the Select field in Get Features (refer to Figure 196).
+
+The default value for each Feature is vendor specific and set by the manufacturer unless otherwise specified. The default value is not changeable.
+
+The current value for a Feature is the value in active use by the controller for that Feature.
+
+A Set Features command uses the value specified by the command to set:
+
+a) the current value for that Feature; or
+b) the current value for that Feature and the saved value for that Feature, if that Feature is saveable.
+
+A Feature may be saveable. If a Feature is saveable (i.e., the controller supports the Save field in the Set Features command and the Select field in the Get Features command), then any Feature Identifier that is namespace specific may be saved on a per namespace basis.
+
+If a Feature is not saveable, or does not have a saved value, then a Get Features command to read the saved value returns the default value.
+
+If a Feature is not saveable and is persistent as specified in Figure 403, then the current value of that Feature shall be persistent across power cycles and resets.
+
+The current value for a Feature, as a result of a Controller Level Reset, is indicated in Figure 125 for an NVM subsystem that supports only a single controller (i.e., the Multiple Ports bit of the CMIC field (refer to Figure 327) is cleared to ‘0’).
+
+The current value for a Feature, as a result of an NVM Subsystem Reset, is indicated in Figure 125, for an NVM subsystem:
+
+- that is able to support two or more controllers and does not support multiple domains; or
+- supports multiple domains where the NVM Subsystem Reset results in a reset of the entire NVM subsystem.
+
+**Figure 125: Current Value after Reset with Scope of Entire NVM Subsystem**
+
+| Feature Capability | Controller scope or Namespace per controller scope | NVM subsystem scope | Endurance Group scope | NVM Set scope | Namespace scope |
+|-------------------|--------------------------------------------------|---------------------|----------------------|---------------|----------------|
+| Saveable          | Set to:                                                |                     |                      |               |                |
+|                       | • the saved value if a saved value is set; or<br>• the default value if a saved value is not set,<br>unless otherwise specified. |                     |                      |               |                |
+| Non-saveable and non- persistent | Set to the default value, unless otherwise specified. |                     |                      |               |                |
+
+The current value for a Feature, as a result of a Controller Level Reset, is indicated in Figure 126 for an NVM subsystem that is able to support two or more controllers (i.e., the Multiple Ports bit is set to ‘1’ in the CMIC field).
+
+The current value for a Feature, as a result of an NVM Subsystem Reset, is indicated in Figure 126 for an NVM subsystem that supports:
+
+- multiple domains where an NVM Subsystem Reset does not reset the entire NVM subsystem as defined in section 3.7.1.2.

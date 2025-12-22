@@ -1,0 +1,18 @@
+{
+  "page_number": "161",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 124: SGL Read Example\n\nLBA x\nNVMe Logical Blocks\nLBA x+26\n\n3KiB\n4KiB\n2KiB\n4KiB\n\nBit Bucket data\nnot transferred\n\nHost DRAM\n\nData Block A\nData Block C\nData Block B\n\nSGL Data Block descriptor\nspecifies to transfer 3KiB\n\nSegment descriptor\npoints to the next memory\nlocation in the SGL\n\nDestination SGL Segment 0\nAddress = A\n0\nLength = 3KiB\nAddress = Segment 1\n2\nLength = 48\n\nData Block descriptor\nspecifies to transfer 4KiB\n\nBit Bucket descriptor specifies\nto not transfer the next 2KiB of\nlogical block data\n\nLast Segment descriptor\npoints to the last memory\nlocation in the SGL\n\nDestination SGL Segment 1\nAddress = B\n0\nLength = 4KiB\n1\nLength = 2KiB\nAddress = Segment 2\n3\nLength = 16\n\nData Block descriptor\nspecifies to transfer 4KiB\n\nDestination SGL Segment 2\nAddress = C\n0\nLength = 4KiB\n\n4.3.3 Metadata Region (MR)\n\nThe definition for the Metadata Region is command set specific. Refer to each NVM Express I/O Command Set specification for applicability and additional details, if any.\n\n4.4 Feature Values\n\nThe Get Features command (refer to section 5.2.11) and Set Features command (refer to section 5.2.26) may be used to read and modify operating parameters of the controller. The operating parameters are grouped and identified by Feature Identifiers. Each Feature Identifier contains one or more attributes that may affect the behavior of the Feature.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 124: SGL Read Example",
+        "coordinates": [
+          112,
+          87,
+          850,
+          738
+        ]
+      }
+    ]
+  }
+}

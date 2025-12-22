@@ -1,0 +1,44 @@
+7. If the SUBTYPE field of the Discovery Log Page Entry for NVM subsystem A returned from the CDC is set to 02h (i.e., NVM subsystem), then Host A should connect to the I/O controller on NVM subsystem A.
+
+8. A fabric interface on NVM subsystem B is registered with the CDC. This is accomplished by either:
+   a. using the Discovery Information Management command to perform a push registration;
+   b. notifying the CDC that a pull registration is required and the NVM subsystem port must be implicitly registered by the CDC; or
+   c. administratively configured (e.g., the NVM subsystem port was manually configured on the CDC).
+
+9. The CDC sends a Discovery Log Page Change Asynchronous Event notification (Asynchronous Event Information F0h) to notify Host A that the Discovery log page has changed.
+
+10. Host A uses the Get Log Page command to retrieve the Discovery log page from the CDC.
+
+11. The CDC responds to the Get Log Page command with a Discovery log page containing two Discovery Log Page Entries: one for the interface on NVM subsystem A and another for the interface on NVM subsystem B.
+
+12. If the SUBTYPE field of the Discovery log page for NVM subsystem B returned from the CDC is set to 02h (i.e., NVM subsystem), then Host A should connect to the I/O controller on NVM subsystem B. The connection between Host A and NVM subsystem A remains unchanged.
+
+8.3.2.2 Discovery Information Registration and De-Registration
+
+Discovery information registration is the process of registering host or NVM subsystem discovery information with a Centralized Discovery controller (CDC) or registering host discovery information with a Direct Discovery controller (DDC).
+
+Discovery information registration may be performed:
+- using a push registration (refer to section 8.3.2.2.1); or
+- using a pull registration (refer to section 8.3.2.2.21).
+
+Information from a Connect command (e.g., Host NQN) may be retained by a Discovery controller to provide a limited set of discovery information. If the Discovery controller determines that the host that submitted the Connect command is the same as a host for which the Discovery controller has retained host discovery information from a previous push registration, then the Discovery controller should continue to retain that host discovery information.
+
+A host:
+- should use push registrations to register host discovery information with a CDC or DDC; and
+- is not able to use pull registrations to register discovery information.
+
+A CDC:
+- may use push registrations to register host discovery information with a DDC; and
+- shall not use pull registrations to register discovery information.
+
+A DDC:
+- should use push registrations when registering NVM subsystem discovery information with a CDC; or
+- may use pull registrations when registering NVM subsystem discovery information with a CDC.
+
+Discovery information de-registration is the process of de-registering host or NVM subsystem discovery information with a CDC or de-registering host discovery information with a DDC.
+
+Discovery information de-registration may be performed using one of the following methods:
+- a push de-registration (refer to section 8.3.2.2.1); or
+- a pull de-registration (refer to section 8.3.2.2.2).
+
+A host:

@@ -1,0 +1,18 @@
+{
+  "page_number": "32",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 17: Two-Namespace NVM Subsystem\n\n[img]\n\nAn NVM subsystem may have multiple domains, multiple namespaces, multiple controllers, and multiple ports, as shown in Figure 18.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 17: Two-Namespace NVM Subsystem",
+        "coordinates": [
+          270,
+          113,
+          729,
+          485
+        ]
+      }
+    ]
+  }
+}

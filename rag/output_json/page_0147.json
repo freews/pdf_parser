@@ -1,0 +1,18 @@
+{
+  "page_number": "123",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\n### 3.8.2.1 Simple NVM Subsystem\n\nFigure 86 shows an example of a single domain NVM subsystem where endurance is managed across all media units. The performance goal is maximum bandwidth, which is achieved by allowing each read or write operation to simultaneously access all Media Units. All Media Units are in the same Endurance Group and in the same NVM Set.\n\n#### Figure 86: Simple NVM Subsystem\n\n![Figure 86: Simple NVM Subsystem](Figure_86_Simple_NVM_Subsystem.png)\n\nThe Capacity Configuration Descriptor for this example contains one Endurance Group Configuration Descriptor. The Endurance Group Configuration Descriptor contains one NVM Set Identifier and four Channel Configuration Descriptors. Each Channel Configuration Descriptor contains four Media Unit Configuration Descriptors.\n\n### 3.8.2.2 Vertically-Organized NVM Subsystem\n\nFigure 87 shows an example of a single domain NVM subsystem where the performance goal is isolation among four NVM Sets at the cost of bandwidth. Endurance is managed separately for each NVM Set. Media Units sharing a Channel are allocated to the same Endurance Group. All Media Units in an Endurance Group are allocated to the same NVM Set. The bandwidth for any NVM Set is likely to be less than or equal to the bandwidth of the Channel of that NVM Set.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 86: Simple NVM Subsystem",
+        "coordinates": [
+          210,
+          208,
+          785,
+          518
+        ]
+      }
+    ]
+  }
+}

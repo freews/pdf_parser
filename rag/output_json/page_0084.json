@@ -1,0 +1,18 @@
+{
+  "page_number": "60",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 41: Offset 14h: CC – Controller Configuration\n\n| Bits | Type | Reset | Description |\n|------|------|-------|-------------|\n| 15:14 | RW | 00b | **Shutdown Notification (SHN):** This field is used to initiate a controller shutdown when a power down condition is expected. For a normal controller shutdown, it is expected that the controller is given time to process the controller shutdown before power is removed. For an abrupt shutdown, the host may or may not wait for the controller shutdown to complete before power is removed.\n\nThe controller shutdown notification values are defined as:\n\n| Value | Definition |\n|-------|------------|\n| 00b | No notification and no effect |\n| 01b | Normal shutdown notification |\n| 10b | Abrupt shutdown notification |\n| 11b | Reserved |\n\nThis field should be written by the host prior to any power down condition and prior to any change of the PCI power management state. It is recommended that this field also be written prior to a warm reset (refer to the PCI Express Base Specification). To determine when the controller shutdown processing is complete, refer to the definition of the CSTS.ST bit and the definition of the CSTS.SHST field. Refer to section 3.6 for additional shutdown processing details.\n\nOther fields in this property (including the EN bit) may be modified as part of updating this field to 01b or 10b to initiate a controller shutdown. If the host write to this property that initiates a shutdown also clears the EN bit from '1' to '0', then both a Controller Reset and a controller shutdown occur.\n\nIf an NVM Subsystem Shutdown is reported as in progress or is reported as complete (i.e., CSTS.ST is set to '1', and CSTS.SHST is set to either 01b or 10b), then writes to this field modify the field value but have no effect. Refer to section 3.6.3 for details. |\n| 13:11 | RW | 000b | **Arbitration Mechanism Selected (AMS):** This field selects the arbitration mechanism to be used. This value shall only be changed when CC.EN is cleared to '0'. The host shall only set this field to supported arbitration mechanisms indicated in CAP.AMS. If this field is set to an unsupported value, then controller behavior is undefined.\n\nFor Discovery controllers, this value shall be cleared to 0h.\n\n| Value | Definition |\n|-------|------------|\n| 000b | Round Robin |\n| 001b | Weighted Round Robin with Urgent Priority Class |\n| 010b to 110b | Reserved |\n| 111b | Vendor Specific |\n| 10:07 | RW | 0h | **Memory Page Size (MPS):** This field indicates the host memory page size. The memory page size is (2 ^ (12 + MPS)). Thus, the minimum host memory page size is 4 KiB and the maximum host memory page size is 128 MiB. The value set by the host shall be a supported value as indicated by the CAP.MPSMAX and CAP.MPSMIN fields. If the host sets this field to a value that is not supported (i.e., a value that is greater than CAP.MPSMAX or a value that is less than CAP.MPSMIN), then controller behavior is undefined. This field also describes the value used for PRP entry size. This field shall only be modified by the host while CC.EN is cleared to '0'. If this field is modified by the host while CC.EN is set to '1', then controller behavior is undefined.\n\nFor Discovery controllers this property shall be cleared to 0h. |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 41: Offset 14h: CC – Controller Configuration",
+        "coordinates": [
+          114,
+          128,
+          878,
+          840
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+Figure 744: {(NQN+IP+Protocol), Role} Zone Member Format ................................................................. 689
+Figure 745: {(NQN+IP+Protocol+IP Protocol Port), Role} Zone Member Format ......................................... 689
+Figure 746: {(NQN+IP+Protocol+IP Protocol Port+PortID), Role} Zone Member Format ............................. 690
+Figure 747: {(NQN+PortID), Role} Zone Member Format ............................................................................. 691
+Figure 748: {(NQN+Protocol+PortID+ADR/FAM), Role} Zone Member Format ............................................... 691
+Figure 749: {(IP+Protocol), Role} Zone Member Format ............................................................................. 692
+Figure 750: {(IP+Protocol+IP Protocol Port), Role} Zone Member Format ..................................................... 693
+Figure 751: {ZoneAlias} Zone Member Format ............................................................................................. 693
+Figure 752: Zone Property Types ............................................................................................................... 693
+Figure 753: Fabric Enforced Zone Property Format .................................................................................... 694
+Figure 754: ZoneAlias Detailed Representation .......................................................................................... 694
+Figure 755: GAZ for Push Model DDC ......................................................................................................... 695
+Figure 756: FZL Data for GAZ ..................................................................................................................... 695
+Figure 757: FZR Data for GAZ ..................................................................................................................... 696
+Figure 758: AAZ for Push Model DDC ......................................................................................................... 697
+Figure 759: FZL Data for AAZ ..................................................................................................................... 697
+Figure 760: FZS Data for AAZ ..................................................................................................................... 697
+Figure 761: RAZ for Push Model DDC ......................................................................................................... 698
+Figure 762: FZL Data for RAZ ..................................................................................................................... 698
+Figure 763: GAZ for Pull Model DDC ........................................................................................................... 699
+Figure 764: GAZ Operation Specific Parameters for Pull Model DDC Request Log Page .......................... 699
+Figure 765: FZS Data for Pull Model GAZ ................................................................................................... 699
+Figure 766: AAZ for Pull Model DDC ........................................................................................................... 701
+Figure 767: AAZ Operation Specific Parameters for Pull Model DDC Request Log Page .......................... 701
+Figure 768: FZR Data for Pull Model AAZ ................................................................................................... 702
+Figure 769: FZS Data for Pull Model AAZ ................................................................................................... 702
+Figure 770: RAZ for Pull Model DDC ........................................................................................................... 703
+Figure 771: RAZ Operation Specific Parameters for Pull Model DDC Request Log Page .......................... 703
+Figure 772: FZS Data for Pull Model RAZ ................................................................................................... 703
+Figure 773: Pull Model DDC Zoning Operations Status Values ..................................................................... 704
+Figure 774: Log Page Request Operation ..................................................................................................... 704
+Figure 775: Log Page Request Operation Specific Parameters for Pull Model DDC Request Log Page ............. 705
+Figure 776: Example reference for retrieving Underlying Namespaces and Underlying Ports ........................ 710
+Figure 777: Example reference for retrieving Underlying Namespaces and Underlying Ports ........................ 711
+Figure 778: Example steps for retrieving underlying resources and configuring an Exported NVM Subsystem .... 712
+Figure 779: Example steps for restricting access to an Exported NVM Subsystem to specific hosts ................ 712
+Figure 780: Example steps for revoking specific hosts access to an Exported NVM Subsystem ........................ 713
+Figure 781: Example steps for removing an Exported NVM Subsystem ................................................................ 713
+Figure 782: Example steps for clearing all Exported NVM Subsystems ................................................................ 714
+Figure 783: Example of TLS secure channel establishment ............................................................................. 715
+Figure 784: Example of authentication transaction for NVMe/TCP ................................................................ 716
+Figure 785: Unique Discovery Service NQN retrieval for bidirectional authentication ..................................... 717
+Figure 786: Mapping of authentication messages to the Authentication Send command ..................................... 717
+Figure 787: Mapping of authentication messages to the Authentication Receive command ................................ 718
+Figure 788: Example of TLS secure channel concatenation with NVMe/TCP ........................................................ 719
+Figure 789: AUTH_Negotiate message format ................................................................................................ 720
+Figure 790: Secure channel protocol identifiers ............................................................................................ 720
+Figure 791: Authentication protocol identifiers ............................................................................................ 721
+Figure 792: AUTH_Failure1 and AUTH_Failure2 message format ..................................................................... 721
+Figure 793: AUTH_Failure reason codes ........................................................................................................ 721
+Figure 794: AUTH_Failure reason code explanations ...................................................................................... 722
+Figure 795: Example of DH-HMAC-CHAP authentication transaction ................................................................ 723
+Figure 796: Mathematical notations for DH-HMAC-CHAP ................................................................................... 723
+Figure 797: Authentication protocol descriptor for DH-HMAC-CHAP ................................................................ 725
+Figure 798: DH-HMAC-CHAP hash function identifiers ................................................................................... 725
+Figure 799: DH-HMAC-CHAP Diffie-Hellman group identifiers ........................................................................ 725
+Figure 800: DH-HMAC-CHAP Challenge message format ................................................................................ 726
+Figure 801: DH-HMAC-CHAP Reply message format ........................................................................................ 727
+Figure 802: DH-HMAC-CHAP_Success1 message format ................................................................................... 729
+Figure 803: DH-HMAC-CHAP_Success2 message format ................................................................................... 730
+Figure 804: DH-HMAC-CHAP Configurations ................................................................................................... 733
+Figure 805: NVM Subsystem AUTHREQ Settings for DH-HMAC-CHAP ................................................................ 733

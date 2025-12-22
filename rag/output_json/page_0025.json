@@ -1,0 +1,18 @@
+{
+  "page_number": "1",
+  "page_type": "body",
+  "content": "# 1 Introduction\n\n## 1.1 Overview\n\nThe NVM Express® (NVMe®) interface allows a host to communicate with a non-volatile memory subsystem (NVM subsystem). This interface is optimized for all storage solutions, attached using a variety of transports including PCI Express®, Ethernet, InfiniBand™, and Fibre Channel. The mapping of extensions defined in this document to a specific NVMe Transport are defined in an NVMe Transport binding specification. The NVMe Transport binding specification for Fibre Channel is defined in INCITS 556 Fibre Channel – Non-Volatile Memory Express - 2 (FC-NVMe-2).\n\nFor an overview of changes from revision 2.2 to revision 2.3 and the description of the new features, including mandatory requirements for a controller to comply with revision 2.3, refer to https://nvmexpress.org/specification/nvm-express-revision-changes.\n\n### 1.1.1 NVM Express® Specification Family\n\nFigure 1 shows the relationship of the NVM Express specifications to each other within the NVMe® family of specifications.\n\n**Figure 1: NVMe Family of Specifications**\n\n[Image: A diagram showing five rectangular blocks arranged horizontally. From left to right: a vertical green block labeled \"NVM Express Management Interface Specification\", a yellow block labeled \"I/O Command Set Specifications (e.g., NVM, Key Value, Zoned Namespace)\", a blue block labeled \"NVM Express Base Specification\", a gray block labeled \"Transport Specifications (e.g., PCIe®, RDMA, TCP)\", and a vertical green block labeled \"Boot Specification\".]\n\nThe NVM Express specification family structure shown in Figure 1 is intended to show the applicability of NVM Express specifications to each other, not a hierarchy, protocol stack, or system architecture.\n\nThe NVM Express Base Specification (i.e., this specification) defines a protocol for a host to communicate with an NVM subsystem over a variety of memory-based transports and message-based transports.\n\nThe NVM Express Management Interface (NVMe-MI) Specification defines an optional management interface for all NVM Express Subsystems.\n\nNVM Express I/O Command Set specifications define data structures, features, log pages, commands, and status values that extend the NVM Express Base Specification.\n\nNVM Express Transport specifications define the binding of the NVMe protocol including controller properties to a specific transport.\n\nThe NVM Express Boot Specification defines constructs and guidelines for booting from NVM Express interfaces.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 1: NVMe Family of Specifications",
+        "coordinates": [
+          116,
+          394,
+          898,
+          645
+        ]
+      }
+    ]
+  }
+}

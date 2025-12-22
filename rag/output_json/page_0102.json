@@ -1,0 +1,18 @@
+{
+  "page_number": "78",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 66: NSID Types\n\n![NSID Types Diagram](NSID_Types_Diagram.png)\n\n### 3.2.1.6 NSID and Namespace Usage\n\nNSIDs shall be unique within the NVM subsystem (e.g., NSID of 3 shall refer to the same physical namespace regardless of the accessing controller) if:\n\na) Namespace Management (refer to section 8.1.16), ANA Reporting (refer to section 8.1.1), or NVM Sets (refer to section 3.2.2) capabilities are supported; or\n\nb) The Sanitize Namespace command is supported.\n\nIf the Namespace Management capability, the ANA Reporting capability, the NVM Sets capability, and the Sanitize Namespace command are not supported, then NSIDs:\n\na) for shared namespaces shall be unique within the NVM subsystem; and\n\nb) for private namespaces are not required to be unique within the NVM subsystem.\n\nThe Identify command (refer to section 5.2.13) may be used to determine the active NSIDs for a controller and the allocated NSIDs in the NVM subsystem.\n\nIf the MNAN field (refer to Figure 328) is cleared to 0h, then the maximum number of allocated NSIDs is the same as the value reported in the NN field (refer to Figure 328). If the MNAN field is non-zero, then the maximum number of allocated NSIDs may be less than the number of namespaces (e.g., an NVM subsystem may support a maximum valid NSID value (i.e., the NN field) set to 1,000,000 but support a maximum of 10 allocated NSID values).\n\nTo determine the active NSIDs for a particular controller, the host may follow either of the following methods:\n\n1. Issue an Identify command with the CNS field cleared to 0h for each valid NSID (based on the Number of Namespaces value (i.e., MNAN field or NN field) in the Identify Controller data structure). If a non-zero data structure is returned for a particular NSID, then that is an active NSID; or\n\n2. Issue an Identify command with a CNS field set to 2h to retrieve a list of up to 1,024 active NSIDs. If there are more than 1,024 active NSIDs, continue to issue Identify commands with a CNS field set to 2h until all active NSIDs are retrieved.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 66: NSID Types",
+        "coordinates": [
+          112,
+          125,
+          900,
+          460
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "page_number": "149",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 104: Status Code – Command Specific Status Values, I/O Commands\n\n| Value | Definition |\n|-------|------------|\n| 8Dh | Invalid Memory Range Set Identifier |\n| 8Eh | Invalid Program Data |\n| 8Fh | Invalid Program Index |\n| 90h | Invalid Program Type |\n| 91h | Maximum Memory Ranges Exceeded |\n| 92h | Maximum Memory Range Sets Exceeded |\n| 93h | Maximum Programs Activated |\n| 94h | Maximum Program Bytes Exceeded |\n| 95h | Memory Range Set In Use |\n| 96h | No Program |\n| 97h | Overlapping Memory Ranges |\n| 98h | Program Not Activated |\n| 99h | Program In Use |\n| 9Ah | Program Index Not Downloadable |\n| 9Bh | Program Too Big |\n| 9Ch | Successful Media Verification Read |\n| 9Dh to B7h | Reserved |\n| B8h | Zoned Boundary Error |\n| B9h | Zone Is Full |\n| BAh | Zone Is Read Only |\n| BBh | Zone Is Offline |\n| BCh | Zone Invalid Write |\n| BDh | Too Many Active Zones |\n| BEh | Too Many Open Zones |\n| BFh | Invalid Zone State Transition |\n\n## Figure 105: Status Code – Command Specific Status Values, Fabrics Commands\n\n| Value | Definition | Commands Affected |\n|-------|------------|------------------|\n| 80h | **Incompatible Format**: The NVM subsystem does not support the record format specified by the host. | Connect, Disconnect |\n| 81h | **Controller Busy**: The controller is already associated with a host (Connect command). This value is also returned if there is no available controller (Connect command). The controller is not able to disconnect the I/O Queue at the current time (Disconnect command). | Connect, Disconnect |\n| 82h | **Connect Invalid Parameters**: One or more of the command parameters (e.g., Host NQN, NVM Subsystem NQN, Host Identifier, Controller ID, Queue ID) specified are not valid. | Connect |\n| 83h | **Connect Restart Discovery**: The NVM subsystem requested is not available. The host should restart the discovery process. | Connect |\n| 84h | **Connect Invalid Host**: The host is not allowed to establish an association to any controller in the NVM subsystem or the host is not allowed to establish an association to the specified controller. | Connect |\n| 85h | **Invalid Queue Type**: The command was sent on the wrong queue type (e.g., a Disconnect command was sent on the Admin queue). | Disconnect |\n| 86h to 8Fh | Reserved | |\n| 90h | **Discover Restart**: The snapshot of the records is now invalid or out of date. If the Discovery log page was requested, then the host or Discovery controller should re-read the Discovery log page. If the Host Discovery log page was requested, then the host or Discovery controller should re-read the Host Discovery log page. | Get Log Page |\n| 91h | **Authentication Required**: NVMe in-band authentication is required and the queue has not yet been authenticated. | NOTE 1 |\n| 92h to AFh | Reserved | |\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 104: Status Code – Command Specific Status Values, I/O Commands",
+        "coordinates": [
+          172,
+          127,
+          822,
+          487
+        ]
+      },
+      {
+        "name": "Figure 105: Status Code – Command Specific Status Values, Fabrics Commands",
+        "coordinates": [
+          115,
+          525,
+          879,
+          905
+        ]
+      }
+    ]
+  }
+}

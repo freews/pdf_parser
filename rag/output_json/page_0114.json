@@ -1,0 +1,27 @@
+{
+  "page_number": "90",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\n## Figure 73: Empty Queue Definition\n\n![Figure 73: Empty Queue Definition](Figure_73_Empty_Queue_Definition.png)\n\n### 3.3.1.5 Full Queue\n\nThe queue is Full when the Head equals one more than the Tail. The number of entries in a queue when full is one less than the queue size. Figure 74 defines the Full Queue condition.\n\nNote: Queue wrap conditions shall be taken into account when determining whether a queue is Full.\n\n## Figure 74: Full Queue Definition\n\n![Figure 74: Full Queue Definition](Figure_74_Full_Queue_Definition.png)\n\n### 3.3.2 Message-based Transport Queue Model (Fabrics)\n\nFor NVMe over Fabrics, a queue is a unidirectional communication channel that is used to send capsules between a host and a controller. A host uses Submission Queues to send command capsules (refer to section 3.3.2.1.1) to a controller. A controller uses Completion Queues to send response capsules (refer to section 3.3.2.1.2) to a host. Submission and Completion Queues are created in pairs using the Connect command (refer to section 3.3.2.2).\n\nThe NVMe Transport is responsible for delivering command capsules to the controller and notifying the controller of capsule arrival in a transport-specific fashion.\n\nAltering a command capsule between host submission to the Submission Queue and transport delivery of that capsule to the controller results in undefined behavior.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 73: Empty Queue Definition",
+        "coordinates": [
+          214,
+          114,
+          785,
+          336
+        ]
+      },
+      {
+        "name": "Figure 74: Full Queue Definition",
+        "coordinates": [
+          214,
+          458,
+          785,
+          680
+        ]
+      }
+    ]
+  }
+}

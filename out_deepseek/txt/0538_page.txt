@@ -1,0 +1,10 @@
+Figure 618: Registered Controller Extended Data Structure
+
+| Bytes | Description |
+|-------|-------------|
+| 31:16 | Host Identifier (HOSTID): This field contains the 128-bit Host Identifier of the registrant of the namespace described by this data structure. |
+| 63:32 | Reserved |
+
+7.8.1 Command Completion
+
+When the command is completed, the controller shall post a completion queue entry to the associated I/O Completion Queue indicating the status for the command.

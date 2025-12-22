@@ -1,0 +1,18 @@
+{
+  "page_number": "45",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 28: Admin Command Support Requirements\n\n| Command | Combined Opcode Value | Controller Support Requirements¹ | Reference |\n| --- | --- | --- | --- |\n| | | I/O | Administrative | Discovery | |\n| Fabric Zoning Receive | 22h | P | P | M⁷ | 5.4.6 |\n| Lockdown | 24h | O | O | P | 5.2.15 |\n| Fabric Zoning Lookup | 25h | P | P | M⁷ | 5.4.5 |\n| Clear Exported NVM Resource Configuration | 28h | P | O | P | 5.4.1 |\n| Fabric Zoning Send | 29h | P | P | M⁷ | 5.4.7 |\n| Create Exported NVM Subsystem | 2Ah | P | O | P | 5.4.2 |\n| Manage Exported NVM Subsystem | 2Dh | P | O | P | 5.4.9 |\n| Manage Exported Namespace | 31h | P | O | P | 5.4.8 |\n| Manage Exported Port | 35h | P | O | P | 5.4.10 |\n| Cross-Controller Reset | 38h | O¹⁰ | O¹⁰ | O¹¹ | 5.4.3 |\n| Send Discovery Log Page | 39h | P | P | M⁷ | 5.4.11 |\n| Track Send | 3Dh | O | O | P | 5.2.28 |\n| Track Receive | 3Eh | O | O | P | 5.2.27 |\n| Migration Send | 41h | O | O | P | 5.2.17 |\n| Migration Receive | 42h | O | O | P | 5.2.16 |\n| Controller Data Queue | 45h | O | O | P | 5.2.4 |\n| Doorbell Buffer Config | 7Ch | O | O | P | 5.3.5 |\n| I/O Command Set specific Admin commands | | | | | |\n| Format NVM | 80h | O | O | P | 5.2.10 |\n| Security Send | 81h | O | O | P | 5.2.25 |\n| Security Receive | 82h | O | O | P | 5.2.23 |\n| Sanitize | 84h | O³ | O³ | P | 5.2.22 |\n| Sanitize Namespace | 8Ch | O | O | P | 5.2.23 |\n| I/O Command Set specific Admin command | 85h | Note 8 | P | P | Note 8 |\n| | 86h | | | | |\n| | 88h | | | | |\n| | 89h | | | | |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 28: Admin Command Support Requirements",
+        "coordinates": [
+          114,
+          105,
+          880,
+          600
+        ]
+      }
+    ]
+  }
+}

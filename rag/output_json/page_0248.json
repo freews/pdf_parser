@@ -1,0 +1,18 @@
+{
+  "page_number": "224",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 216: Self-test Result Data Structure\n\n| Bytes | Description |\n|-------|-------------|\n| 00 | **Device Self-test Status (DSTS)**: This field indicates the device self-test code and the status of that operation.\n\n  | Bits | Description |\n  |------|-------------|\n  | 7:4 | **Self-test Code (DSTC)**: This field indicates the Self-test Code value that was specified in the Device Self-test command that started the device self-test operation that this Self-test Result Data Structure describes.\n\n    | Value | Definition |\n    |-------|------------|\n    | 0h | Entry is empty |\n    | 1h | Short device self-test operation |\n    | 2h | Extended device self-test operation |\n    | 3h | Host-Initiated Refresh operation |\n    | 4h to Dh | Reserved |\n    | Eh | Vendor specific |\n    | Fh | Reserved |\n\n  | 3:0 | **Device Self-test Result (DSTR)**: This field indicates the result of the device self-test operation that this Self-test Result Data Structure describes.\n\n    | Value | Definition |\n    |-------|------------|\n    | 0h | Operation completed without error |\n    | 1h | Operation was aborted by a Device Self-test command |\n    | 2h | Operation was aborted by a Controller Level Reset |\n    | 3h | Operation was aborted due to a removal of a namespace from the namespace inventory |\n    | 4h | Operation was aborted due to the processing of a Format NVM command |\n    | 5h | A fatal error or unknown test error occurred while the controller was executing the device self-test operation and the operation did not complete |\n    | 6h | Operation completed with a segment that failed and the segment that failed is not known |\n    | 7h | Operation completed with one or more failed segments and the first segment that failed is indicated in the Segment Number field |\n    | 8h | Operation was aborted for unknown reason |\n    | 9h | Operation was aborted due to a sanitize operation |\n    | Ah to Eh | Reserved |\n    | Fh | Entry is empty (i.e., does not contain a test result) |\n\n| 01 | **Segment Number (SEGN)**: This field indicates the segment number (refer to section 8.1.8) where the first self-test failure occurred. If Device Self-test Status bits [3:0] are not set to 7h, then this field should be ignored by the host. |\n\n| 02 | **Valid Diagnostic Information (VDINFO)**: This field indicates the diagnostic failure information that is reported.\n\n  | Bits | Description |\n  |------|-------------|\n  | 7:4 | Reserved |\n  | 3 | **SC Valid (SCVLD)**: If this bit is set to '1', then the contents of Status Code field are valid. If this bit is cleared to '0', then the contents of the Status Code field are invalid. |\n  | 2 | **SCT Valid (SCTVLD)**: If this bit is set to '1', then the contents of the Status Code Type field are valid. If this bit is cleared to '0', then the contents of the Status Code Type field are invalid. |\n  | 1 | **FLBA Valid (FVLD)**: If this bit is set to '1', then the contents of the Failing LBA field are valid. If this bit is cleared to '0', then the contents of the Failing LBA field are invalid. |\n  | 0 | **NSID Valid (NSIDVLD)**: If this bit is set to '1', then the contents of the Namespace Identifier field are valid. If this bit is cleared to '0', then the contents of the Namespace Identifier field are invalid. |\n\n| 03 | Reserved |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 216: Self-test Result Data Structure",
+        "coordinates": [
+          142,
+          128,
+          852,
+          892
+        ]
+      }
+    ]
+  }
+}

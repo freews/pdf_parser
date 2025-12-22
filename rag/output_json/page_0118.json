@@ -1,0 +1,27 @@
+{
+  "page_number": "94",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\n## Figure 78: SGL Example Using Memory Transactions\n\n![Figure 78: SGL Example Using Memory Transactions](Figure_78_SGL_Example_Using_Memory_Transactions.png)\n\nThe second example shows an 8KiB write where all of the data is transferred within the capsule. In this case, the SGL descriptor is an SGL Data Block descriptor specifying an Offset of 20h based on an ICDOFF value of 2h.\n\n## Figure 79: SGL Example Using In Capsule Data Transfer\n\n![Figure 79: SGL Example Using In Capsule Data Transfer](Figure_79_SGL_Example_Using_In_Capsule_Data_Transfer.png)\n\n### 3.3.2.2 Queue Creation\n\nMessage-based controllers use the Connect command (refer to section 6.3) to create Admin Queues or I/O Queues. The creation of an Admin Queue establishes an association between a host and the corresponding controller. The message-based transport queue model does not support the Admin Submission Queue Base Address (ASQ), Admin Completion Queue Base Address (ACQ), and Admin Queue Attributes (AQA) properties as all information necessary to establish an Admin Queue is contained in the Connect command. The message-based transport queue does not support the Admin commands associated with I/O Queue creation and deletion (i.e., Create I/O Completion Queue, Create I/O Submission Queue, Delete I/O Completion Queue, Delete I/O Submission Queue).",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 78: SGL Example Using Memory Transactions",
+        "coordinates": [
+          125,
+          110,
+          875,
+          380
+        ]
+      },
+      {
+        "name": "Figure 79: SGL Example Using In Capsule Data Transfer",
+        "coordinates": [
+          125,
+          480,
+          875,
+          730
+        ]
+      }
+    ]
+  }
+}

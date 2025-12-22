@@ -1,0 +1,18 @@
+{
+  "page_number": "239",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 229: Persistent Event Log Specific Parameter Field\n\n| Bits | Description |\n|------|-------------|\n| 14:10 | Reserved |\n| 09:08 | **Action (ACT)**: This field specifies the action the controller shall take during processing this Get Log Page command.\n\n| Value | Definition |\n|-------|------------|\n| 00b | **Read Log Data**: Return Persistent Event log page data starting at the address indicated by the LPOU field and the LPOL field in the Get Log Page command. If the controller does not have a persistent event log reporting context, then the controller shall abort the command with a status code of Command Sequence Error. |\n| 01b | **Establish Context and Read Log Data**: The controller shall:\n\na) determine the length of the Persistent Event log page data;\n\nb) determine the set of events to report in the Persistent Event log page data; and\n\nc) establish a persistent event log reporting context to store information describing the Persistent Event log page data to be reported and track Persistent Event log page data accesses.\n\nAfter establishing a persistent event log reporting context, the controller shall return Persistent Event log page data starting at the address indicated by the LPOU field and the LPOL field in the Get Log Page command.\n\nIf a persistent event log reporting context already exists, then the controller shall abort the command with a status code of Command Sequence Error. |\n| 10b | **Release Context**: The controller shall:\n\n- release the persistent event log reporting context, if any. It is not an error if the controller does not have a persistent event log reporting context; and\n\n- not return any Persistent Event log page data (i.e., the controller ignores the NUMDL field, NUMDL field, LPOL field, and the LPOU field). |\n| 11b | **Establish Context and Read 512 Bytes of Header**: The controller shall:\n\na) determine the length of the Persistent Event log page data;\n\nb) determine the set of events to report in the Persistent Event log page data; and\n\nc) if a reporting context does not already exist, then establish a persistent event log reporting context to store information describing the Persistent Event log page data to be reported and track Persistent Event log page data accesses.\n\nIf a persistent event log reporting context did not already exist when the Get Log Page command was processed, then the controller shall:\n\na) establish a persistent event log reporting context; and\n\nb) after establishing the context, return 512 bytes of the Persistent Event Log Header starting at offset 0h with the Reporting Context Exists bit cleared to ‘0’ with a status code of Successful Completion.\n\nIf a persistent event log reporting context already existed when the Get Log Page command was processed, then the controller shall return 512 bytes of the Persistent Event Log Header starting at offset 0h with the Reporting Context Exists bit set to ‘1’ with a status code of Successful Completion.\n\nThe 512 bytes of the Persistent Event Log Header shall be returned regardless of the values in the LPOL, LPOU, NUMDL, and NUMDU fields (i.e., the controller shall ignore the LPOL, LPOU, NUMDL, and NUMDU fields). Hosts should ensure allocation of at least 512 bytes in the data buffer to avoid possible data corruption. |\n\nThe log page returned is defined in Figure 230.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 229: Persistent Event Log Specific Parameter Field",
+        "coordinates": [
+          134,
+          127,
+          858,
+          842
+        ]
+      }
+    ]
+  }
+}

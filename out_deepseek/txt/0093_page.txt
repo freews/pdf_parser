@@ -1,0 +1,29 @@
+3.1.4.16 Offset 50h: CMBMSC – Controller Memory Buffer Memory Space Control
+
+This optional property specifies how the controller references the Controller Memory Buffer with host-supplied addresses. If the controller supports the Controller Memory Buffer (CAP.CMBS), this property is mandatory. Otherwise, this property is reserved.
+
+This property shall not be reset by a Controller Level Reset initiated by:
+
+- a Controller Reset; and
+- a Function Level Reset (refer to the NVMe over PCIe Transport Specification).
+
+Figure 52: Offset 50h: CMBMSC – Controller Memory Buffer Memory Space Control
+
+| Bits | Type | Reset | Description |
+|------|------|-------|-------------|
+| 63:12 | RW   | 0h    | Controller Base Address (CBA): This field specifies the 52 most significant bits of the 64-bit base address for the Controller Memory Buffer’s controller address range. The Controller Memory Buffer’s controller base address and its size determine its controller address range. The specified address shall be valid only under the following conditions: |
+|      |      |       | a) no part of the Controller Memory Buffer’s controller address range is greater than $2^{64} - 1$; and |
+|      |      |       | b) if the Persistent Memory Region’s controller memory space is enabled, then the Controller Memory Buffer’s controller address range does not overlap the Persistent Memory Region’s controller address range. |
+| 11:02 | RO   | 0h    | Reserved |
+| 01    | RW   | 0b    | Controller Memory Space Enable (CMSE): This bit specifies whether addresses supplied by the host are permitted to reference the Controller Memory Buffer. If CMBSMSC.CRE is cleared to ‘0’ this bit has no effect, and the Controller Memory Buffer’s controller memory space is not enabled. If this bit is set to ‘1’ and the controller base address is valid, then the Controller Memory Buffer’s controller memory space is enabled. Otherwise, the controller memory space is not enabled. If the Controller Memory Buffer’s controller memory space is enabled, then addresses supplied by the host that fall within the Controller Memory Buffer’s controller address range shall reference the Controller Memory Buffer. If the Controller Memory Buffer’s controller memory space is not enabled, then no address supplied by the host shall reference the Controller Memory Buffer. Instead, such addresses shall reference memory spaces other than the Controller Memory Buffer. |
+| 00    | RW   | 0b    | Capabilities Registers Enabled (CRE): This bit specifies whether the CMBLOC and CMBSZ properties are enabled. If this bit is set to ‘1’, then CMBLOC is defined as shown in Figure 47 and CMBSZ is defined as shown in Figure 48. If this bit is cleared to ‘0’, then CMBSZ and CMBLOC are cleared to 0h. |
+
+3.1.4.17 Offset 58h: CMBSTS – Controller Memory Buffer Status
+
+This optional property indicates the status of the Controller Memory Buffer. If the controller supports the Controller Memory Buffer (CAP.CMBS), this property is mandatory. Otherwise, this property is reserved.
+
+Figure 53: Offset 58h: CMBSTS – Controller Memory Buffer Status
+
+| Bits | Type | Reset | Description |
+|------|------|-------|-------------|
+| 31:01 | RO   | 0h    | Controller Base Address Invalid (CBAI): This bit indicates whether the controller has failed to enable the Controller Memory Buffer’s controller memory space because CMBMSC.CBA is invalid. If CMBMSC.CRE and CMBMSC.CMSE are set to ‘1’, and CMBMSC.CBA is invalid, this bit shall be set to ‘1’. Otherwise, this bit shall be cleared to ‘0’. |

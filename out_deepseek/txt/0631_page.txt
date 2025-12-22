@@ -1,0 +1,24 @@
+NSID 10 and NSID 30 are able to reach each other; and
+NSID 10 and NSID 31 are able to reach each other;
+and
+does not specify any reachability between NSID 30 and NSID 31;
+
+Reachability Association 2 (i.e., RA 2) is a self-reference for Reachability Group A (i.e., RG A) that specifies:
+that NSID 30 and NSID 31 are able to reach each other;
+
+Reachability Association 3 (i.e., RA 3):
+specifies that:
+NSID 11 and NSID 30 are able to reach each other; and
+NSID 11 and NSID 31 are able to reach each other;
+and
+does not specify any reachability between NSID 30 and NSID 31;
+
+The lack of a Reachability Association that contains Reachability Group B (i.e., RG B) and Reachability Group D (i.e., RG D) specifies:
+that NSID 10 and NSID 11 are not able to reach each other;
+and
+The lack of a self-referencing Reachability Association for Reachability Group E (i.e., RG E) specifies:
+that NSID 22 and NSID 23 are not able to reach each other.
+
+8.1.21.2 Reachability event notifications
+
+Reachability may generate a Reachability Group Change notice (refer to section 5.2.2.1) or a Reachability Association Change notice (refer to section 5.2.2.1).

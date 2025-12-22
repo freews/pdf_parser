@@ -1,0 +1,64 @@
+Figure 724: EPF Processing Port Disabled State Transition Conditions
+
+| State Transitions | Transition Condition |
+|-------------------|---------------------|
+| Starting           | Ending               |
+| EPF Processing    | EPF Complete        |
+| Port Disabled      | Port Disabled        |
+
+- The controller completes EPF processing.
+
+8.2.5.1.6 EPF Complete Port Disabled State
+
+In the EPF Complete Port Disabled state, the controller has completed Emergency Power Fail Processing. The port is disabled. The following are not able to be initiated through the port:
+
+a) Controller Level Reset;
+b) controller shutdown;
+c) NVM Subsystem Reset; and
+d) NVM Subsystem Shutdown.
+
+Transitions out of this state are defined in Figure 725.
+
+Figure 725: EPF Complete Port Disabled State Transition Conditions
+
+| State Transitions | Transition Condition |
+|-------------------|---------------------|
+| Starting           | Ending               |
+| EPF Complete Port | PLS Not Ready        |
+- Power is cycled.
+
+8.2.5.1.7 EPF Processing Port Enabled State
+
+In the EPF Processing Port Enabled state, the controller is performing Emergency Power Fail Processing, as described in section 8.2.5.3. The port is enabled.
+
+Transitions out of this state are defined in Figure 726.
+
+Figure 726: EPF Processing Port Enabled State Transition Conditions
+
+| State Transitions | Transition Condition |
+|-------------------|---------------------|
+| Starting           | Ending               |
+| EPF Processing    | EPF Complete        |
+| Port Enabled      | Port Enabled        |
+- The controller completes EPF processing.
+- The controller processes a Controller Level Reset; or
+- CSTS.SHST is not cleared to 00b.
+
+8.2.5.1.8 EPF Complete Port Enabled State
+
+In the EPF Complete Port Enabled state, the controller has completed Emergency Power Fail Processing. The port is enabled.
+
+Transitions out of this state are defined in Figure 727.
+
+Figure 727: EPF Complete Port Enabled State Transition Conditions
+
+| State Transitions | Transition Condition |
+|-------------------|---------------------|
+| Starting           | Ending               |
+| EPF Complete Port | PLS Not Ready        |
+- The controller processes a Controller Level Reset; or
+- CSTS.SHST is not cleared to 00b.
+
+8.2.5.2 Forced Quiescence Processing
+
+This section describes the behavior of each controller in the domain when the domain is configured for Power Loss Signaling with Forced Quiescence (refer to section 5.2.26.1.19).

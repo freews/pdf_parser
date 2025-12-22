@@ -1,0 +1,33 @@
+5.2.12.3.2 Lost Host Communication (Log Identifier 1Fh)
+
+The Lost Host Communication log page for a controller reports a list of other controllers in the same NVM subsystem that have lost communication with the host that submitted the Get Log Page command for this log page without the NVM subsystem observing a host action that terminated the association. That list of controllers shall not include the controller that processes that Get Log Page command.
+
+Entries in this log page inform the host of communication losses detected by the NVM subsystem as a complement to other host communication loss detection mechanisms. The host is able to use this log page to:
+
+- detect communication loss (refer to section 9.6.1);
+- select the controller for submission of the Cross-Controller Reset command (refer to section 5.4.3) as part of Cross-Controller Reset Recovery (refer to section 8.3.3); and
+- shorten Time-Based Recovery (refer to section 9.6.2.1).
+
+For purposes of this log page, a Lost Host Communication (LHC) Controller is a controller that has lost communication with the host:
+
+- without the NVM subsystem observing a host action that terminated the association (e.g., as a result of a Cross-Controller Reset command); and
+- without an NVM subsystem action that terminated the association and that was sent to the host (e.g., an authentication failure, refer to section 8.3.5.2).
+
+Some message-based transports do not enable the NVM subsystem to distinguish between a host terminating an NVMe Transport connection and the fabric terminating the NVMe Transport connection (e.g., some firewalls reset TCP connections). For such a transport, the NVM subsystem should treat the termination of an NVMe Transport connection as not resulting from a host action.
+
+As a result of a controller becoming an LHC Controller, the NVM subsystem should add an entry to this log page for one or more other controllers that are associated with the same host. The NVM subsystem shall not add an entry to this log page for a controller that is not associated with the host that is associated with the controller that became an LHC Controller.
+
+This log page is not required to include entries for all loss of communication events detected by the NVM subsystem. Addition of entries to this log page may be limited by implementation restrictions (e.g., security considerations such as secure channel configuration differences between the two controllers, internal communication boundaries, or other internal resource limits). If the host is associated with many controllers, addition of entries to this log page should be limited to a subset of these controllers, limiting the number of Cross Controller Reset commands sent by the host for a given loss of communication event.
+
+If Lost Host Communication Notices are enabled and the NVM subsystem adds an entry to this log page, then the controller shall report a Lost Host Communication Notice asynchronous event (refer to Figure 154).
+
+This log page consists of a header followed by a list of up to 511 Lost Host Communication Entries. The list is ordered from the oldest (i.e., least recently added) entry to the newest (i.e., most recently added) entry with the oldest entry in the lowest numbered index. If this log page has 511 entries and an entry is added, then the oldest entry shall be removed. If an entry with a controller ID exists and an entry with the same controller ID is added to this log page, then:
+
+- that existing entry shall be removed from this log page; and
+- the Loss Count field in the new entry shall be set to:
+  - one more than the value of the older entry, if the value of the Loss Count field in the older entry is less than FFh; and
+  - FFh, if the value of the Loss Count field in the older entry is FFh.
+
+If an entry is added to this log page and no entry with the same controller ID exists, then the value of the Loss Count field of the new entry shall be set to 1h.
+
+The controller should remove any entry from this log page that has been present for longer than an implementation specific amount of time (e.g., entries older than one hour).

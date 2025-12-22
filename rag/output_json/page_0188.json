@@ -1,0 +1,27 @@
+{
+  "page_number": "164",
+  "page_type": "body",
+  "content": "and\n\n> c) if the NSID field is set to any other value, then the Set Features command and the Get Features command is aborted by the controller as described in Figure 92.\n\nFor feature values that apply to NVM subsystem scope, Domain scope, NVM Set scope, or Endurance Group scope:\n\n> a) the NSID field should be cleared to 0h; and\n> b) if the NSID field is set to a non-zero value, then the Set Features command and the Get Features command are aborted by the controller as described in Figure 92.\n\nThere are mandatory and optional Feature Identifiers defined in section 3.1.3.6. If a Get Features command or Set Features command is processed that specifies a Feature Identifier that is not supported, then the controller shall abort the command with a status code of Invalid Field in Command.\n\n## 4.5 Identifier Format and Layout (Informative)\n\nThis section provides guidance for proper implementation of various identifiers defined in the Identify Controller, Identify Namespace, and Namespace Identification Descriptor data structures.\n\n### 4.5.1 PCI Vendor ID (VID) and PCI Subsystem Vendor ID (SSVID)\n\nThe PCI Vendor ID (VID, bytes 01:00) and PCI Subsystem Vendor ID (SSVID, bytes 03:02) are defined in the Identify Controller data structure. The values are assigned by the PCI SIG. Each identifier is a 16-bit number in little endian format.\n\n**Example**:\n\n- VID = ABCDh; and\n- SSVID = 1234h.\n\n**Figure 127: PCI Vendor ID (VID) and PCI Subsystem Vendor ID (SSVID)**\n\n| Bytes | 00   | 01   | 02   | 03   |\n|-------|------|------|------|------|\n| Value | CDh  | ABh  | 34h  | 12h  |\n\n### 4.5.2 Serial Number (SN) and Model Number (MN)\n\nThe Serial Number (SN, bytes 23:04) and Model Number (MN, bytes 63:24) are defined in the Identify Controller data structure. The values are ASCII strings assigned by the vendor. Each identifier is in big endian format.\n\n**Example (Value shown as ASCII characters)**:\n\n- SN = \"SN1\"; and\n- MN = \"M2\".\n\n**Figure 128: Serial Number (SN) and Model Number (MN)**\n\n| Bytes     | 04     | 05     | 06     | 23 to 07 | 24     | 25     | 63 to 26 |\n|-----------|--------|--------|--------|----------|--------|--------|----------|\n| Value     | 53h ('S') | 4Eh ('N') | 31h ('1') | 20h (' ') | 4Dh ('M') | 32h ('2') | 20h (' ') |\n\n### 4.5.3 IEEE OUI Identifier (IEEE)\n\nThe IEEE OUI Identifier (OUI, bytes 75:73) is defined in the Identify Controller data structure. The value is assigned by the IEEE Registration Authority. The identifier is in little endian format.\n\n**Example**:\n\n- OUI = ABCDEFh.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 127: PCI Vendor ID (VID) and PCI Subsystem Vendor ID (SSVID)",
+        "coordinates": [
+          256,
+          519,
+          748,
+          554
+        ]
+      },
+      {
+        "name": "Figure 128: Serial Number (SN) and Model Number (MN)",
+        "coordinates": [
+          136,
+          726,
+          864,
+          761
+        ]
+      }
+    ]
+  }
+}

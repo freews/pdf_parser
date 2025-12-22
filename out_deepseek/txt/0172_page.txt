@@ -1,0 +1,54 @@
+### Figure 103: Status Code – Command Specific Status Values
+
+| Value | Description                                                                 | Commands Affected                                                                 |
+|-------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| 29h   | I/O Command Set Not Supported                                                | Namespace Attachment, Namespace Management                                      |
+| 2Ah   | I/O Command Set Not Enabled                                                  | Namespace Attachment                                                             |
+| 2Bh   | I/O Command Set Combination Rejected                                           | Set Features                                                                   |
+| 2Ch   | Invalid I/O Command Set                                                      | Identify                                                                      |
+| 2Dh   | Identifier Unavailable                                                       | Capacity Management                                                             |
+| 2Eh   | Namespace Is Dispersed                                                       | Reservation Acquire, Reservation Register, Reservation Release, Reservation Report |
+| 2Fh   | Invalid Discovery Information                                                | Discovery Information Management                                               |
+| 30h   | Zoning Data Structure Locked                                                | Fabric Zoning Lookup, Fabric Zoning Send, Fabric Zoning Receive                |
+| 31h   | Zoning Data Structure Not Found                                              | Fabric Zoning Lookup, Fabric Zoning Send, Fabric Zoning Receive                |
+| 32h   | Insufficient Discovery Resources                                              | Discovery Information Management                                               |
+| 33h   | Requested Function Disabled                                                | Fabric Zoning Lookup, Fabric Zoning Send, Fabric Zoning Receive                |
+| 34h   | ZoneGroup Originator Invalid                                                  | Fabric Zoning Send                                                             |
+| 35h   | Invalid Host                                                                  | Manage Exported NVM Subsystem                                               |
+| 36h   | Invalid NVM Subsystem                                                       | Manage Exported NVM Subsystem                                               |
+| 37h   | Invalid Controller Data Queue                                              | Set Features, Get Features, Track Send, Controller Data Queue              |
+| 38h   | Not Enough Resources                                                         | Track Send, Controller Data Queue                                               |
+| 39h   | Controller Suspended                                                       | Track Send, Sanitize                                                           |
+| 3Ah   | Controller Not Suspended                                                      | Track Send                                                                   |
+| 3Bh   | Controller Data Queue Full                                                      | Track Send                                                                   |
+| 3Ch   | Request Exceeds Maximum Namespace Sanitize Operations In Progress        | Sanitize Namespace                                                             |
+| 3Dh   | Manufacturing Default Personality Required                                   | Firmware Commit                                                              |
+| 3Eh   | Invalid Power Limit                                                          | Set Features                                                                   |
+| 3Fh   | Cross-Controller Reset in Progress                                            | Cross-Controller Reset                                                         |
+| 40h   | Cross-Controller Reset Log Page Full                                            | Cross-Controller Reset                                                         |
+| 41h   | Cross-Controller Reset Limit Exceeded                                          | Cross-Controller Reset                                                         |
+| 42h to 6Fh | Reserved                                                                 | NOTE 1                                                                     |
+| 70h to 7Fh | Directive Specific                                                          | Refer to Figure 104 (I/O Command Set Specific) or Figure 105 (Fabrics Command Specific) |
+| 80h to BFh | I/O Command Set Specific or Fabrics Command Specific                      |                                                                           |
+| C0h to FFh | Vendor Specific                                                             |                                                                           |
+
+Notes:
+1. The Directives Specific range defines Directives specific status values. Refer to section 8.1.9.
+
+### Figure 104: Status Code – Command Specific Status Values, I/O Commands
+
+| Value | Definition                                                                 | Commands Affected                                                                 |
+|-------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| 80h   | Conflicting Attributes                                                       |                                                                           |
+| 81h   | Invalid Protection Information                                                |                                                                           |
+| 82h   | Attempted Write to Read Only Range                                            |                                                                           |
+| 83h   | Command Size Limit Exceeded                                                |                                                                           |
+| 84h   | Invalid Command ID                                                          |                                                                           |
+| 85h   | Incompatible Namespace or Format                                              |                                                                           |
+| 86h   | Fast Copy Not Possible                                                      |                                                                           |
+| 87h   | Overlapping I/O Range                                                       |                                                                           |
+| 88h   | Namespace Not Reachable                                                      |                                                                           |
+| 89h   | Insufficient Resources                                                       |                                                                           |
+| 8Ah   | Insufficient Program Resources                                              |                                                                           |
+| 8Bh   | Invalid Memory Namespace                                                      |                                                                           |
+| 8Ch   | Invalid Memory Range Set                                                      |                                                                           |

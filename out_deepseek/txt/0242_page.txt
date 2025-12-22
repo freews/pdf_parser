@@ -1,0 +1,25 @@
+Figure 210: SMART / Health Information Log Page
+
+| Bits | Description |
+|------|-------------|
+| 31:24 | Reserved |
+| 23:20 | Power Measurement Type (PMT): This field contains the power measurement type for the Interval Power Measurement Value field as defined in Figure 679. |
+| 19:18 | Reserved |
+| 17:16 | Interval Power Measurement Scale (IPMS): This field contains the scale for the Interval Power Measurement Value field. |
+
+| Value | Definition |
+|-------|------------|
+| 00b   | Not reported |
+| 01b   | 0.0001 W |
+| 10b   | 0.01 W |
+| 11b   | Reserved |
+
+| Bits | Description |
+|------|-------------|
+| 15:00 | Interval Power Measurement Value (IPMV): This field contains the value of the interval power measurement. If the Interval Power Measurement Scale field is cleared to 00b, then this field shall be cleared to 0h. |
+
+Figure 211: Temperature Sensor Data Structure
+
+| Bits | Description |
+|------|-------------|
+| 15:00 | Temperature Sensor Temperature (TST): Contains the current temperature in Kelvins reported by the temperature sensor. The physical point in the NVM subsystem whose temperature is reported by the temperature sensor and the temperature accuracy is implementation specific. An implementation that does not implement the temperature sensor reports a value of 0h. The temperature reported by a temperature sensor may be used to trigger an asynchronous event (refer to section 5.2.26.1.3). |

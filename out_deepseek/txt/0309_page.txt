@@ -1,0 +1,36 @@
+Figure 292: Reclaim Unit Handle Usage Descriptor
+
+| Bytes | Description |
+|-------|-------------|
+| 00    | Reclaim Unit Handle Attributes (RUHA): This field identifies attributes associated with the Reclaim Unit Handle Usage. |
+|       | **Value** | **Definition** |
+|       | 0h | Not used by a namespace. |
+|       | 1h | Host Specified: The Reclaim Unit Handle Identifier is used by a namespace created with a Namespace Management command explicitly requesting the usage of this Reclaim Unit Handle (i.e., specifying a Placement Handle List). |
+|       | 2h | Controller Specified: The Reclaim Unit Handle Identifier is used by a namespace created with a Namespace Management command requesting the controller to select the one and only Reclaim Unit Handle (i.e., not specifying a Placement Handle List). |
+|       | 3h to FFh | Reserved |
+| 07:01 | Reserved |
+
+In the list of Reclaim Unit Handle Usage Descriptors, no more than one entry shall have the Reclaim Unit Handle Attributes field set to Controller Specified (i.e., 2h).
+
+5.2.12.1.31 Flexible Data Placement (FDP) Statistics (Log Page Identifier 22h)
+
+The FDP Statistics log page (refer to Figure 293) is used to provide information about the FDP configuration over the life of the FDP configuration in an Endurance Group. The Endurance Group is specified by the Endurance Group Identifier field in the Log Specific Identifier field as defined in Figure 221).
+
+If Flexible Data Placement is enabled in the specified Endurance Group and the Get Log Page command specifies this log page, then the NSID field in that command is reserved.
+
+If Flexible Data Placement is disabled in the specified Endurance Group and the Get Log Page command specifies this log page, then the controller shall abort the command with a status code of FDP Disabled.
+
+Figure 293: FDP Statistics Log Page
+
+| Bytes | Description |
+|-------|-------------|
+| 15:00 | Host Bytes with Metadata Written (HBMW): Contains the total number of bytes of user data the host has written to the specified Endurance Group as part of processing I/O commands as defined in the applicable NVM Express I/O Command Set specification. This value does not include controller writes due to internal operations such as garbage collection. |
+|       | This field shall not wrap once the value FFFFFFFFF_FFFFFFFFF_FFFFFFFFF_FFFFFFFFF is reached. |
+|       | If the Flexible Data Placement Feature value is modified by a Set Features command, then this field shall be cleared to 0h. |
+| 31:16 | Media Bytes with Metadata Written (MBMW): Contains the total number of bytes of user data that have been written to the specified Endurance Group including both host and controller writes (e.g., garbage collection and background media scan operations) as part of processing as defined in the applicable NVM Express I/O Command Set specification. |
+|       | This field shall not wrap once the value FFFFFFFFF_FFFFFFFFF_FFFFFFFFF_FFFFFFFFF is reached. |
+|       | If the Flexible Data Placement Feature value is modified by a Set Features command, then this field shall be cleared to 0h. |
+| 47:32 | Media Bytes Erased (MBE): Contains the total number of bytes of data that have been erased in the specified Endurance Group. |
+|       | This field shall not wrap once the value FFFFFFFFF_FFFFFFFFF_FFFFFFFFF_FFFFFFFFF is reached. |
+|       | If the Flexible Data Placement Feature value is modified by a Set Features command, then this field shall be cleared to 0h. |
+| 63:48 | Reserved |

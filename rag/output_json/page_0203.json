@@ -1,0 +1,9 @@
+{
+  "page_number": 203,
+  "page_type": "unknown",
+  "content": "```json\n{\n  \"page_number\": \"179\",\n  \"page_type\": \"body\",\n  \"content\": \"f) One-Shot event: Indicates an event that is only reported once and the event is cleared by the controller when that event is reported in the completion of an Asynchronous Event Request command. Refer to the description of each event to determine how to clear any pending events (e.g., refer to the Controller Data Queue feature in section 5.2.26.1.23); and\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n",
+  "metadata": {
+    "embedded_images": [],
+    "parse_error": true
+  }
+}

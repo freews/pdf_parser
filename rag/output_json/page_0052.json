@@ -1,0 +1,18 @@
+{
+  "page_number": "28",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 13: Simple NVM Storage Hierarchy with Multiple Reclaim Groups\n\n[img]\n\nFigure 14 shows the relationships of these entities in a complex NVM subsystem, which has:\n- multiple domains;\n- multiple Endurance Groups per domain;\n- multiple NVM Sets per Endurance Group; and\n- multiple namespaces per NVM Set.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 13: Simple NVM Storage Hierarchy with Multiple Reclaim Groups",
+        "coordinates": [
+          158,
+          123,
+          809,
+          441
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+Example:
+
+- OUI Identifier = ABCDEFH;
+- Extension Identifier = 0123456789h; and
+- Vendor Specific Extension Identifier = FEDCBA9876543210h.
+
+Figure 134: Namespace Globally Unique Identifier (NGUID)
+
+| Bytes | 104 | 105 | 106 | 107 | 108 | 109 |
+|-------|-----|-----|-----|-----|-----|-----|
+| Value | FEh | DCh | BAh | 98h | 76h | 54h |
+| Field | Vendor Specific Extension Identifier |
+
+Figure 135: Namespace Globally Unique Identifier (NGUID), OUI
+
+| Bytes | 110 | 111 | 112 | 113 | 114 | 115 |
+|-------|-----|-----|-----|-----|-----|-----|
+| Value | 32h | 10h | ABh | CDh | EFh | 01h |
+| Field | VSP Ex ID (cont) | OUI | Ex ID |
+
+Figure 136: Namespace Globally Unique Identifier (NGUID), Extension Identifier (continued)
+
+| Bytes | 116 | 117 | 118 | 119 |
+|-------|-----|-----|-----|-----|
+| Value | 23h | 45h | 67h | 89h |
+| Field | Extension Identifier (continued) |
+
+The NGUID format is similar to the World Wide Name (WWN) format as IEEE Registered Extended designator (NAA = 6) as shown below.
+
+Figure 137: Namespace Globally Unique Identifier (NGUID), NGUID similarity to WWN
+
+| Bytes | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
+|-------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| NGUID | Vendor Specific Extension Identifier | OUI | Extension Identifier |
+| WWN (NAA = 6) | 6h | OUI | Vendor Specific Identifier | Vendor Specific Identifier Extension |
+
+4.5.6 Universally Unique Identifier (UUID)
+
+The Universally Unique Identifier is defined in RFC 9562 and contained in the Namespace Identification Descriptor (refer to Figure 331). Byte ordering requirements for a UUID are described in RFC 9562.
+
+For historical reasons, UUID subtypes are called UUID versions. Multiple UUID versions are able to be used in the same implementation.
+
+RFC 9562 defines UUID version 8 (i.e., UUIDv8) for experimental or vendor-specific use cases. Uniqueness of UUIDv8 values is implementation specific. NVM Express UUID use cases assume uniqueness within the set of hosts, NVM subsystems, and fabrics that are connected or accessible by a common instance of an administrative tool. For UUIDv8 values, that uniqueness is the responsibility of all of the implementations in that set. RFC 9562 Appendix B provides examples of UUIDv8 generation algorithms that produce unique UUIDs if all implementations in that set generate UUIDv8 values with the same algorithm.
+
+4.6 List Data Structures
+
+This section describes list data structures used in this specification.
+
+4.6.1 Controller List
+
+A Controller List, defined in Figure 138, is an ordered list of ascending controller identifiers. The controller identifier of a controller is the value indicated in the CNTLID field of the Identify Controller data structure in Figure 328. Unused entries are zero filled.

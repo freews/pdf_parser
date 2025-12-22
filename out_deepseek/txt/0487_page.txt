@@ -1,0 +1,38 @@
+Figure 518: Virtualization Management – Command Dword 10
+
+| Bits | Description |
+|------|-------------|
+| 31:16 | Controller Identifier (CNTLID): This field indicates the controller for which controller resources are to be modified. |
+| 15:11 | Reserved |
+| 10:08 | Resource Type (RT): This field indicates the type of controller resource to be modified. |
+
+| Value | Definition |
+|-------|------------|
+| 000b  | VQ Resources |
+| 001b  | VI Resources |
+| 010b to 111b | Reserved |
+
+| 07:04 | Reserved |
+
+Action (ACT): This field indicates the operation for the command to perform as described below.
+
+| Value | Definition |
+|-------|-------------|
+| 0h     | Reserved |
+| 1h     | Primary Controller Flexible Allocation: Set the number of Flexible Resources allocated to this primary controller following the next Controller Level Reset initiated by any method other than a Controller Reset. If the Controller Identifier field does not correspond to this primary controller, then a status code of Invalid Controller Identifier is returned. This value is persistent across power cycles and resets. |
+| 2h to 6h | Reserved |
+| 7h     | Secondary Controller Offline: Place the secondary controller in the Offline state and remove all Flexible Resources. If the Controller Identifier field does not correspond to a secondary controller associated with this primary controller, then a status code of Invalid Controller Identifier is returned. It is not an error to request a secondary controller be placed in the offline state if that secondary controller is already in the offline state. |
+| 8h     | Secondary Controller Assign: Assign the number of controller resources specified in Number of Controller Resources to the secondary controller. If the Controller Identifier field does not correspond to a secondary controller associated with this primary controller, then an error of Invalid Controller Identifier is returned. If the secondary controller is not in the Offline state, then a status code of Invalid Secondary Controller State is returned. |
+| 9h     | Secondary Controller Online: Place the secondary controller in the Online state. If the Controller Identifier field does not correspond to a secondary controller associated with this primary controller, then an error of Invalid Controller Identifier is returned. If the secondary controller is not configured appropriately (refer to section 8.2.6) or the primary controller is not enabled, then a status code of Invalid Secondary Controller State is returned. It is not an error to request a secondary controller be placed in the online state if that secondary controller is already in the online state. |
+| Ah to Fh | Reserved |
+
+Figure 519: Virtualization Management – Command Dword 11
+
+| Bits | Description |
+|------|-------------|
+| 31:16 | Reserved |
+| 15:00 | Number of Controller Resources (NR): This field indicates a number of controller resources to allocate or assign. |
+
+5.3.6.1 Command Completion
+
+Command specific status values associated with the Virtualization management command are defined in Figure 520.

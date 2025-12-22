@@ -1,0 +1,36 @@
+{
+  "page_number": "73",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 58: Offset E00h: PMRCAP – Persistent Memory Region Capabilities\n\n| Bits | Type | Reset | Description |\n|------|------|-------|-------------|\n| 9:8 | RO | Impl Spec | **Persistent Memory Region Time Units (PMRTU)**: Indicates Persistent Memory Region time units.\n\n| Value | Persistent Memory Region Time Units |\n|-------|-------------------------------------|\n| 00b | 500 milliseconds |\n| 01b | minutes |\n| 10b to 11b | Reserved |\n\n| 7:5 | RO | Impl Spec | **Base Indicator Register (BIR)**: This field indicates the Base Address Register (BAR) that specifies the address and size of the Persistent Memory Region. Values 010b, 011b, 100b, and 101b are valid. |\n\n| 4 | RO | Impl Spec | **Write Data Support (WDS)**: If this bit is set to '1', then the controller supports data and metadata in the Persistent Memory Region for commands that transfer data from the host to the controller (e.g., Write). If this bit is cleared to '0', then data and metadata for commands that transfer data from the host to the controller shall not be transferred to the Persistent Memory Region.\n\nIf PMRCAP.CMSS is cleared to '0', this bit shall be cleared to '0'. |\n\n| 3 | RO | Impl Spec | **Read Data Support (RDS)**: If this bit is set to '1', then the controller supports data and metadata in the Persistent Memory Region for commands that transfer data from the controller to the host (e.g., Read). If this bit is cleared to '0', then all data and metadata for commands that transfer data from the controller to the host shall not be transferred from the Persistent Memory Region.\n\nIf PMRCAP.CMSS is cleared to '0', this bit shall be cleared to '0'. |\n\n| 2:0 | RO | 000b | Reserved |\n\n## 3.1.4.23 Offset E04h: PMRCTL – Persistent Memory Region Control\n\nThis optional property controls the operation of the Persistent Memory Region. If the controller does not support the Persistent Memory Region feature, then this property shall be cleared to 0h.\n\nThis property shall not be reset by a Controller Level Reset initiated by a Controller Reset.\n\n## Figure 59: Offset E04h: PMRCTL – Persistent Memory Region Control\n\n| Bits | Type | Reset | Description |\n|------|------|-------|-------------|\n| 31:1 | RO | 0h | Reserved |\n| 0 | RW | 0b | **Enable (EN)**: When set to '1', then the Persistent Memory Region is ready to process PCI Express memory read and write requests once PMRSTS.NRDY is cleared to '0'. When cleared to '0', then the Persistent Memory Region is disabled and PMRSTS.NRDY shall be set to '1' once the Persistent Memory Region is ready to be re-enabled. |\n\n## 3.1.4.24 Offset E08h: PMRSTS – Persistent Memory Region Status\n\nThis optional property provides the status of the Persistent Memory Region. If the controller does not support the Persistent Memory Region feature, then this property shall be cleared to 0h.\n\nThis property shall not be reset by a Controller Level Reset initiated by a Controller Reset.\n\n## Figure 60: Offset E08h: PMRSTS – Persistent Memory Region Status\n\n| Bits | Type | Reset | Description |\n|------|------|-------|-------------|\n| 31:13 | RO | 0h | Reserved |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 58: Offset E00h: PMRCAP – Persistent Memory Region Capabilities",
+        "coordinates": [
+          115,
+          128,
+          878,
+          460
+        ]
+      },
+      {
+        "name": "Figure 59: Offset E04h: PMRCTL – Persistent Memory Region Control",
+        "coordinates": [
+          115,
+          590,
+          878,
+          675
+        ]
+      },
+      {
+        "name": "Figure 60: Offset E08h: PMRSTS – Persistent Memory Region Status",
+        "coordinates": [
+          115,
+          805,
+          878,
+          835
+        ]
+      }
+    ]
+  }
+}

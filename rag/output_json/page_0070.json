@@ -1,0 +1,36 @@
+{
+  "page_number": "46",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 28: Admin Command Support Requirements\n\n| Command | Combined Opcode Value | Controller Support Requirements¹ | Reference |\n| --- | --- | --- | --- |\n| | | I/O | Administrative | Discovery | |\n| Vendor Specific | | O | O | O | |\n\n**Notes:**\n1. O/M/P definition: O = Optional, M = Mandatory, P = Prohibited\n2. Prohibited if the Keep Alive Timer feature is not supported (refer to section 3.9).\n3. Prohibited for an Exported NVM Subsystem (refer to section 8.3.4).\n4. Mandatory if any of the features in Figure 32 are implemented.\n5. Mandatory if Telemetry Log, Firmware Commit, or SMART / Health Critical Warnings are supported.\n6. For Discovery controllers that support explicit persistent connections, this command is mandatory. For Discovery controllers that do not support explicit persistent connections, this command is prohibited.\n7. Mandatory for CDCs and optional for Discovery controllers that are not a CDC.\n8. Refer to the applicable NVM Express I/O Command Set specification.\n9. Mandatory for NVMe over PCIe. This command is not supported for NVMe over Fabrics.\n10. Optional for message-based controllers. Prohibited for memory-based controllers.\n11. Optional for Discovery controllers that support explicit persistent connections. Prohibited for Discovery controllers that do not support explicit persistent connections.\n\n## Figure 29: Fabrics Command Support Requirements\n\n| Command | Opcode Value | Fabrics Command Type | Controller Support Requirements¹,² | Reference |\n| --- | --- | --- | --- | --- |\n| | | | I/O | Administrative | Discovery | |\n| Property Set | | 00h | M | M | M | 6.6 |\n| Connect | | 01h | M | M | M | 6.3 |\n| Property Get | | 04h | M | M | M | 6.5 |\n| Authentication Send | | 05h | O | O | O | 6.2 |\n| Authentication Receive | | 06h | O | O | O | 6.1 |\n| Disconnect | | 08h | O | P | P | 6.4 |\n| Vendor Specific | 7Fh | C0h to FFh | O | O | O | |\n\n**Notes:**\n1. O/M/P definition: O = Optional, M = Mandatory, P = Prohibited\n2. For NVMe over PCIe implementations, all Fabrics commands are prohibited. For NVMe over Fabrics implementations, the commands are as noted in the table.\n\n## Figure 30: Common I/O Command Support Requirements\n\n| Command | Combined Opcode Value | Controller Support Requirements¹ | Reference |\n| --- | --- | --- | --- |\n| | | I/O | Administrative | Discovery | |\n| Flush | 00h | M | P | P | 7.2 |\n| Reservation Register | 0Dh | O² | P | P | 7.6 |\n| Reservation Report | 0Eh | O² | P | P | 7.8 |\n| Reservation Acquire | 11h | O² | P | P | 7.5 |\n| I/O Management Receive | 12h | O³ | P | P | 7.3 |\n| Reservation Release | 15h | O² | P | P | 7.7 |\n| Cancel | 18h | O | P | P | 7.1 |\n| I/O Management Send | 1Dh | O³ | P | P | 7.4 |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 28: Admin Command Support Requirements",
+        "coordinates": [
+          114,
+          105,
+          880,
+          382
+        ]
+      },
+      {
+        "name": "Figure 29: Fabrics Command Support Requirements",
+        "coordinates": [
+          114,
+          435,
+          880,
+          650
+        ]
+      },
+      {
+        "name": "Figure 30: Common I/O Command Support Requirements",
+        "coordinates": [
+          114,
+          695,
+          880,
+          895
+        ]
+      }
+    ]
+  }
+}

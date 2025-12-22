@@ -1,0 +1,11 @@
+NVMe Express® Base Specification, Revision 2.3
+
+The host shall start data (if present) in command capsules at byte offset (ICDOFF * 16) from the end of the submission queue entry.
+
+Figure 77: Data and SGL Locations within a Command Capsule
+
+3.3.2.1.3.2 Data Transfer Examples
+
+The data transfer examples in Figure 78 and Figure 79 show SGL examples for a Write command where data is transferred via a memory transaction or within the capsule. The SGL may use a key as part of the data transfer depending on the requirements of the NVMe Transport used.
+
+The first example shows an 8KiB write where all of the data is transferred via memory transactions. In this case, there is one SGL descriptor that is contained within the submission queue entry at CMD.SGL1. The SGL descriptor is a Keyed SGL Data Block descriptor. If more SGLs are required to complete the command, the additional SGLs are contained in the command capsule.

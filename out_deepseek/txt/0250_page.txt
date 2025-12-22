@@ -1,0 +1,42 @@
+Figure 217: Telemetry Host-Initiated Log Specific Parameter Field
+
+| Bits | Description |
+|------|-------------|
+| 11:09 | Maximum Created Data Area (MCDA): If the MCDAS bit is set to ‘1’ in the LID Specific Parameter field (refer to Figure 219) and the Create Telemetry Host-Initiated Data bit is set to ‘1’, then this field specifies the data areas the host is requesting to be created in the log page. Data areas not requested shall not be created. |
+
+| Values | Definition |
+|--------|------------|
+| 000b   | The controller determines the data areas to be created in the log page. |
+| 001b   | Data Area 1 |
+| 010b   | Data Area 1 through Data Area 2 |
+| 011b   | Data Area 1 through Data Area 3 |
+| 100b   | Data Area 1 through Data Area 4 |
+| 101b to 111b | Reserved |
+
+If the MCDAS bit is cleared to ‘0’ or the Create Telemetry Host-Initiated Data bit is cleared to ‘0’, then this field shall be ignored by the controller.
+
+| Bits | Description |
+|------|-------------|
+| 08   | Create Telemetry Host-Initiated Data (CTHD): If this bit is set to ‘1’, then the controller shall capture the Telemetry Host-Initiated Data representing the internal state of the controller at the time the associated Get Log Page command is processed. If this bit is cleared to ‘0’, then the controller shall not update the Telemetry Host-Initiated Data. The Host-Initiated Data shall not change until the controller processes: |
+|      | a) a subsequent Telemetry Host-Initiated Log with this bit set to ‘1’; |
+|      | b) a Firmware Commit command; or |
+|      | c) a power on reset. |
+
+The Telemetry Host-Initiated Data consists of:
+
+a) Three areas, if the Data Area 4 Support (DA4S) bit is cleared to ‘0’ in the Log Page Attributes field: Telemetry Host-Initiated Data Area 1, Telemetry Host-Initiated Data Area 2, and Telemetry Host-Initiated Data Area 3; or
+
+b) Four areas, if the DA4S bit is set to ‘1’ in the Log Page Attributes field: Telemetry Host-Initiated Data Area 1, Telemetry Host-Initiated Data Area 2, Telemetry Host-Initiated Data Area 3 and Telemetry Host-Initiated Data Area 4.
+
+All areas start at Telemetry Host-Initiated Data Area Block 1. The last block of each area is indicated in Telemetry Host-Initiated Data Area y Last Block, respectively. The telemetry data captured and the size of that data is implementation dependent.
+
+The size of the log page is variable and:
+
+- If the DA4S bit is cleared to ‘0’ in the Log Page Attributes field, the size may be calculated using the Telemetry Host-Initiated Data Area 3 Last Block field.
+- If the DA4S bit is set to ‘1’ in the Log Page Attributes field and the Extended Telemetry Data Area 4 Supported (ETDAS) field is set to 1h in the Host Behavior Support feature (refer to section 5.2.26.1.14), then the size of the log page may be calculated using the Telemetry Host-Initiated Data Area 4 Last Block field.
+- If the DA4S bit is set to ‘1’ in the Log Page Attributes field and the Extended Telemetry Data Area 4 Supported (ETDAS) field is cleared to 0h in the Host Behavior Support feature (refer to section 5.2.26.1.14), then the size of the log page may be calculated using the Telemetry Host-Initiated Data Area 3 Last Block field.
+
+The controller shall return data for all blocks requested:
+
+- If the DA4S bit is cleared to ‘0’ in the Log Page Attributes field, then the data beyond the last block in Telemetry Host-Initiated Data Area 3 Last Block is undefined.
+- If the DA4S bit is set to ‘1’ in the Log Page Attributes field and the Extended Telemetry Data Area 4 Supported (ETDAS) field is set to 1h in the Host Behavior Support feature, then the data beyond the last block in Telemetry Host-Initiated Data Area 4 Last Block is undefined.

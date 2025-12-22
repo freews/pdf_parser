@@ -1,0 +1,33 @@
+5.2.12.3.1). A Controller Level Reset (CLR) removes all entries for completed operations in the Cross-Controller Reset log page for the controller processing the CLR. An NVM Subsystem Shutdown pauses processing of all in-progress Cross-Controller Reset operations.
+
+8.3.3.1 Cross-Controller Reset Operation Processing
+
+A Cross-Controller Reset operation consists of the following steps:
+
+1. Determine whether the NVM subsystem is able to validate the Host NQN, the CIU field and the CIRN field.
+
+   If:
+
+   - the NVM subsystem is not able to validate the Host NQN, the CIU field or the CIRN field (e.g., the Source Controller is not able to communicate with the Impacted Controller); and
+   - the NVM subsystem is able to determine via an implementation-dependent mechanism that command processing for commands submitted to the Impacted Controller satisfies all Immediate Abort requirements as described in section 5.2.1.1 (e.g., the NVM subsystem determines that the Impacted Controller is powered down),
+
+then the NVM subsystem shall complete the Cross-Controller Reset operation and report that the operation succeeded with the V bit cleared to ‘0’ and the CLRI bit cleared to ‘0’.
+
+   If:
+
+   - the NVM subsystem is not able to validate at least one of the Host NQN, the CIU field or the CIRN field; and
+   - the NVM subsystem is not able to determine that the Impacted Controller is no longer processing outstanding commands,
+
+then the NVM subsystem shall complete the Cross-Controller Reset operation and report that the operation failed with the V bit cleared to ‘0’ and the CLRI bit cleared to ‘0’.
+
+Otherwise, the operation proceeds to the next step.
+
+2. Determine whether the operation is authorized.
+
+The NVM subsystem determines whether the Source Controller is authorized to cause the NVM subsystem to initiate a Cross-Controller Reset operation on the Impacted Controller and prohibits the operation if the Source Controller is not authorized.
+
+The authorization checks performed by the NVM subsystem include determining whether the Source Controller is allowed to access the Impacted Controller for the purpose of a Cross-Controller Reset (i.e., whether that access is prohibited by an access control policy or other NVM subsystem authorization policy). If that access is not allowed, then this authorization check fails and the NVM subsystem prohibits the operation.
+
+Hosts that support Cross-Controller Reset Recovery should use the same security mechanisms, protocols, and algorithms with all controllers in the same NVM subsystem. If the Source Controller and Impacted Controller do not use the same security mechanisms, protocols, and algorithms with the host (e.g., to authenticate the host), then the operation should be prohibited unless the NVM subsystem is able to determine that for any security mechanism, protocol, or algorithm that differs between these two controllers, the Source Controller uses a stronger security mechanism, protocol or algorithm than the Impacted Controller. For example, if the Source Controller has authenticated the host, and the Impacted Controller has not authenticated the host, then the operation should not be prohibited, as the Source Controller has used a stronger security mechanism. However, if the Impacted Controller has authenticated the host, and the Source Controller has not authenticated that host, then the operation should be prohibited.
+
+If any authorization check causes the Cross-Controller Reset operation to be prohibited, then the NVM subsystem shall complete that Cross-Controller Reset operation and report that the operation failed with the V bit cleared to ‘0’ and the CLRI bit cleared to ‘0’.

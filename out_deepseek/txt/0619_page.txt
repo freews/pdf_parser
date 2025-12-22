@@ -1,0 +1,37 @@
+While a power limit is in force, if controller processing changes the current or saved value of the Power State attribute of the Power Management feature to indicate the PSD for a different power state, then the controller shall change the corresponding retained value (i.e., the retained current value or the retained saved value) to indicate the PSD for that different power state in the RPSD data structures. This ensures that subsequent processing for step 1 in this section does not cause a power state change).
+
+For example, if the original power state 0 and power state 1 have been removed, and the current power state of the controller is set to power state 3, then the retained value of the current power state is set to power state 5 because restoring the PSD data structures for power state 0 and power state 1 (in step 1 in this section) shifts the PSD for power state 3 to become the PSD for power state 5.
+
+8.1.18.6.3 Updating a Power Limit Without Changing Prohibited or Enabled Power States
+
+If controller processing of the Power Limit feature (e.g., processing of a Set Features command for this feature or processing a Controller Level Reset) does not cause any prohibited power state to become enabled and does not cause any enabled power state to become prohibited (i.e., results in a power limit value that is less than or equal to the value of the MP field in the PSD0 field in the Identify Controller data structure and that is greater than or equal to the value of MP field in every RPSD data structure for any prohibited power state), then the controller:
+
+- shall update the attributes of the Power Limit feature; and
+- shall not change the Power State Descriptor data structures, the NPSS field, or any attribute of the Power Management feature.
+
+8.1.18.6.4 Power Limit Effects Examples
+
+Figure 676, Figure 677, and Figure 678 provide examples of the effects of setting, changing and removing a power limit based on the power states used in Figure 673 in section 8.1.18. The default power state is initially PS1, the first of the two power states whose maximum power is 18W.
+
+Case 1 in Figure 676 shows the effects of setting an initial power limit of 16W when there is no power limit:
+
+- The first three power states (PS0, PS1, and PS2) become prohibited and their descriptors are removed because their maximum power values are greater than 16W;
+- The power state descriptor data structures for the four power states that remain are shifted by three power state descriptor slots to lower byte offsets and renumbered (e.g., PS3 is renumbered to become PS0, as the 15W MP value for the original PS3 is now the maximum power that is able to be consumed by the NVM subsystem if all controllers are in that power state);
+- The 0’s based NPSS value in Identify Controller decreases from 6 to 3 to indicate that there are now four available power states;
+- The default value of the Power Management feature (i.e., Feature Identifier 02h) changes to PS0; and
+- If the current controller power state is PS0, PS1, or PS2 when the 16W power limit is set, then the controller transitions to the new PS0, otherwise the controller remains in the same power state and the current value of the Power Management feature is decreased by 3 to indicate the new number of that power state (e.g., the 10W PS4 state becomes PS1).
+
+Figure 676: First Example of Controller Power Limit Effects
+
+| Case 1: Set Power Limit to 16W |
+|---------------------------------|
+| Power State | Maximum Power (MP) | Default Value | Host sets Power Limit Value: PLV = 16W |
+| 0 | 25W | PS1 |
+| 1 | 18W | |
+| 2 | 18W | |
+
+| Power Limit Impact | Maximum Unlimited Power (MUP) | Default Value |
+|------------------------|-------------------------------|----------------|
+| Result MP              | 25W                          | 15W            |
+| 18W                     | 10W                          | 25W            |
+| 18W                     | 8W                           |                |

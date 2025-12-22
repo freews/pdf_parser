@@ -1,0 +1,62 @@
+Figure 372: Set Controller State – Command Dword 13 ........................................................................383
+Figure 373: Set Controller State – Command Dword 15 ........................................................................383
+Figure 374: Controller State Data Structure ............................................................................................384
+Figure 375: NVMe Controller State Data Structure ...................................................................................385
+Figure 376: I/O Submission Queue State Data Structure ...........................................................................385
+Figure 377: I/O Completion Queue State Data Structure ...........................................................................386
+Figure 378: Migration Send – Command Specific Status Values .................................................................387
+Figure 379: Namespace Attachment – Data Pointer ....................................................................................388
+Figure 380: Namespace Attachment – Command Dword 10 ........................................................................388
+Figure 381: Namespace Attachment – Command Specific Status Values ....................................................388
+Figure 382: Namespace Management – Data Pointer ...................................................................................389
+Figure 383: Namespace Management – Command Dword 10 ........................................................................390
+Figure 384: Namespace Management – Command Dword 11 ........................................................................390
+Figure 385: Namespace Management – Data Structure for Create ...............................................................390
+Figure 386: Namespace Management – Command Specific Status Values ....................................................390
+Figure 387: Namespace Management – Completion Queue Entry Dword 0 ........................................................391
+Figure 388: Sanitize – Command Dword 10 ..................................................................................................392
+Figure 389: Sanitize – Command Dword 11 ..................................................................................................393
+Figure 390: Sanitize – Command Specific Status Values ...........................................................................394
+Figure 391: Sanitize Namespace – Command Dword 10 ................................................................................395
+Figure 392: Sanitize Namespace – Command Specific Status Values ..............................................................396
+Figure 393: Security Receive – Data Pointer ...............................................................................................396
+Figure 394: Security Receive – Command Dword 10 ......................................................................................396
+Figure 395: Security Receive – Command Dword 11 ......................................................................................397
+Figure 396: Security Protocol EAh – Security Protocol Specific Field Values .................................................397
+Figure 397: Security Send – Data Pointer .....................................................................................................397
+Figure 398: Security Send – Command Dword 10 ..........................................................................................398
+Figure 399: Security Send – Command Dword 11 ..........................................................................................398
+Figure 400: Set Features – Data Pointer .......................................................................................................398
+Figure 401: Set Features – Command Dword 10 ...............................................................................................398
+Figure 402: Set Features – Command Dword 14 .............................................................................................399
+Figure 403: Set Features – Feature Identifiers .............................................................................................399
+Figure 404: Arbitration & Command Processing – Command Dword 11 ..........................................................402
+Figure 405: Power Management – Command Dword 11 .................................................................................402
+Figure 406: Power Management – Completion Queue Entry Dword 0 ..............................................................402
+Figure 407: Temperature Threshold – Command Dword 11 ...........................................................................404
+Figure 408: Volatile Write Cache – Command Dword 11 .................................................................................405
+Figure 409: Asynchronous Event Configuration – Command Dword 11 ..........................................................405
+Figure 410: Autonomous Power State Transition – Command Dword 11 .........................................................407
+Figure 411: Autonomous Power State Transition Data Structure ....................................................................407
+Figure 412: Autonomous Power State Transition Data Structure Entry ..........................................................408
+Figure 413: Interactions between APSTE and NOPPME ................................................................................408
+Figure 414: Timestamp – Data Structure for Set Features .............................................................................409
+Figure 415: Timestamp – Data Structure for Get Features .............................................................................409
+Figure 416: Keep Alive Timer – Command Dword 11 ......................................................................................410
+Figure 417: HCTM – Command Dword 11 ......................................................................................................410
+Figure 418: Non-Operational Power State Config – Command Dword 11 ..........................................................411
+Figure 419: Read Recovery Level Config – Command Dword 11 .....................................................................411
+Figure 420: Read Recovery Level Config – Command Dword 12 .......................................................................411
+Figure 421: Predictable Latency Mode Config – Command Dword 11 ...............................................................412
+Figure 422: Predictable Latency Mode Config – Command Dword 12 .................................................................412
+Figure 423: Predictable Latency Mode – Deterministic Threshold Configuration Data Structure ...............412
+Figure 424: Predictable Latency Mode Window – Command Dword 11 .............................................................413
+Figure 425: Predictable Latency Mode Window – Command Dword 12 ...............................................................413
+Figure 426: Host Behavior Support – Data Structure ......................................................................................414
+Figure 427: Sanitize Config – Command Dword 11 ..........................................................................................415
+Figure 428: Endurance Group Event Configuration – Command Dword 11 ........................................................416
+Figure 429: I/O Command Set Profile – Command Dword 11 ...........................................................................416
+Figure 430: I/O Command Set Profile – Completion Queue Entry Dword 0 ........................................................417
+Figure 431: Spinup Control – Command Dword 11 ..........................................................................................417
+Figure 432: Completion Queue Entry Dword 0 ..................................................................................................417
+Figure 433: Power Loss Signaling Config – Command Dword 11 .......................................................................418

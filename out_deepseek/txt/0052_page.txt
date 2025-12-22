@@ -1,0 +1,8 @@
+Figure 13: Simple NVM Storage Hierarchy with Multiple Reclaim Groups
+
+Figure 14 shows the relationships of these entities in a complex NVM subsystem, which has:
+
+- multiple domains;
+- multiple Endurance Groups per domain;
+- multiple NVM Sets per Endurance Group; and
+- multiple namespaces per NVM Set.

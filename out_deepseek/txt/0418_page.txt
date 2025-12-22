@@ -1,0 +1,39 @@
+Figure 390: Sanitize – Command Specific Status Values
+
+| Value | Definition |
+|-------|------------|
+| 0Bh   | Firmware Activation Requires Conventional Reset: The NVM subsystem sanitize operation could not be started because a firmware activation is pending and a Conventional Reset (refer to the NVMe over PCIe Transport Specification) is required. |
+| 10h   | Firmware Activation Requires NVM Subsystem Reset: The NVM subsystem sanitize operation could not be started because a firmware activation is pending and an NVM Subsystem Reset is required. |
+| 11h   | Firmware Activation Requires Controller Level Reset: The NVM subsystem sanitize operation could not be started because a firmware activation is pending and a Controller Level Reset is required. |
+| 23h   | Sanitize Prohibited While Persistent Memory Region is Enabled: An NVM subsystem sanitize operation is prohibited while the Persistent Memory Region is enabled. |
+| 39h   | Controller Suspended: One or more controllers in the NVM subsystem have been suspended by a Migration Send command. |
+
+5.2.23 Sanitize Namespace command
+
+The Sanitize Namespace command is used to start a namespace sanitize operation (refer to section 1.5.65) or to recover from a previously failed namespace sanitize operation. The only namespace sanitize operation type is Crypto Erase.
+
+A namespace sanitize operation consists of:
+
+- sanitize processing, (refer to section 8.1.26), which may include deallocation of all media that is allocated for user data in that namespace;
+- optional verification of media in the namespace that is allocated for user data; and
+- post-verification deallocation of all media in the namespace that is allocated for user data following media verification, if any, as described in section 8.1.26.
+
+Refer to section 8.1.26.1 for command processing requirements that are common to the Sanitize command and the Sanitize Namespace command.
+
+The Sanitize Capabilities (SANICAP) field in the Identify Controller data structure (refer to Figure 328) indicates:
+
+a) the namespace sanitize operation types supported for the Sanitize Namespace command; and
+b) whether the controller supports the Media Verification state and the Post-Verification Deallocation state (refer to the Namespace Verification Support (NVERS) bit in the SANICAP field in Figure 328).
+
+The Maximum Namespace Sanitize Operations In Progress (MNSOIP) field in the Sanitize Status log page (refer to Figure 291) is used to indicate the maximum number of namespace sanitize operations that are allowed to be in progress concurrently in the NVM subsystem. If the controller processes a Sanitize Namespace command that requests the controller to exceed the limit indicated in the MNSOIP field, then the controller shall abort the command with a status code of Request Exceeds Maximum Namespace Sanitize Operations In Progress.
+
+If the NSID field:
+
+- is cleared to 0h;
+- is set to FFFFFFFFh;
+- specifies an inactive NSID; or
+- specifies a namespace that is in the process of being deleted,
+
+then the controller shall abort the command with a status code of Invalid Namespace or Format.
+
+If the NVM subsystem is in the Restricted Failure State or is in the Unrestricted Failure state, then the controller shall abort the command with a status code of Sanitize Failed.

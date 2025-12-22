@@ -1,0 +1,25 @@
+Figure 28: Admin Command Support Requirements
+
+| Command                  | Combined Opcode Value | Controller Support Requirements | Reference |
+|--------------------------|-----------------------|---------------------------------|------------|
+|                          | I/O                    | Administrative                      | Discovery  |
+| Vendor Specific          | O                      | O                                 | O          |
+
+Notes:
+1. O/M/P definition: O = Optional, M = Mandatory, P = Prohibited
+2. Prohibited if the Keep Alive Timer feature is not supported (refer to section 3.9).
+3. Prohibited for an Exported NVM Subsystem (refer to section 8.3.4).
+4. Mandatory if any of the features in Figure 32 are implemented.
+5. Mandatory if Telemetry Log, Firmware Commit, or SMART / Health Critical Warnings are supported.
+6. For Discovery controllers that support explicit persistent connections, this command is mandatory. For Discovery controllers that do not support explicit persistent connections, this command is prohibited.
+7. Mandatory for CDCs and optional for Discovery controllers that are not a CDC.
+8. Refer to the applicable NVM Express I/O Command Set specification.
+9. Mandatory for NVMe over PCIe. This command is not supported for NVMe over Fabrics.
+10. Optional for message-based controllers. Prohibited for memory-based controllers.
+11. Optional for Discovery controllers that support explicit persistent connections. Prohibited for Discovery controllers that do not support explicit persistent connections.
+
+Figure 29: Fabrics Command Support Requirements
+
+| Command                  | Opcode Value | Fabrics Command Type | Controller Support Requirements | Reference |
+|--------------------------|---------------|-----------------------|---------------------------------|------------|
+| Property Set             | 7Fh           | 00h                   | M M M M M M M M M M M M M M M M M M M M M M M M M M M M M M M

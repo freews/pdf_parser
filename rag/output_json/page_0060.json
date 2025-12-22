@@ -1,0 +1,18 @@
+{
+  "page_number": "36",
+  "page_type": "body",
+  "content": "NVM Express® Base Specification, Revision 2.3\n\nFigure 22: PCI Express Device Supporting Single Root I/O Virtualization (SR-IOV)\n\nPCIe Port\n\n[Image: Diagram showing a PCIe Port connected to a dashed box containing five blocks: Physical Function 0 NVMe Controller, Virtual Function (0,1) NVMe Controller, Virtual Function (0,2) NVMe Controller, Virtual Function (0,3) NVMe Controller, Virtual Function (0,4) NVMe Controller. Each block has two NSIDs below it (e.g., NSID 1, NSID 2 for Physical Function 0), and each NSID has a namespace (NS A, NS B, etc.) below it. An orange line connects all five NSIDs to a central NS F block below.]\n\nExamples provided in this section are meant to illustrate concepts and are not intended to enumerate all possible configurations. For example, an NVM subsystem may contain multiple PCI Express ports with each port supporting SR-IOV.\n\n## 2.4.2 Asymmetric Controller Behavior\n\nAsymmetric controller behavior occurs in NVM subsystems where namespace access characteristics (e.g., performance) may vary based on:\n\n- the internal configuration of the NVM subsystem; or\n- which controller is used to access a namespace (e.g., Fabrics).\n\nNVM subsystems that provide asymmetric controller behavior may support Asymmetric Namespace Access Reporting as described in section 8.1.1.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 22: PCI Express Device Supporting Single Root I/O Virtualization (SR-IOV)",
+        "coordinates": [
+          118,
+          125,
+          878,
+          380
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+| Bytes | I/O¹ | Admin¹ | Disc¹ | Description |
+|-------|------|--------|-------|-------------|
+| 103   |      |        | Reserved |             |
+| 107:104 | O | O | R | NVM Subsystem Shutdown Latency (NSSL): This field indicates the typical latency in microseconds for an NVM Subsystem Shutdown to complete. Refer to section 3.6.3. A value of 0h indicates that NVM Subsystem Shutdown Latency is not reported. |
+| 109:108 |      |        | Reserved |             |
+| 110   | O | O | R | Power Loss Signaling Information (PLSI): This field indicates information about Power Loss Signaling processing capabilities. |
+
+| Bits | Description |
+|------|-------------|
+| 7:2  | Reserved |
+| 1    | PLS Forced Quiescence (PLSFQ): If this bit is set to ‘1’, then the controller supports Power Loss Signaling with Forced Quiescence (refer to section 8.2.5.2). If this bit is cleared to ‘0’, then the controller does not support Power Loss Signaling with Forced Quiescence. |
+| 0    | PLS Emergency Power Fail (PLSEPF): If this bit is set to ‘1’, then the controller supports Power Loss Signaling with Emergency Power Fail (refer to section 8.2.5.3). If this bit is cleared to ‘0’, then the controller does not support Power Loss Signaling with Emergency Power Fail. |
+
+| 111 | M | M | M | Controller Type (CNTRLTYPE): This field specifies the controller type. A value of 0h indicates that the controller type is not reported. Implementations compliant with NVM Express Base Specification, Revision 1.4 or later shall report a controller type (i.e., the value 0h is reserved and shall not be used). Implementations compliant with a version prior to Revision 1.4 may report a value of 0h to indicate that a controller type is not reported. |
+
+| Value | Controller Type |
+|-------|------------------|
+| 0h    | Reserved (controller type not reported) |
+| 1h    | I/O controller |
+| 2h    | Discovery controller |
+| 3h    | Administrative controller |
+| 4h to FFh | Reserved |
+
+| 127:112 | O | O | R | FRU Globally Unique Identifier (FGUID): This field contains a 128-bit value that is globally unique for a given Field Replaceable Unit (FRU). Refer to the NVM Express® Management Interface Specification for the definition of a FRU. This field remains fixed throughout the life of the FRU. This field shall contain the same value for each controller associated with a given FRU. This field uses the EUI-64 based 16-byte designator format. Bytes 122:120 contain the 24-bit Organizationally Unique Identifier (OUI) value assigned by the IEEE Registration Authority. Bytes 127:123 contain an extension identifier assigned by the corresponding organization. Bytes 119:112 contain the vendor specific extension identifier assigned by the corresponding organization. Refer to the IEEE EUI-64 guidelines for more information. This field is big endian (refer to section 4.5.4). This field may be required to be implemented (e.g., if Programmable Key Authentication is supported as defined in section 8.1.6.3.1.1). When not implemented, this field contains a value of 0h. |
+
+| 129:128 | O | O | R | Command Retry Delay Time 1 (CRDT1): If the Do Not Retry (DNR) bit is cleared to ‘0’ in the CQE and the Command Retry Delay (CRD) field is set to 01b in the CQE, then this value indicates the command retry delay time in units of 100 milliseconds. |
+
+| 131:130 | O | O | R | Command Retry Delay Time 2 (CRDT2): If the DNR bit is cleared to ‘0’ in the CQE and the CRD field is set to 10b in the CQE, then this value indicates the command retry delay time in units of 100 milliseconds. |
+
+| 133:132 | O | O | R | Command Retry Delay Time 3 (CRDT3): If the DNR bit is cleared to ‘0’ in the CQE and CRD field is set to 11b in the CQE, then this value indicates the command retry delay time in units of 100 milliseconds. |

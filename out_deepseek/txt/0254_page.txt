@@ -1,0 +1,22 @@
+### Figure 220: Telemetry Controller-Initiated Log Page
+
+| Bytes | Description |
+|-------|-------------|
+| 381   | **Telemetry Controller-Initiated Scope (TCS):** This field indicates the scope of the Telemetry Controller-Initiated log page. Implementations compliant with versions of this specification later than 2.0 shall not set this field to a value of 0h. |
+|       | **Value** | **Scope** |
+|       | 00h | Not reported |
+|       | 01h | Controller |
+|       | 02h | NVM subsystem |
+|       | 03h to FFh | Reserved |
+
+### Figure 221: Endurance Group Identifier - Log Specific Identifier
+
+| Bits | Description |
+|------|-------------|
+| 15:00 | **Endurance Group Identifier (ENDGID):** This field specifies the identifier for the Endurance Group (refer to section 3.2.3) associated with this log page. |
+
+### Table 1: Endurance Group Identifier (ENDGID) Values
+
+| Bits | Description |
+|------|-------------|
+| 15:00 | **Endurance Group Identifier (ENDGID):** This field specifies the identifier for the Endurance Group (refer to section 3.2.3) associated with this log page. |

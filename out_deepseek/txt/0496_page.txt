@@ -1,0 +1,27 @@
+### Figure 531: Discovery Information Management – Data
+
+| Bytes | O/M\(^1\) | Description |
+|-------|-----------|-------------|
+| ...   | O         |             |
+| TDL - 1: TDL - TEL | \(M^3\) | Discovery Information Entry NUMENT-1: This field contains the last discovery information entry as defined in Figure 532 for extended discovery information entries (if present) and as defined in Figure 310 for basic discovery information entries (if present), where TEL is the size specified in the Total Entry Length (TEL) field of the extended discovery information entry and TDL is the size specified in the Total Data Length (TDL) field. For basic discovery information entries, TEL shall be 1,024 bytes. |
+
+**Notes:**
+1. O/M definition: O = Optional, M = Mandatory.
+2. This field is optional for a register, de-register, or update task performed by a DDC. For a register, de-register, or update task performed by a host or CDC, this field shall be cleared to 0h.
+3. This field is mandatory for an update task. For a register or de-register task, this field is optional.
+
+### Figure 532: Extended Discovery Information Entry
+
+| Bytes | O/M\(^1\) | Description |
+|-------|-----------|-------------|
+| 00    | M         | Transport Type (TRTYPE): This field specifies the transport type as defined in the Transport Type (TRTYPE) field in Figure 310. |
+| 01    | M         | Address Family (ADRFAM): This field specifies the address family as defined in the Address Family (ADRFAM) field in Figure 310. |
+| 02    | \(M^2\)  | Subsystem Type (SUBTYPE): This field specifies the type of the NVM subsystem that is indicated in this entry as defined in the Subsystem Type (SUBTYPE) field in Figure 310. |
+| 03    | \(M^2\)  | Transport Requirements (TREQ): This field specifies requirements for the NVMe Transport as defined in the Transport Requirements (TREQ) field in Figure 310. |
+| 05:04 | \(M^2\)  | Port ID (PORTID): This field specifies a particular NVM subsystem port as defined in the Port ID (PORTID) field in Figure 310. |
+| 07:06 | \(M^2\)  | Controller ID (CNTLID): This field specifies the controller ID as defined in the Controller ID (CNTLID) field in Figure 310. This field shall specify a controller ID that a host is able to use in a Connect command to the NVM subsystem being registered. |
+| 09:08 | \(M^2\)  | Admin Max SQ Size (ASQSZ): This field specifies the maximum size of an Admin Submission Queue as defined in the Admin Max SQ Size (ASQSZ) field in Figure 310. |
+| 31:10 | Reserved | |
+| 63:32 | \(M^2\)  | Transport Service Identifier (TRSVCID): This field specifies the NVMe Transport service identifier as an ASCII string as defined in the Transport Service Identifier (TRSVCID) field in Figure 310. |
+| 255:64 | Reserved | |
+| 511:256 | M         | NVMe Qualified Name (NQN): If the Entity Type (ETYPE) field in the Discovery Information Management command data portion’s header is set to 2h (i.e., a DDC is performing the register, de-register, or update task), then this field specifies the NVMe Qualified Name (NQN) that uniquely identifies the NVM subsystem as defined in the NVM Subsystem Qualified Name (SUBNQN) field in Figure 310. If the ETYPE field in the Discovery Information Management command data portion’s header is set to 1h or 3h (i.e., a host or CDC is performing the register, de-register, or update task), then this field specifies the NQN that uniquely identifies the host as defined in the Host NVMe Qualified Name (HOSTNQN) field in Figure 315. |

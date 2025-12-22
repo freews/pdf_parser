@@ -1,0 +1,18 @@
+{
+  "page_number": "163",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 126: Current Value after Reset with Scope of Subset of the NVM Subsystem\n\n| Feature Capability | Controller scope or Namespace per controller scope | NVM subsystem scope | Endurance Group scope | NVM Set scope | Namespace scope |\n|---|---|---|---|---|---|\n| Saveable | Set to: • the saved value if a saved value is set; or • the default value if a saved value is not set, unless otherwise specified. | Unchanged, unless otherwise specified. | | | |\n| Non-saveable and non-persistent | Set to the default value, unless otherwise specified. | | | | |\n\nConcurrent access to Feature values by multiple hosts, for features with a scope other than controller scope, requires some form of coordination between hosts. The procedure used to coordinate these hosts is outside the scope of this specification.\n\nFeature settings apply based on the feature scope (e.g., a feature is namespace specific if that feature has a namespace scope) as defined in Figure 403.\n\nFor feature values that apply to the controller scope:\n\na) if the NSID field is cleared to 0h or set to FFFFFFFFh, then:\n\n• the Set Features command shall set the specified feature value for the controller; and\n• the Get Features command shall return the current setting of the requested feature value for the controller;\n\nand\n\nb) if the NSID field is set to a valid namespace identifier (refer to section 3.2.1.2), then:\n\n• the Set Features command shall abort with a status code of Feature Not Namespace Specific; and\n• the Get Features command shall return the current setting of the requested feature value for the controller.\n\nFor feature values that apply to the namespace scope:\n\na) if the NSID field is set to an active namespace identifier (refer to section 3.2.1.4), then:\n\n• the Set Features command shall set the specified feature value of the specified namespace; and\n• the Get Features command shall return the current setting of the requested feature value for the specified namespace;\n\nb) if the NSID field is set to FFFFFFFFh, then:\n\n• for the Set Features command, the controller shall:\n  o if the MDS bit is set to ‘1’ in the Identify Controller data structure, abort the command with a status code of Invalid Field in Command; or\n  o if the MDS bit is cleared to ‘0’ in the Identify Controller data structure, unless otherwise specified, set the specified feature value for all namespaces attached to the controller processing the command;\n\nand\n\n• for the Get Features command, the controller shall, unless otherwise specified in section 5.2.26, abort the command with a status code of Invalid Namespace or Format;",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 126: Current Value after Reset with Scope of Subset of the NVM Subsystem",
+        "coordinates": [
+          110,
+          128,
+          885,
+          308
+        ]
+      }
+    ]
+  }
+}

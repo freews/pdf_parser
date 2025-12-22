@@ -1,0 +1,9 @@
+8.3.4.1.2 Managing Host access to an Exported NVM Subsystem
+
+Exported NVM Subsystems are created with a specified Access Mode (i.e., restricted, unrestricted).
+
+This section describes an example flow for changing an Exported NVM Subsystem configured for unrestricted access to restricted access (where only hosts in the Allowed Host List associated to the specified Exported NVM Subsystem have permissions to use the Exported Namespaces linked to that Exported NVM Subsystem).
+
+The access mode of Exported NVM Subsystems may be changed by issuing a Manage Exported NVM Subsystem command with a Change Access Mode operation (refer to section 5.4.9.1.2) and specifying the desired Access Mode (refer to step ‘6’ in Figure 779). The example Figure 779 shows changing the access mode of an Exported NVM Subsystem to restricted access. The example Figure 779 also shows Exported NVM Subsystem access to specific hosts (refer to step ‘7’ in Figure 779).
+
+Figure 779: Example steps for restricting access to an Exported NVM Subsystem to specific hosts

@@ -1,0 +1,46 @@
+Figure 456: Power Measurement – Completion Queue Entry Dword 0
+
+| Bits | Description |
+|------|-------------|
+| 7:1  | Reserved    |
+| 0    | Power Measurement Enable (PME): This field contains the value of the PME bit in the Power Measurement log page (refer to Figure 297). |
+
+5.2.26.1.28 Embedded Management Controller Address (Feature Identifier 78h)
+
+This Feature configures a URI (refer to RFC 3986) containing the address of a management agent provided by the system (e.g., a Management Controller (refer to the NVM Express Management Interface Specification) or an enclosure manager) for management of the NVM subsystem.
+
+If a Set Features command is issued for this Feature, the data structure specified in Figure 457 is transferred in the data buffer for that command.
+
+If a Get Features command is issued for this Feature, the data structure specified in Figure 457 is returned in the data buffer for that command.
+
+Figure 457: Set Features – Command Specific Status Values
+
+| Bytes | Description |
+|------|-------------|
+| 03:00 | Reserved |
+| 511:04 | Embedded Management Controller Address (EMCA): A URI (refer to RFC 3986), containing the address of a management agent provided by the system. |
+
+The Command and Feature Lockdown log page (refer to section 5.2.12.1.20), if supported, should indicate that this Feature is supported to be prohibited from execution.
+
+5.2.26.1.29 Host Management Agent Address (Feature Identifier 79h)
+
+This Feature configures a URI (refer to RFC 3986) containing the address of a management agent provided by a host for management of the NVM subsystem.
+
+If a Set Features command is issued for this Feature, the data structure specified in Figure 458 is transferred in the data buffer for that command.
+
+If a Get Features command is issued for this Feature, the data structure specified in Figure 458 is returned in the data buffer for that command.
+
+Figure 458: Host Management Agent Address
+
+| Bytes | Description |
+|------|-------------|
+| 03:00 | Reserved |
+| 511:04 | Host Management Agent Address (HMAA): A URI (refer to RFC 3986), containing the address of a management agent residing in a host. |
+
+The Command and Feature Lockdown log page (refer to section 5.2.12.1.20), if supported, should indicate that this Feature is supported to be prohibited from execution.
+
+5.2.26.1.30 Host Metadata (Feature Identifier 7Dh), (Feature Identifier 7Eh), (Feature Identifier 7Fh)
+
+The Host Metadata features are the Enhanced Controller Metadata feature (Feature Identifier 7Dh), the Controller Metadata feature (Feature Identifier 7Eh), and the Namespace Metadata feature (Feature Identifier 7Fh).
+
+If a Get Features command specifying one of the Host Metadata features with the SEL field set to 011b (i.e., Supported Capabilities) is submitted, then the Saveable bit in Dword 0 of the corresponding completion queue entry shall be cleared to ‘0’ (i.e., refer to section 4.4), and the Changeable bit in Dword 0 of the corresponding completion queue entry shall be set to ‘1’.

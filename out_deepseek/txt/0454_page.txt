@@ -1,0 +1,39 @@
+Figure 452: Power Limit - Command Dword 13
+
+| Bits | Description |
+|------|-------------|
+| 15:00 | Power Limit Value (PLV): This field specifies the power limit. The power in watts is equal to the value in this field multiplied by the scale indicated in the PLS field. Clearing this field to 0h in a Set Features command removes any power limit. A 0h value of this field in the results of a Get Features command indicates that there is no current power limit. |
+
+If a controller processes a Set Features command for this Feature and that command specifies a power limit indicated by the PLV field combined with the PLS field that is less than the value in the Maximum Power (MP) field in the Power State Descriptor (PSD) for every operational power state (i.e., every power state for which the Non-Operational State (NOPS) bit is cleared to ‘0’ in the PSD for that power state (refer to Figure 329)), then the controller shall abort that command with a status code of Invalid Power Limit.
+
+5.2.26.1.26 Power Threshold (Feature Identifier 24h)
+
+This Feature controls if a controller reports a Power Threshold Exceeded event and the power threshold used by the controller to trigger that Power Threshold Exceeded event.
+
+If a Set Features command is issued specifying this Feature, then the attributes are specified in Command Dword 11 (refer to Figure 453).
+
+This Feature shall be saveable (refer to Figure 199). The default value of this Feature shall be all bytes cleared to 0h.
+
+If a Get Features command is issued specifying this Feature, then the attributes described in Figure 453 are returned in Dword 0 of the completion queue entry for that command.
+
+Figure 453: Power Threshold – Command Dword 11
+
+| Bits | Description |
+|------|-------------|
+| 31   | Enable Power Threshold (EPT): If this bit is set to ‘1’, then the controller shall: |
+|      | - collect interval power measurements (i.e., average of power measurement samples over one second, refer to section 8.1.19) of the specified power measurement type (i.e., the PMTS field) for use in this Feature; and |
+|      | - report a Power Threshold Exceeded event if the interval power measurement of the specified power measurement type (i.e., the PMTS field) is greater than or equal to the power threshold specified in this Feature. |
+|      | The power threshold is equal to the value in the Power Threshold Value field multiplied by the scale indicated in the Power Threshold Scale field. |
+|      | If this bit is cleared to ‘0’, then there is no request: |
+|      | - to collect interval power measurements of the specified power measurement type for use in this Feature; and |
+|      | - for a Power Threshold Exceeded event to be reported by the controller. |
+|      | If a Power Threshold Exceeded event is reported, then the current value of this bit for this Feature shall be cleared to ‘0’ (i.e., the current value for this bit only enables a single occurrence of a Power Threshold Exceeded event). |
+| 30:24 | Reserved |
+| 23:20 | Power Measurement Type Select (PMTS): This field specifies the power measurement type as defined in Figure 679. |
+| 19:18 | Reserved |
+| 17:16 | Power Threshold Scale (PTS): This field specifies the scale for the power threshold as defined in Figure 681. |
+| 15:00 | Power Threshold Value (PTV): This field specifies the value for the power threshold. |
+
+5.2.26.1.27 Power Measurement (Feature Identifier 25h)
+
+This Feature controls operation of the Power Measurement capability (refer to section 8.1.19.1).

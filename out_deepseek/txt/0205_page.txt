@@ -1,0 +1,39 @@
+Figure 154: Asynchronous Event Information – Notice
+
+| Value | Definition |
+|-------|------------|
+| 00h   | **Attached Namespace Attribute Changed:** Indicates a change to one or more of the following:  
+  - Identify Namespace data structures (refer to section 1.5.50) that are associated with an attached namespace;  
+  - the Active Namespace ID list (i.e., CNS 02h);  
+  - the I/O Command Set specific Active Namespace ID list (i.e., CNS 07h); or  
+  - other data structures as specified in applicable NVM Express I/O Command Set specifications.  
+
+This event shall be reported for any of the changes in the preceding list to namespaces that are attached to the controller, unless otherwise specified. This event may be reported by controllers compliant to version 2.1 and earlier versions of this specification for changes to namespaces that were not attached to the controller at the time the changes occurred.
+
+To clear this event, a host issues a Get Log Page command for the Changed Attached Namespace List log page (refer to section 5.2.12.1.5) with the Retain Asynchronous Event bit cleared to ‘0’.
+
+A controller shall not send this event if:
+
+a) Namespace Status (refer to Figure 335) has changed and shutdown processing is either reported as in progress (i.e., CSTS.SHST is set to 01b) or is reported as complete (i.e., CSTS.SHST is set to 10b);
+
+b) that controller receives a command (e.g., a Namespace Management command or Capacity Management command) on the Admin Submission Queue (e.g., not via a Management Endpoint, refer to the NVM Express Management Interface Specification) that requests a delete operation for a namespace;
+
+c) the ANAGPRID field (refer to Figure 335) has changed;
+
+d) the RGRPID field (refer to Figure 335) has changed; or
+
+e) an I/O Command Set specific change occurs (refer to the applicable NVM Express I/O Command Set specification).
+
+A controller shall only send this event for changes to the Remaining Format NVM (RFNVM) field in the Format Progress Indicator field transition from a non-zero value to 0h, or from 0h to a non-zero value.
+
+| Value | Definition |
+|-------|------------|
+| 01h   | **Firmware Activation Starting:** The controller is starting a firmware activation process. Command processing is paused during the time that the firmware activation process occurs. The host may use CSTS.PP to determine when command processing has resumed. |
+
+To clear this event, the host reads the Firmware Slot Information log page with the Retain Asynchronous Event bit cleared to ‘0’.
+
+| Value | Definition |
+|-------|------------|
+| 02h   | **Telemetry Log Changed:** The controller has saved the controller internal state in the Telemetry Controller-Initiated log page and set the Telemetry Controller-Initiated Data Available field to 1h in that log page. |
+
+To clear this event, the host issues a Get Log Page command with Retain Asynchronous Event bit cleared to ‘0’ for the Telemetry Controller-Initiated log.

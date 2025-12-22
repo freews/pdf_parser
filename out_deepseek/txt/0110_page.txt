@@ -1,0 +1,18 @@
+controllers and no NVM storage capacity. Domain 4 is a domain that contains no controllers and contains some amount of NVM storage capacity from which NVM Endurance Groups have been created that contain two shared namespaces (i.e., NS D and NS E). Domain 5 is a domain that contains one controller and no NVM storage capacity. Domain 6 is a domain that contains no controllers and no NVM storage capacity allocated to an NVM Endurance Group (i.e., an empty domain).
+
+**Figure 72: Example 2 Domain Structure**
+
+**3.2.5.2 Domains and Reservations**
+
+If an NVM subsystem supports multiple domains and Persistent Reservations (refer to section 8.1.24), then resumption after a division event (e.g., resumption of operation, resumption of communication) requires that all persistent reservation state within the domains in the NVM subsystem that are no longer divided be synchronized (i.e., updated).
+
+If the reservation state for a namespace is not synchronized, then the ANA Group that contains that namespace shall transition to the ANA Inaccessible state (refer to section 8.1.1.6) and remain in that state until the Persistent Reservation state is synchronized. If the Persistent Reservation state is not able to be synchronized, then:
+
+- a transition to the ANA Persistent Loss state occurs and commands are processed as described in section 8.1.1.7; or
+- the controller may stop processing commands and set the Controller Fatal Status (CSTS.CFS) bit to ‘1’ (refer to section 9.5).
+
+**3.2.5.3 Domains and Sanitize Operations**
+
+If an NVM subsystem supports multiple domains and supports performing a sanitize operation (refer to section 8.1.26), then performing a sanitize operation is affected by division events and the existence of divisions.
+
+If a division exists and the controller is not able to successfully perform a sanitize operation as specified in section 8.1.26 (e.g., if the division prevents access to some objects in the scope of the sanitize operation,

@@ -1,0 +1,8 @@
+<|ref|>sub_title<|/ref|><|det|>[[414, 89, 582, 107]]<|/det|>
+## Table of Contents  
+
+<|ref|>sub_title<|/ref|><|det|>[[117, 115, 880, 132]]<|/det|>
+## 1 INTRODUCTION  
+
+<|ref|>text<|/ref|><|det|>[[128, 138, 883, 905]]<|/det|>
+1.1 Overview. 11.1.1 NVM Express® Specification Family. 12 Scope. 23 Outside of Scope. 24 Conventions. 24.1 Keywords. 24.2 Numerical Descriptions. 34.3 Byte, Word, and Dword Relationships. 55 Definitions. 55.1 admin label. 55.2 admin label ASCII. 55.3 admin label UTF- 8. 65.4 Admin Queue. 65.5 Administrative controller. 65.6 allocated namespace. 65.7 Allowed Host List. 65.8 arbitration burst. 65.9 arbitration mechanism. 65.10 association. 65.11 audit. 65.12 authentication commands. 65.13 cache. 65.14 candidate command. 65.15 capsule. 75.16 Centralized Discovery controller (CDC). 75.17 Channel. 75.18 command completion. 75.19 command submission. 75.20 Configurable Device Personality (CDP). 75.21 controller. 75.22 Controller Reset. 75.23 Directive. 75.24 Direct Discovery controller (DDC). 85.25 Discovery controller. 85.26 discovery information. 85.27 Discovery Service. 85.28 dispersed namespace. 85.29 dynamic controller. 85.30 Domain. 85.31 embedded management controller. 85.32 emulated controller. 85.33 Endurance Group. 85.34 Entry Key. 85.35 Exported Namespace. 85.36 Exported NVM Resources. 85.37 Exported NVM Subsystem. 95.38 Exported Port. 95.39 Exported Port ID. 95.40 fabric (network fabric). 95.41 Fabric Zoning. 95.42 firmware/boot partition image update command sequence. 95.43 firmware slot. 95.44 host. 95.45 host- accessible memory. 95.46 host management agent. 95.47 host memory. 95.48 idempotent command. 105.49 Identify Controller data structures. 10

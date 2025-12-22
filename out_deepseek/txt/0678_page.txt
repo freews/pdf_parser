@@ -1,0 +1,7 @@
+When only the second data area is populated, then the Telemetry Host-Initiated log page has no data in Telemetry Data Area 1 shown by having its corresponding last block value cleared to 0h, and no additional data in Telemetry Data Area 3 shown by having its corresponding last block value set to the same value as the last block value for Telemetry Data Area 2. For example, the following values correspond to the layout shown in Figure 715:
+
+- Telemetry Host-Initiated Data Area 1 Last Block = 0;
+- Telemetry Host-Initiated Data Area 2 Last Block = 1,000; and
+- Telemetry Host-Initiated Data Area 3 Last Block = 1,000.
+
+As a result of telemetry data areas being made up of a single set of Telemetry Data Blocks starting at Telemetry Data Block 1, the telemetry data contained in Telemetry Data Block 1 through Telemetry Data Block 1,000 of data area of data area 2 and data area 3 is the same.

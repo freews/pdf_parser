@@ -1,0 +1,33 @@
+### Figure 243: Additional Hardware Error Information for Controller Ready Timeout Exceeded errors
+
+| Bytes | Description |
+|-------|-------------|
+| 0     | Controller State (CST): Indicates the state of the controller at the time the Controller Ready Timeout Exceeded error occurred. |
+| 3     | Bits Description |
+|       | 7:4 Reserved |
+|       | Controller Not Ready (CNR): Indicates the controller was not ready to process at least one command without error as described in section 3.5.4.1 within the amount of time indicated by: |
+|       | a) the Controller Ready With Media Timeout (CRTO.CRWMT) field in Controller Ready With Media mode (CC.CRIME is cleared to ‘0’); or |
+|       | b) the Controller Ready Independent of Media Timeout (CRTO.CRIMT) field in Controller Ready Independent of Media mode (CC.CRIME is set to ‘1’), |
+|       | since the controller was enabled. |
+| 2     | Admin Command Media Not Ready (ACMNR): Indicates media required to process at least one Admin command was not ready within the amount of time indicated by the Controller Ready With Media Timeout (CRTO.CRWMT) field since the controller was enabled by transitioning CC.EN from ‘0’ to ‘1’. |
+| 1     | Namespace Not Ready (NNR): Indicates at least one namespace attached to the controller was not ready within the amount of time indicated by the Controller Ready With Media Timeout (CRTO.CRWMT) field since the controller was enabled by transitioning CC.EN from ‘0’ to ‘1’. |
+| 0     | Controller Ready Independent of Media Enable (CRIME): Indicates the value of the CC.CRIME bit when the Controller Ready Timeout Exceeded error occurred. |
+| 3:1   | Reserved |
+
+#### 5.2.12.1.14.2.6 Change Namespace Event (Event Type 06h)
+
+The Changed Namespace Event (refer to Figure 244) persists the host parameters used for successful Namespace Management commands. This event type is specific to namespaces that are associated with I/O Command Sets that specify logical blocks (e.g., the NVM Command Set and the Zoned Namespace Command Set). The event contains a Persistent Event Log Event header and the Change Namespace Event data.
+
+The Changed Namespace Event shall set the Persistent Event Log Event Header:
+
+- Event Type field to 06h; and
+- Event Type Revision Field to 02h.
+
+### Figure 244: Change Namespace Event Data Format (Event Type 06h)
+
+| Bytes | Description |
+|-------|-------------|
+| 03:00 | Namespace Management CDW10 (NMCDW10): Contains the value from command Dword 10 of the Namespace Management command that initiated the namespace change event (refer to Figure 383). |
+| 07:04 | Reserved |
+| 15:08 | Namespace Size (NSZE): For a create operation, contains the NSZE value from the Identify Namespace data structure in the Namespace Management command (refer to Figure 385). For a delete operation that specifies a single namespace this field contains the value from the NSZE field of the Identify Namespace data structure (refer to the I/O Command Set specific Identify Namespace data structure in the applicable NVM Express I/O Command Set specification) for the namespace being deleted. For a delete operation that specifies all namespaces this field is reserved. |
+| 23:16 | Reserved |

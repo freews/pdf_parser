@@ -1,0 +1,10 @@
+Examples provided in this section are meant to illustrate concepts and are not intended to enumerate all possible configurations. For example, an NVM subsystem may contain multiple PCI Express ports with each port supporting SR-IOV.
+
+2.4.2 Asymmetric Controller Behavior
+
+Asymmetric controller behavior occurs in NVM subsystems where namespace access characteristics (e.g., performance) may vary based on:
+
+- the internal configuration of the NVM subsystem; or
+- which controller is used to access a namespace (e.g., Fabrics).
+
+NVM subsystems that provide asymmetric controller behavior may support Asymmetric Namespace Access Reporting as described in section 8.1.1.

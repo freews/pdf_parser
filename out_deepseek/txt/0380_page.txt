@@ -1,0 +1,30 @@
+Figure 329: Identify – Power State Descriptor Data Structure
+
+| Bits | Description |
+|------|-------------|
+| 143:128 | Idle Power (IDLP): This field indicates the typical power consumed by the NVM subsystem over 30 seconds in this power state when idle (e.g., there are no pending commands, property accesses, background processes, sanitize operation, nor device self-test operations). The measurement starts after the NVM subsystem has been idle for 10 seconds. The power in Watts is equal to the value in this field multiplied by the scale indicated in the Idle Power Scale field. A value of 0h indicates Idle Power is not reported. Refer to section 8.1.18. Note: This value may be used by hosts to manage power versus resume latency. Platform and form factor specifications may have additional power measurement and reporting requirements that are outside the scope of this specification. |
+| 127:125 | Reserved |
+| 124:120 | Relative Write Latency (RWL): This field indicates the relative write latency associated with this power state. The value in this field shall be less than the number of supported power states (e.g., if the controller supports 16 power states, then valid values are 0 through 15). A lower value means lower write latency. |
+| 119:117 | Reserved |
+| 116:112 | Relative Write Throughput (RWT): This field indicates the relative write throughput associated with this power state. The value in this field shall be less than the number of supported power states (e.g., if the controller supports 16 power states, then valid values are 0 through 15). A lower value means higher write throughput. |
+| 111:109 | Reserved |
+| 108:104 | Relative Read Latency (RRL): This field indicates the relative read latency associated with this power state. The value in this field shall be less than the number of supported power states (e.g., if the controller supports 16 power states, then valid values are 0 through 15). A lower value means lower read latency. |
+| 103:101 | Reserved |
+| 100:96 | Relative Read Throughput (RRT): This field indicates the relative read throughput associated with this power state. The value in this field shall be less than the number of supported power states (e.g., if the controller supports 16 power states, then valid values are 0 through 15). A lower value means higher read throughput. |
+| 95:64 | Exit Latency (EXLAT): This field indicates the maximum exit latency in microseconds associated with exiting this power state. A value of 0h indicates Exit Latency is not reported. |
+| 63:32 | Entry Latency (ENLAT): This field indicates the maximum entry latency in microseconds associated with entering this power state. A value of 0h indicates Entry Latency is not reported. |
+| 31:26 | Reserved |
+| 25 | Non-Operational State (NOPS): This bit indicates whether the controller processes I/O commands in this power state. If this bit is cleared to ‘0’, then the controller processes I/O commands in this power state. If this bit is set to ‘1’, then the controller does not process I/O commands in this power state. Refer to section 8.1.18.1. |
+| 24 | Max Power Scale (MXPS): This bit indicates the scale for the Maximum Power field. If this bit is cleared to ‘0’, then the scale of the Maximum Power field is in 0.01 Watts. If this bit is set to ‘1’, then the scale of the Maximum Power field is in 0.0001 Watts. |
+| 23:16 | Reserved |
+| 15:00 | Maximum Power (MP): This field indicates the sustained maximum power consumed by the NVM subsystem in this power state. The power in Watts is equal to the value in this field multiplied by the scale specified in the Max Power Scale bit. A value of 0h indicates Maximum Power is not reported. Refer to section 8.1.18. Note: This value is intended to provide an approximate guideline for hosts to manage power versus performance. Platform and form factor specifications may have additional power measurement and reporting requirements that are outside the scope of this specification. |
+
+Figure 330 describes the time scales indicated by the EPFVTS field, the FQVTS field, and the EPFRTS field (refer to Figure 329).
+
+Figure 330: Time Scale Values
+
+| Value | Definition |
+|-------|-----------|
+| 0h    | 1 microsecond |
+
+356

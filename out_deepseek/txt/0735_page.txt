@@ -1,0 +1,35 @@
+Figure 777: Example reference for retrieving Underlying Namespaces and Underlying Ports
+
+NVM Storage
+NVMe
+NVMe
+SSD
+
+Underlying Namespace
+List
+
+Underlying Namespace
+
+1
+
+Underlying Namespace
+
+3
+
+Underlying Namespace
+
+4
+
+Underlying Namespace
+
+5
+
+Underlying Ports List
+
+Underlying Port (Ethernet)
+
+Underlying Port (Fibre channel)
+
+Underlying Port (Infiniband)
+
+2

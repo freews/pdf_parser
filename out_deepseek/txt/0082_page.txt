@@ -1,0 +1,29 @@
+mask interrupts. A host shall not access this property when configured for MSI-X; any accesses when configured for MSI-X is undefined. For interrupt behavior requirements, refer to the Interrupts section of the NVMe over PCIe Transport Specification.
+
+### Figure 39: Offset Ch: INTMS – Interrupt Mask Set
+
+| Bits | Type | Reset | Description |
+|------|------|-------|-------------|
+| 31:00 | RWS  | 0h    | Interrupt Vector Mask Set (IVMS): This field is bit significant. If a ‘1’ is written to a bit, then the corresponding interrupt vector is masked from generating an interrupt or reporting a pending interrupt in the MSI Capability Structure. Writing a ‘0’ to a bit has no effect. When read, this field returns the current interrupt mask value within the controller (not the value of this property). If a bit has a value of a ‘1’, then the corresponding interrupt vector is masked. If a bit has a value of ‘0’, then the corresponding interrupt vector is not masked. |
+
+### 3.1.4.4 Offset 10h: INTMC – Interrupt Mask Clear
+
+This property is used to unmask interrupts when using pin-based interrupts, single message MSI, or multiple message MSI. When using MSI-X, the interrupt mask table defined as part of MSI-X should be used to unmask interrupts. A host shall not access this property when configured for MSI-X; any accesses when configured for MSI-X is undefined. For interrupt behavior requirements, refer to the Interrupts section of the NVMe over PCIe Transport Specification.
+
+### Figure 40: Offset 10h: INTMC – Interrupt Mask Clear
+
+| Bits | Type | Reset | Description |
+|------|------|-------|-------------|
+| 31:00 | RWC  | 0h    | Interrupt Vector Mask Clear (IVMC): This field is bit significant. If a ‘1’ is written to a bit, then the corresponding interrupt vector is unmasked. Writing a ‘0’ to a bit has no effect. When read, this field returns the current interrupt mask value within the controller (not the value of this property). If a bit has a value of a ‘1’, then the corresponding interrupt vector is masked. If a bit has a value of ‘0’, then the corresponding interrupt vector is not masked. |
+
+### 3.1.4.5 Offset 14h: CC – Controller Configuration
+
+This property modifies settings for the controller. A host shall set the Arbitration Mechanism Selected (CC.AMS), the Memory Page Size (CC.MPS), and the I/O Command Set Selected (CC.CSS) to valid values prior to enabling the controller by setting CC.EN to ‘1’. Attempting to create an I/O queue before initializing the I/O Completion Queue Entry Size (CC.IOCQES) and the I/O Submission Queue Entry Size (CC.IOSQES) shall cause a controller to abort a Create I/O Completion Queue command or a Create I/O Submission Queue command with a status code of Invalid Queue Size.
+
+### Figure 41: Offset 14h: CC – Controller Configuration
+
+| Bits | Type | Reset | Description |
+|------|------|-------|-------------|
+| 31:25 | RO   | 0h    | Reserved |
+
+58

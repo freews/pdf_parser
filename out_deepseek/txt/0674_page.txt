@@ -1,0 +1,40 @@
+8.1.26.6 Sanitize Operation Effects on Exported NVM Subsystems
+
+Performing a sanitize operation on an Underlying NVM Subsystem (refer to section 8.3.4) sanitizes user data in all Underlying Namespaces contained in that NVM subsystem, including any Underlying Namespace that is associated with an Exported Namespace in any Exported NVM Subsystem (refer to section 5.4.8).
+
+Performing a sanitize operation on an Exported Namespace (refer to section 8.3.4) sanitizes all user data in the Underlying Namespace (refer to section 8.3.4).
+
+If an Exported NVM Subsystem contains an Exported Namespace that is associated with an Underlying Namespace in an Underlying NVM Subsystem for which one of the following conditions exists:
+
+- a sanitize operation is in progress; or
+- the most recent sanitize operation has failed and successful recovery from the failed sanitize operation has not occurred,
+
+then, while that condition exists, that Exported NVM Subsystem shall enforce the I/O command sanitize operation restrictions described in section 8.1.26.5 on I/O commands that specify that Exported Namespace and may enforce additional sanitize operation restrictions described in that section.
+
+If an Exported Namespace is associated with an Underlying Namespace in an Underlying NVM Subsystem for which one of the following conditions exists:
+
+- a sanitize operation is in progress; or
+- the most recent sanitize operation has failed and successful recovery from the failed sanitize operation has not occurred,
+
+then, while that condition exists, the Exported NVM Subsystem containing that Exported Namespace shall enforce the I/O command sanitize operation restrictions described in section 8.1.26.5 on I/O commands that specify that Exported Namespace and may enforce additional sanitize operation restrictions described in that section.
+
+8.1.27 Submission Queue (SQ) Associations
+
+When Predictable Latency Mode is enabled, all I/O commands for namespaces in a given NVM Set have the same quality of service attributes and shall exhibit predictable latencies as described in section 8.1.19.1.
+
+The SQ Associations capability provides hints to the controller as to which specific I/O Queues are associated with a given NVM Set. The controller uses this information to further enhance performance when Predictable Latency Mode is enabled.
+
+The SQ Associations capability is an optional capability. Predictable Latency Mode (refer to section 8.1.19.1) is not dependent on the use of the SQ Associations capability.
+
+If a controller supports SQ Associations, then the controller shall:
+
+- indicate support for the SQ Associations capability in the Controller Attributes (CTRATT) field in the Identify Controller data structure;
+- indicate support for NVM Sets in the Controller Attributes (CTRATT) field in the Identify Controller data structure; and
+- indicate support for Predictable Latency Mode in the Controller Attributes (CTRATT) field in the Identify Controller data structure (refer to Figure 328).
+
+The host enables the SQ Associations capability by creating an association between an NVM Set and a Submission Queue at the time the Submission Queue is created (e.g., with a Create I/O Submission Queue command (refer to section 5.3.2) or a Connect command (refer to section 6.3)).
+
+For the SQ Associations capability to yield benefits, the host is required to:
+
+a) create an association between each Submission Queue and some NVM Set; and
+b) only issue I/O commands to Submission Queues that have an association with the NVM Set that contains the namespace associated with the Namespace Identifier specified in that I/O command.

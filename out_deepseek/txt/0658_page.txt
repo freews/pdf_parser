@@ -1,0 +1,22 @@
+• the Block Erase sanitize operation, which alters user data with a low-level block erase method that is specific to the media for all locations on the media within the sanitization target in which user data may be stored;
+• the Crypto Erase sanitize operation, which alters user data by changing the media encryption keys for all locations on the media within the sanitization target in which user data may be stored; and
+• the Overwrite sanitize operation, which alters user data by writing a fixed data pattern or related patterns one or more times to all locations on the media within the sanitization target in which user data may be stored. Figure 705 defines the data pattern or patterns that are written.
+
+Controller attributes that affect the processing of sanitize operations include:
+
+• the No-Deallocate Modifies Media After Sanitize (NODMMAS) field, which indicates whether media is modified by the controller as part of sanitize processing for an NVM subsystem sanitize operation and that had been requested with the No-Deallocate After Sanitize (NDAS) bit set to ‘1’ in the Sanitize command that started the NVM subsystem sanitize operation;
+• the No-Deallocate Inhibited (NDI) bit, which indicates if the controller supports the No-Deallocate After Sanitize bit in the Sanitize command;
+• the Verification Support (VERS) bit, which indicates if the controller supports the Media Verification state and the Post-Verification Deallocation state for NVM subsystem sanitize operations that perform block erase or crypto erase; and
+• the Namespace Verification Support (NVERS) bit, which indicates if the controller supports the Media Verification state and the Post-Verification Deallocation state for namespace sanitize operations.
+
+If the NODMMAS field indicates a value of 10b in the Identify Controller data structure (refer to Figure 328) and a Sanitize command that starts an NVM subsystem sanitize operation specifies the No-Deallocate After Sanitize (NDAS) bit set to ‘1’, then sanitize processing includes additional media modification. Refer to Annex A.3 for further information about sanitize operations and interactions with integrity circuits.
+
+The Overwrite sanitize operation is media specific and may not be appropriate for all media types. For example, if the media is NAND, multiple pass overwrite operations may have an adverse effect on media endurance.
+
+If the NVM subsystem supports the Key Per I/O capability (refer to section 8.1.14), then a sanitize operation shall alter all user data such that recovery of any previous user data using the KEYTAG values specified when that previous user data was written (i.e., original KEYTAG values) is infeasible for a given level of effort (refer to ISO/IEC 27040).
+
+| OIPBP1 | Overwrite Pass Count | Overwrite Pass Number | User Data except PI Metadata | Protection Information2 |
+|--------|---------------------|----------------------|--------------------------------|-------------------------|
+| '0'    | All                | All                  | Overwrite Pattern1              | Each byte set to FFh          |
+| '1'    | Even               | First               | Inversion of Overwrite Pattern1    | Each byte cleared to 00h        |
+|        |                     | Subsequent          | Inversion of Overwrite Pattern1 from previous pass (i.e., each bit XORed with ‘1’) |                         |

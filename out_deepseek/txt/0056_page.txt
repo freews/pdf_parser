@@ -1,0 +1,3 @@
+Figure 17: Two-Namespace NVM Subsystem
+
+An NVM subsystem may have multiple domains, multiple namespaces, multiple controllers, and multiple ports, as shown in Figure 18.

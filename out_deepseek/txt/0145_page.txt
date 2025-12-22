@@ -1,0 +1,30 @@
+Note that all CLRs except those initiated by a Controller Reset result in the controller immediately losing communication with the host. In all these cases, the controller is unable to indicate any aborts or update any completion queue entries.
+
+For a message-based controller, if the CC.EN bit transitions to ‘0’ due to a Controller Reset while controller shutdown processing is either in progress or reported as complete (i.e., the CSTS.ST bit is cleared to ‘0’ and the CSTS.SHST field is set to either 01b or 10b), then the association between the host and that controller shall be preserved for at least 2 minutes (i.e., the Admin Queue shall remain connected). After this time, the association may be removed if that controller has not been re-enabled. The requirements in this paragraph do not apply to NVM Subsystem Shutdown processing (i.e., these requirements do not apply if the CSTS.ST bit is set to ‘1’).
+
+After a Controller Reset, a message-based controller continues to process Fabrics commands (e.g., Property Get, Property Set) (refer to section 3.3.2.3).
+
+If the host is no longer able to communicate with the controller before that host receives either:
+
+- completions for all outstanding commands submitted to that controller (refer to section 3.4.5); or
+- a CSTS.RDY bit value cleared to ‘0’,
+
+then it is strongly recommended that the host take the steps described in section 9.6 to avoid possible data corruption caused by interaction between outstanding commands and subsequent commands submitted by that host to another controller.
+
+3.7.2.1 Controller Reset
+
+A Controller Reset is a host write to the CC property that clears CC.EN bit from ‘1’ to ‘0’. A Controller Reset initiates a Controller Level Reset (CLR), unless an NVM Subsystem Shutdown is reported as in progress or is reported as complete and the CAP.NSSES bit is cleared to ‘0’ as described in section 3.6.3.
+
+The effect of a CLR initiated by a Controller Reset is a subset of the effect of a CLR initiated by any other method. A CLR initiated by a Controller Reset:
+
+- does not reset certain properties as described in section 3.7.2;
+- does not change some virtualization values as described in section 5.2.13.3.1 and section 5.4.10; and
+- does not change some feature values as described in section 5.2.26.1.7.
+
+3.7.3 Queue Level Reset of I/O Queues
+
+The host may reset and/or reconfigure the I/O Submission and I/O Completion Queues by resetting them. A queue level reset is performed by deleting and then recreating the queue. In this process, the host should wait for all pending commands to the appropriate I/O Submission Queue(s) to complete.
+
+To perform the queue level reset on a controller using the memory-based transport model, the host submits the Delete I/O Submission Queue or Delete I/O Completion Queue command to the Admin Queue specifying the identifier of the queue to be deleted. After successful command completion of the queue delete operation, the host then recreates the queue by submitting the Create I/O Submission Queue or Create I/O Completion Queue command. As part of the creation operation, the host may modify the attributes of the queue. Note that if a queue level reset is performed on an I/O Completion Queue, the I/O Submission Queues that are utilizing the I/O Completion Queue should be deleted before the I/O Completion Queue is reset and recreated after the I/O Completion Queue is recreated. The behavior of an I/O Submission Queue without a corresponding I/O Completion Queue is undefined.
+
+To perform the queue level reset on a controller using the message-based transport model, the host sends a Disconnect command to the I/O Queue which is to be deleted. After successful completion of the Disconnect command, the host then recreates the I/O Submission Queue and I/O Completion Queue by submitting the Connect command with a QID specified that is not 00h. As part of the Connect command, the host may modify the attributes of the I/O Queues. If the Disconnect command is not supported by a controller that uses the message-based transport model, then that controller does not support queue level reset of I/O Queues.

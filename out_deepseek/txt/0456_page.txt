@@ -1,0 +1,36 @@
+### Figure 454: Power Measurement – Command Dword 11
+
+| Bits | Description |
+|------|-------------|
+| 03:00 | Action (ACT): This field specifies the action that the controller shall take during processing this Set Features command. |
+|      | **Value** | **Definition** |
+|      | 0h | Stop Power Measurements: If power measurements are in progress (i.e., the PME bit is set to ‘1’ in the Power Measurement log page), then the controller shall perform the following operations in the order listed: |
+|      | 0h | 1) stop collecting interval power measurements for the Power Measurement log page; |
+|      | 0h | 2) if the SMTR field (refer to Figure 297) is set to a non-zero value, then stop the timer associated with that field; |
+|      | 0h | 3) clear the SMTR field to 0h; |
+|      | 0h | 4) clear the PME bit to ‘0’ to indicate power measurements have stopped (refer to Figure 297); and |
+|      | 0h | 5) update the Stop Measurement Timestamp field (refer to Figure 297). |
+|      | 1h | It is not an error if the controller processes a Set Features command specifying this Feature with this value while no power measurements are in progress (i.e., the PME bit is cleared to ‘0’, refer to Figure 297). |
+|      | 1h | Start Power Measurements: The controller shall perform the following operations in the order listed: |
+|      | 1h | 1) if power measurements are in progress (i.e., the PME bit is set to ‘1’ in the Power Measurement log page), then stop collecting interval power measurements for the Power Measurement log page; |
+|      | 1h | 2) initialize the Power Measurement log page (i.e., clear the Power Measurement Count (PMC) field to ‘0’, refer to Figure 297); |
+|      | 1h | 3) start collecting interval power measurements of the specified power measurement type (i.e., PMTS field) for the Power Measurement log page; |
+|      | 1h | 4) set the PME bit to ‘1’ to indicate power measurements are in progress (refer to Figure 297); |
+|      | 1h | 5) set the SMTR field (refer to Figure 297) to the value in the SMT field of this Set Features command; and |
+|      | 1h | 6) if the SMTF field is set to a non-zero value, then start a timer equal to the value in the SMTF field. |
+|      | 1h | The value in the PMGN field in the Power Measurement log page (refer to Figure 297) shall be incremented prior to returning a successful completion queue entry for this Set Features command. |
+|      | 1h | All others Reserved |
+|      | 1h | Vendor Specific. Additional information may be provided in Command Dword 12 (refer to Figure 455). |
+
+### Figure 455: Power Measurement – Command Dword 12
+
+| Bits | Description |
+|------|-------------|
+| 31:00 | Action Specific (ACTSP): The definition of this field is specific to the value of the Action (ACT) field (refer to Figure 454). If this field is not defined for the action specified by the ACT field, then this field is reserved. |
+
+### Figure 456: Power Measurement – Completion Queue Entry Dword 0
+
+| Bits | Description |
+|------|-------------|
+| 31:16 | Stop Measurement Time Remaining (SMTR): This field contains the value in the SMTR field in the Power Measurement log page (refer to Figure 297). |
+| 15:8 | Power Measurement Generation Number (PMGN): This field contains the value in the PMGN field in the Power Measurement log page (refer to Figure 297). |

@@ -1,0 +1,18 @@
+{
+  "page_number": "30",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 15: Complex NVM Storage Hierarchy with Multiple Reclaim Groups\n\n![Complex NVM Storage Hierarchy with Multiple Reclaim Groups](Figure_15.png)\n\n### Entity naming key (Abc):\n- A: Domain (capital letter)\n- b: Endurance Group (digit)\n- c: Reclaim Group (digit or lower-case letter for maximum number)\n\nThe support of Endurance Groups, Reclaim Groups within an Endurance Group, or NVM Sets within an Endurance Group is optional, but the storage model supports these concepts. An NVM subsystem may be shipped by the vendor with storage entities configured, or an NVM subsystem may be configured or reconfigured by the customer. Typical changes to the configuration are creation and deletion of namespaces.\n\nAn NVM subsystem that does not support multiple NVM Sets does not require reporting of NVM Sets. An NVM subsystem that does not support multiple Endurance Groups does not require reporting of Endurance Groups.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 15: Complex NVM Storage Hierarchy with Multiple Reclaim Groups",
+        "coordinates": [
+          118,
+          115,
+          870,
+          650
+        ]
+      }
+    ]
+  }
+}

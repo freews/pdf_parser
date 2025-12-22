@@ -1,0 +1,35 @@
+Figure 28: Admin Command Support Requirements
+
+| Command                          | Combined Opcode Value | Controller Support Requirements\(^1\) | Reference |
+|----------------------------------|-----------------------|----------------------------------------|------------|
+| Fabric Zoning Receive            | 22h                   | P P M\(^7\) 5.4.6            |
+| Lockdown                          | 24h                   | O P P 5.2.15            |
+| Fabric Zoning Lookup             | 25h                   | P P M\(^7\) 5.4.5            |
+| Clear Exported NVM Resource    | 28h                   | P O P 5.4.1            |
+| Configuration                     |                       |                                |
+| Fabric Zoning Send                | 29h                   | P P M\(^7\) 5.4.7            |
+| Create Exported NVM Subsystem    | 2Ah                  | P O P 5.4.2            |
+| Manage Exported NVM Subsystem    | 2Dh                  | P O P 5.4.9            |
+| Manage Exported Namespace        | 31h                  | P O P 5.4.8            |
+| Manage Exported Port              | 35h                  | P O P 5.4.10           |
+| Cross-Controller Reset           | 38h                   | \(O^{10}\) \(O^{10}\) \(O^{11}\) 5.4.3 |
+| Send Discovery Log Page            | 39h                   | P P M\(^7\) 5.4.11           |
+| Track Send                        | 3Dh                  | O O P 5.2.28           |
+| Track Receive                    | 3Eh                  | O O P 5.2.27           |
+| Migration Send                   | 41h                  | O O P 5.2.17           |
+| Migration Receive                | 42h                  | O O P 5.2.16           |
+| Controller Data Queue            | 45h                  | O O P 5.2.4            |
+| Doorbell Buffer Config           | 7Ch                  | O O P 5.3.5            |
+
+I/O Command Set specific Admin commands
+
+| Command                          | Combined Opcode Value | Controller Support Requirements\(^1\) | Reference |
+|----------------------------------|-----------------------|----------------------------------------|------------|
+| Format NVM                      | 80h                   | O O P 5.2.10            |
+| Security Send                   | 81h                   | O O P 5.2.25            |
+| Security Receive                | 82h                   | O O P 5.2.23            |
+| Sanitize                        | 84h                   | \(O^{3}\) \(O^{3}\) P 5.2.22 |
+| Sanitize Namespace              | 8Ch                   | O O P 5.2.23            |
+| I/O Command Set specific Admin command | 86h | Note 8 P P Note 8 |
+|                               | 88h                   |                                |
+|                               | 89h                   |                                |

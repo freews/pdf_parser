@@ -1,0 +1,18 @@
+{
+  "page_number": "172",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 142: Opcodes for Admin Commands\n\n| Opcode by Field | Combined Opcode¹ | Namespace Identifier Used² | Command | Reference⁸ |\n|-----------------|------------------|----------------------------|---------|------------|\n| (07:02) Function | (01:00) Data Transfer³ | | | |\n| 0011 00b | 01b | 31h | Yes | Manage Exported Namespace¹⁰ | 5.4.8 |\n| 0011 01b | 01b | 35h | No | Manage Exported Port¹⁰ | 5.4.10 |\n| 0011 10b | 00b | 38h | No | Cross-Controller Reset | 5.4.3 |\n| 0011 10b | 01b | 39h | No | Send Discovery Log Page | 5.4.11 |\n| 0011 11b | 01b | 3Dh | No | Track Send | 5.2.28 |\n| 0011 11b | 10b | 3Eh | No | Track Receive | 5.2.27 |\n| 0100 00b | 01b | 41h | No | Migration Send | 5.2.17 |\n| 0100 00b | 10b | 42h | No | Migration Receive | 5.2.16 |\n| 0100 01b | 01b | 45h | No | Controller Data Queue | 5.2.4 |\n| 0111 11b | 00b | 7Ch | No | Doorbell Buffer Config | 5.3.5 |\n| 0111 11b | 11b⁹ | 7Fh | No | Fabrics Commands⁹ | 6 |\n| 1000 00b | 00b | 80h | Yes | Format NVM | 5.2.10 |\n| 1000 00b | 01b | 81h | NOTE 7 | Security Send | 5.2.25 |\n| 1000 00b | 10b | 82h | NOTE 7 | Security Receive | 5.2.23 |\n| 1000 01b | 00b | 84h | No | Sanitize | 5.2.22 |\n| 1000 01b | 01b | 85h | Yes | Load Program | CP |\n| 1000 01b | 10b | 86h | Yes⁴ | Get LBA Status | NVM, ZNS |\n| 1000 10b | 00b | 88h | Yes | Program Activation Management | CP |\n| 1000 10b | 01b | 89h | Yes | Memory Range Set Management | CP |\n| 1000 11b | 00b | 8Ch | Yes⁴ | Sanitize Namespace | 5.2.23 |\n\n### Vendor Specific\n\n| 11xx xxb | NOTE 3 | C0h to FFh | Vendor specific | |\n\n### Notes:\n\n1. Opcodes not listed are reserved.\n2. A subset of commands use the Namespace Identifier (NSID) field. If the Namespace Identifier field is used, then the value FFFFFFFFh is supported in this field unless otherwise indicated in footnotes in this figure that a specific command does not support that value or supports that value only under specific conditions. When this field is not used, the field is cleared to 0h as described in Figure 92.\n3. 00b = no data transfer; 01b = host to controller; 10b = controller to host; 11b = bidirectional. Refer to the Data Transfer Direction field in Figure 91.\n4. This command does not support the use of the Namespace Identifier (NSID) field set to FFFFFFFFh.\n5. Support for the Namespace Identifier field set to FFFFFFFFh depends on the Directive Operation (refer to section 8.1.9).\n6. Use of the Namespace Identifier field depends on the CNS value in the Identify Command as described in Figure 326.\n7. The use of the Namespace Identifier is Security Protocol specific.\n8. Section 5.1.2 contains commands common to all transport models, section 5.3 contains commands specific to the Memory-based transport model, and section 5.4 contains commands specific to the Message-based transport model. NVM = NVM Command Set specific, ZNS = Zoned Namespace Command Set specific, CP = Computational Programs Command Set specific.\n9. All Fabrics commands use the opcode 7Fh with the data transfer direction specified as shown in Figure 574. Refer to section 6 for details.\n10. Support for this command is prohibited in NVM subsystems that use a Memory-Based Transport Model (e.g., the PCIe transport) for any controller.\n11. Use of the Namespace Identifier field is specified further in section 5.2.12.1 and Figure 206.",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 142: Opcodes for Admin Commands",
+        "coordinates": [
+          93,
+          127,
+          900,
+          828
+        ]
+      }
+    ]
+  }
+}

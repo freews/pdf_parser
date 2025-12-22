@@ -1,0 +1,22 @@
+Figure 795: Example of DH-HMAC-CHAP authentication transaction
+
+Figure 796: Mathematical notations for DH-HMAC-CHAP
+
+| Symbols       | Description                                                                 |
+|---------------|-----------------------------------------------------------------------------|
+| NQNc, NQNh    | NQN of the NVM subsystem that contains the controller and NQN of the host |
+| Kc, Kh        | DH-HMAC-CHAP key of the NVM subsystem that contains the controller and DH-HMAC-CHAP key of the host |
+| p, g          | Modulus (p) and generator (g) of the chosen DH group (refer to Figure 799) |
+| x, y          | Random numbers used as exponents in a DH exchange                        |
+| C1, C2        | Random challenge values                                                |
+| Ca1, Ca2      | Augmented challenge values                                                |
+| S1, S2        | 32-bit sequence numbers                                                |
+| R1, R2        | Reply values                                                             |
+| T_ID          | Authentication transaction identifier                                    |
+| SC_C           | Secure channel concatenation indication                                  |
+| H()           | One-way hash function (refer to Figure 798)                                |
+| HMAC(K, Str)  | HMAC function (refer to RFC 2104) with key K on string Str using hash function H() |
+| ||            | Concatenation operation                                                      |
+| Ks            | Session key                                                               |
+
+When used with a non-NULL DH exchange, the DH-HMAC-CHAP protocol is able to generate a session key $K_s$ to be used to establish a TLS session between host and controller (refer to section 8.3.5.5.9).

@@ -1,0 +1,27 @@
+{
+  "page_number": "148",
+  "page_type": "body",
+  "content": "# NVM Express® Base Specification, Revision 2.3\n\n## Figure 103: Status Code – Command Specific Status Values\n\n| Value | Description | Commands Affected |\n|---|---|---|\n| 29h | I/O Command Set Not Supported | Namespace Attachment, Namespace Management |\n| 2Ah | I/O Command Set Not Enabled | Namespace Attachment |\n| 2Bh | I/O Command Set Combination Rejected | Set Features |\n| 2Ch | Invalid I/O Command Set | Identify |\n| 2Dh | Identifier Unavailable | Capacity Management |\n| 2Eh | Namespace Is Dispersed | Reservation Acquire, Reservation Register, Reservation Release, Reservation Report |\n| 2Fh | Invalid Discovery Information | Discovery Information Management |\n| 30h | Zoning Data Structure Locked | Fabric Zoning Lookup, Fabric Zoning Send, Fabric Zoning Receive |\n| 31h | Zoning Data Structure Not Found | Fabric Zoning Lookup, Fabric Zoning Send, Fabric Zoning Receive |\n| 32h | Insufficient Discovery Resources | Discovery Information Management |\n| 33h | Requested Function Disabled | Fabric Zoning Lookup, Fabric Zoning Send, Fabric Zoning Receive |\n| 34h | ZoneGroup Originator Invalid | Fabric Zoning Send |\n| 35h | Invalid Host | Manage Exported NVM Subsystem |\n| 36h | Invalid NVM Subsystem | Manage Exported NVM Subsystem |\n| 37h | Invalid Controller Data Queue | Set Features, Get Features, Track Send, Controller Data Queue |\n| 38h | Not Enough Resources | Track Send, Controller Data Queue |\n| 39h | Controller Suspended | Track Send, Sanitize |\n| 3Ah | Controller Not Suspended | Track Send |\n| 3Bh | Controller Data Queue Full | Track Send |\n| 3Ch | Request Exceeds Maximum Namespace Sanitize Operations In Progress | Sanitize Namespace |\n| 3Dh | Manufacturing Default Personality Required | Firmware Commit |\n| 3Eh | Invalid Power Limit | Set Features |\n| 3Fh | Cross-Controller Reset in Progress | Cross-Controller Reset |\n| 40h | Cross-Controller Reset Log Page Full | Cross-Controller Reset |\n| 41h | Cross-Controller Reset Limit Exceeded | Cross-Controller Reset |\n| 42h to 6Fh | Reserved | |\n| 70h to 7Fh | Directive Specific | NOTE 1 |\n| 80h to BFh | I/O Command Set Specific or Fabrics Command Specific | Refer to Figure 104 (I/O Command Set Specific) or Figure 105 (Fabrics Command Specific) |\n| C0h to FFh | Vendor Specific | |\n\n**Notes:**\n1. The Directives Specific range defines Directives specific status values. Refer to section 8.1.9.\n\n## Figure 104: Status Code – Command Specific Status Values, I/O Commands\n\n| Value | Definition |\n|---|---|\n| 80h | Conflicting Attributes |\n| 81h | Invalid Protection Information |\n| 82h | Attempted Write to Read Only Range |\n| 83h | Command Size Limit Exceeded |\n| 84h | Invalid Command ID |\n| 85h | Incompatible Namespace or Format |\n| 86h | Fast Copy Not Possible |\n| 87h | Overlapping I/O Range |\n| 88h | Namespace Not Reachable |\n| 89h | Insufficient Resources |\n| 8Ah | Insufficient Program Resources |\n| 8Bh | Invalid Memory Namespace |\n| 8Ch | Invalid Memory Range Set |\n\n",
+  "metadata": {
+    "embedded_images": [
+      {
+        "name": "Figure 103: Status Code – Command Specific Status Values",
+        "coordinates": [
+          114,
+          128,
+          880,
+          658
+        ]
+      },
+      {
+        "name": "Figure 104: Status Code – Command Specific Status Values, I/O Commands",
+        "coordinates": [
+          172,
+          698,
+          822,
+          900
+        ]
+      }
+    ]
+  }
+}
