@@ -162,7 +162,7 @@ def get_sorted_files_with_path(folder_path):
     return sorted_paths
 
 source_img_dir="out/output_png"
-result_dir="out_deepseek/md"
+result_dir="out_deepseek/layout"
 os.makedirs(result_dir, exist_ok=True)  
 
 images=get_sorted_files_with_path(source_img_dir)
@@ -173,11 +173,19 @@ for img in images:
     #     continue
 
     logger.logger.info(f"Processing image start: {img}")
-    result = ocr.to_markdown(img)
+    
+    # result = ocr.to_markdown(img)
+    # if result is None:
+    #     result = f"Error: OCR failed at page {page}."
+    # with open(f"{result_dir}/{Path(img).stem}.md", "w", encoding="utf-8") as f:
+    #     f.write(result) 
+
+    result = ocr.with_layout(img)
     if result is None:
-        result = "Error: OCR failed."
-    with open(f"{result_dir}/{Path(img).stem}.md", "w", encoding="utf-8") as f:
-        f.write(result) 
+        result = f"Error: OCR failed at page {page}."
+    with open(f"{result_dir}/{Path(img).stem}.txt", "w", encoding="utf-8") as f:
+        f.write(result)     
+
   #  print(f"Processing image end: {result}")
     logger.logger.info(f"Processing image end: {result}")
     time.sleep(2)  # 너무 빠른 요청을 피하기 위해 잠시 대기
