@@ -1,0 +1,5 @@
+1. PDF-> PNG, Each PNG Parser to Each MD --요거 파일 하나로 만들고 
+2. Section Define(step2_extract_pdf_structure.py)
+3. section  별 page 정보에서 해당 page들을 가져다가 해당 section 의 MD content 만 모아 json에 저장 (표 및 그림정보 포함)
+4. merge된 MD 파일을 LLM으로 처리  하여 summary 만들고 json 에 저장 
+5. section summary 출력

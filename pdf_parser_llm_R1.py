@@ -62,11 +62,12 @@ You are a NVMe specification document parser. Extract structured information fro
    - Do NOT format the document title or running headers as markdown headers.
    - Do NOT format Figure captions or Table titles as markdown headers (do not use #, ##, ### for them).
 3. **Image Extraction (CRITICAL):**
-   - For EVERY figure or image, you MUST output a metadata comment line BEFORE the caption or image location.
+   - For EVERY block diagram, schematic, or picture (embedded image), you MUST output a metadata comment line BEFORE the caption or image location.
    - Format: `<!-- Figure [Name], coordinate:(x1,y1,x2,y2) -->`
    - Example: `<!-- Figure 1, coordinate:(100,200,900,800) -->`
    - If the image has no name, use: `<!-- Embeded_Image [Index], coordinate:(x1,y1,x2,y2) -->`
    - *Coordinates must be normalized (0-1000).*
+   - **CRITICAL: Do NOT output this metadata for TABLES. Tables must be extracted as Markdown tables.**
 4. If parsing fails completely, output "extraction_error".
 """
 
@@ -477,7 +478,7 @@ if __name__ == "__main__":
 
     # Load Structure
     if not os.path.exists(PDF_STRUCTURE_PATH):
-        print(f"Error: Structure file not found at {PDF_STRUCTURE_PATH}. Run extract_pdf_structure.py first.")
+        print(f"Error: Structure file not found at {PDF_STRUCTURE_PATH}. Run step2_extract_pdf_structure.py first.")
         exit(1)
 
     with open(PDF_STRUCTURE_PATH, 'r', encoding='utf-8') as f:
