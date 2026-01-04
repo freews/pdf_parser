@@ -35,6 +35,7 @@ You are a NVMe specification document parser. Extract structured information fro
    - Example: `<!-- Figure 1, coordinate:(100,200,900,800) -->`
    - If the image has no name, use: `<!-- Embeded_Image [Index], coordinate:(x1,y1,x2,y2) -->`
    - *Coordinates must be normalized (0-1000).*
+   - Do not extract characters from the image, in other words, in the image area.
    - **CRITICAL: Do NOT output this metadata for TABLES. Tables must be extracted as Markdown tables.**
 4. If parsing fails completely, output "extraction_error".
 """
